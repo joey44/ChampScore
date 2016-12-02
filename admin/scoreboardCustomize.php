@@ -37,10 +37,10 @@ if (!isset($_SESSION['visited'])) {
         <![endif]-->
 
         <script>
-    $(function() {
-        $('#cp2').colorpicker();
-    });
-</script>
+            $(function () {
+                $('#cp2').colorpicker();
+            });
+        </script>
     </head>
 
     <body>
@@ -89,61 +89,89 @@ if (!isset($_SESSION['visited'])) {
                             </h2>
 
 
-	<h2>Example 1</h2>
-	Color: <input class= input-lg value="ab2567">
+                            <!--<h2>Example 1</h2>
+                            Color: <input class=jscolor input-lg value="ab2567">
+                            -->
 
 
-
-	<h2>Example 2</h2>
-
-	<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
-		Pick text color
-	</button>
-
-	HEX value: <input id="chosen-value" value="000000">
-
-	<script>
-	function setTextColor(picker) {
-		document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
-	}
-	</script>
+                            <h4>Font Color</h4>
 
 
+                            <button class="jscolor {valueElement:'chosen-value-score', onFineChange:'setTextColorScore(this)'}">
+                                Pick text color
+                            </button>
 
-                            <div id="cp2" class="input-group colorpicker-component">
-                                <input type="text" value="#00AABB" class="form-control" />
-                                <span class="input-group-addon"><i></i></span>
-                            </div>
+                            HEX value: <input id="chosen-value-score" value="000000">
+                            <h2 name="FCScore">Score<h2>
+                                    <script>
+                                        function setTextColorScore(picker) {
+                                            document.getElementsByName('FCScore')[0].style.color = '#' + picker.toString()
+                                        }
+                                    </script>
 
-                        </div>
+                                    </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h2 class="page-header">
-                                Styles
-                            </h2>
-                        </div>
-                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <button class="jscolor {valueElement:'chosen-value-name', onFineChange:'setTextColorName(this)'}">
+                                                Pick text color
+                                            </button>
 
+                                            HEX value: <input id="chosen-value-name" value="000000">
+                                            <h2 name="FCName">Name<h2>
+                                                    <script>
+                                                        function setTextColorName(picker) {
+                                                           
+                                                            document.getElementsByName('FCName')[0].style.color = '#' + picker.toString()
+                                                        }
+                                                    </script>
+                                                    </div>
+                                                    </div>
 
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <button class="jscolor {valueElement:'chosen-value-back', onFineChange:'setTextColorBack(this)'}">
+                                                                Pick text color
+                                                            </button>
 
-                </div>
-                <!-- /.container-fluid -->
+                                                            HEX value: <input id="chosen-value-back" value="000000">
+                                                            <h2 name="FCBack">Background<h2>
+                                                                    <script>
+                                                                        function setTextColorBack(picker) {
+                                                                            document.getElementsByName('FCBack')[0].style.color = '#' + picker.toString()
+                                                                        }
+                                                                    </script>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <div id="panel" class="panel panel-primary">
 
-            </div>
-            <!-- /#page-wrapper -->
+                                                                                <div class="panel-body">
+                                                                                    <h2 name="FCBack">Background<h2>
+                                                                                            <h2 id="name">Name<h2>
+                                                                                                    <h2 name="FCScore">1<h2>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                            <!-- /.container-fluid -->
 
-        </div>
-        <!-- /#wrapper -->
+                                                                                                            </div>
+                                                                                                            <!-- /#page-wrapper -->
 
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
+                                                                                                            </div>
+                                                                                                            <!-- /#wrapper -->
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-        
-        <script src="js/colorpicker/jscolor.js"></script>
-    </body>
+                                                                                                            <!-- jQuery -->
+                                                                                                            <script src="js/jquery.js"></script>
 
-</html>
+                                                                                                            <!-- Bootstrap Core JavaScript -->
+                                                                                                            <script src="js/bootstrap.min.js"></script>
+
+                                                                                                            <script src="js/colorpicker/jscolor.js"></script>
+                                                                                                            </body>
+
+                                                                                                            </html>
