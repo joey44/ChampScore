@@ -85,7 +85,7 @@ $subsql = "";
                 .$subsql
                 ." from tbl_result r join tbl_user_division d on r.fk_user_div_ID = d.user_div_ID join tbl_user u "
                 ."on d.fk_user_ID = u.user_ID where d.fk_div_ID ="
-                .$divison." group by r.fk_user_div_ID";
+                .$divison." group by Name";
 
 
 
@@ -127,6 +127,7 @@ Database::disconnect();
 </form > 
 
 </div>
+  
   
 
 </body>
