@@ -57,7 +57,7 @@ foreach($_POST as $key => $value)
 
 Database::disconnect();
 
-header("Location:input_result1.php");
+header("Location:input_result2.php");
 
 
 ?>

@@ -16,8 +16,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-  
-
     <form class="form-horizontal" action="input_result2.php" method="post">
 <fieldset>
 
@@ -67,7 +65,7 @@ foreach ($pdo->query($sql) as $row):
 endforeach;
 ?>
 <?php
-//Database::disconnect();
+Database::disconnect();
 ?>
 
     </select>

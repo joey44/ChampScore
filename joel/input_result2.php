@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Input Resluts
+  <title>Input Results
   
   </title>
   <meta charset="utf-8">
@@ -11,19 +11,70 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <div class="container">
+        
+         <?php
 
+           include 'Database.php';
+       
+        $pdo = Database::connect();
+        
+          $compID = 1; //Session ID
+          $sql = "SELECT `comp_name` FROM `tbl_competition` where comp_id = $compID";
+        
+        foreach ($pdo->query($sql) as $row) {
+        echo "<h2>Select Division: ".$row['comp_name']."</h2>";
+        }
+        
+          
+          ?>
+
+  
+    <form class="form-horizontal" action="input_result2.php" method="post"> 
+   <table class="table table-hover">
+      <tr>
+         <?php
+         
+          
+
+        $sql = "SELECT div_name, div_ID FROM `tbl_division` where fk_comp_id = $compID";
+        
+        foreach ($pdo->query($sql) as $row) {
+        echo 
+            
+           "<th><button type='submit' value='".$row['div_ID']."' id='".$row['div_ID']."' name='divselectbasic' class='btn btn-primary'>".$row['div_name']."  </button>  </th> ";
+      
+        
+    
+	}
+        
+        ?>
+        
+      </tr>
+   </table>
+  </form>
+    
+ </div>       
+   <?php if (isset($_POST['divselectbasic']))
+             {
+       ?>
+    
 
 <div class="container">
-  <h2>Input Results Divison <?php 
+  <?php 
   
+   
   $divison = $_POST['divselectbasic'];
-  $compID = 1; //Session ID
+
+     $sql = "SELECT `div_name` FROM `tbl_division` where div_id = $divison";
+        
+        foreach ($pdo->query($sql) as $row) {
+        echo "<h2>Input Results Divison: ".$row['div_name']."</h2>";
+        }
   
-  echo $divison;
 
   ?>
   
-  </h2>
   <p>input or update the results</p> 
   
   <form  class="form-horizontal" action="update_result.php" method="post">  
@@ -35,7 +86,7 @@
         <?php
         $wod_array = array();
         $wod_count = 1;
-        include 'Database.php';
+        
         $pdo = Database::connect();
         $sql = "SELECT evt_ID, wod_ID, wod_name, evt_name FROM `tbl_wod` join tbl_event on fk_evt_ID = evt_ID WHERE `fk_div_ID` = $divison";
         foreach ($pdo->query($sql) as $row) {
@@ -125,13 +176,16 @@ Database::disconnect();
 
 
 
-<button id="save_pdf" name="btn_save" class="btn btn-primary">save</button>
+<button id="btn_save" name="btn_save" class="btn btn-primary">Save</button>
 
 </form > 
 
 </div>
   
-  
+   <?php 
+       
+   }
+       ?>
 
 </body>
 </html>
