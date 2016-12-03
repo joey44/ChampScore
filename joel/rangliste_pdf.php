@@ -1,4 +1,8 @@
 <?php
+
+$selected_wod = $_POST['btn_pdf'];
+
+
 require('mysql_table.php');
 
 class PDF extends PDF_MySQL_Table
@@ -20,9 +24,12 @@ mysql_select_db('champscore_net');
 
 $pdf=new PDF();
 $pdf->AddPage();
-//First table: put all columns automatically
-$pdf->Table("SELECT u.user_name as Name, u.user_box as Box, r.res_score as Punkte FROM tbl_user u inner join tbl_user_division d \n"
-    . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID ORDER BY Punkte ASC");
+
+$pdf->Table("SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =".$selected_wod);
+
+
+$pdf->Table("SELECT u.user_name as Name, u.user_box as Box, r.res_score as Points FROM tbl_user u inner join tbl_user_division d \n"
+    . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID where r.fk_wod_ID =".$selected_wod." ORDER BY Points ASC");
 
 
 
