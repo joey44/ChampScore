@@ -32,7 +32,7 @@
      
      <?php
      
-     $compID = 1;
+     $compID = 1; //Session ID
 $pdo = Database::connect();
 $sql = "SELECT comp_name, comp_ID FROM `tbl_competition` where comp_ID = $compID";
 foreach ($pdo->query($sql) as $row):
