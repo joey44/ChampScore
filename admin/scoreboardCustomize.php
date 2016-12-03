@@ -80,6 +80,10 @@ if (!isset($_SESSION['visited'])) {
                             <h2 class="page-header">
                                 Logo
                             </h2>
+                            
+                            
+                            
+                            
                         </div>
                     </div>
                     <div class="row">
@@ -88,16 +92,17 @@ if (!isset($_SESSION['visited'])) {
                                 Colors
                             </h2>
 
+                            
 
                             <!--<h2>Example 1</h2>
                             Color: <input class=jscolor input-lg value="ab2567">
                             -->
 
 
-                            
+
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <button class="jscolor {valueElement:'chosen-value-score', onFineChange:'setTextColorScore(this)'}">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <button style="width: 100px" class="jscolor {valueElement:'chosen-value-score', onFineChange:'setTextColorScore(this)'} btn btn-default btn-md">
                                         Score
                                     </button>
 
@@ -110,12 +115,9 @@ if (!isset($_SESSION['visited'])) {
                                         }
                                     </script>
                                 </div>
-                            </div>
 
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <button class="jscolor {valueElement:'chosen-value-name', onFineChange:'setTextColorName(this)'}">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <button style="width: 100px" class="jscolor {valueElement:'chosen-value-name', onFineChange:'setTextColorName(this)'} btn btn-default btn-md">
                                         Name
                                     </button>
 
@@ -127,32 +129,9 @@ if (!isset($_SESSION['visited'])) {
                                         }
                                     </script>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <button class="jscolor {valueElement:'chosen-value-back', onFineChange:'setTextColorBack(this)'}">
-                                        Background
-                                    </button>
-
-                                    HEX value: <input id="chosen-value-back" value="000000">
-
-                                    <script>
-                                        function setTextColorBack(picker) {
-                                            $("#FCBack").css('background-color', '#' + picker.toString());
-                                            //document.getElementsByName('FCBack')[0].style.color = '#' + picker.toString()
-$('#FCBack').css({
-    background: "linear-gradient(to bottom, #" +picker.toString()+ "   0%,#" +picker.toString()+ " 60%, #" +picker.toString()+ " 100%)"
-});
-   
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <button class="jscolor {valueElement:'chosen-value-place', onFineChange:'setTextColorPlace(this)'}">
-                                        Place
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <button style="width: 100px" class="jscolor {valueElement:'chosen-value-place', onFineChange:'setTextColorPlace(this)'} btn btn-default btn-md">
+                                        Place       
                                     </button>
 
                                     HEX value: <input id="chosen-value-place"  value="000000">
@@ -163,10 +142,35 @@ $('#FCBack').css({
                                         }
                                     </script>
                                 </div>
-                                <br>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <button style="width: 100px" class="jscolor {valueElement:'chosen-value-back', onFineChange:'setTextColorBack(this)'} btn btn-default btn-md">
+                                        Background
+                                    </button>
+
+                                    HEX value: <input id="chosen-value-back" value="000000">
+
+                                    <script>
+                                        function setTextColorBack(picker) {
+                                            $("#FCBack").css('background-color', '#' + picker.toString());
+                                            //document.getElementsByName('FCBack')[0].style.color = '#' + picker.toString()
+                                            $('#FCBack').css({
+                                                background: "linear-gradient(to bottom, #" + picker.toString() + "   0%,#" + picker.toString() + " 60%, #" + picker.toString() + " 100%)"
+                                            });
+
+                                        }
+                                    </script>
+                                </div>
                             </div>
+                            <br>
+
+
+                            
+                            
+
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
+                                    <label>Preview</label>
                                     <div id="panel" class="panel panel-primary">
 
 
