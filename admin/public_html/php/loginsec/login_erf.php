@@ -37,6 +37,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
         echo "<br/> <a href=\"login_c.php\">Zu den geheimen Daten</a>";
 	    echo "<br/> <a href=\"index.php\">Logout</a>";
 	    $_SESSION['name']=$email;
+            
         $_SESSION['eingeloggt']= true;
 	  }
     } 
@@ -75,6 +76,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
 	else
 	{
 			$_SESSION['message'] = 'Passwörter nicht identisch';
+                        
 		header("Location: ../../ChampScoreIndex.php");
     exit();
 	 // echo "<script type='text/javascript'>  window.location='../../ChampScoreIndex.php'; </script>";
