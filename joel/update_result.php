@@ -15,10 +15,10 @@ foreach($_POST as $key => $value)
   
   list ($res_score, $res_ID, $user_div_ID, $wod_ID) = split('[X]', $dataString);
 
-  echo "res_score ". $res_score;
-  echo "res_ID ". $res_ID;
-  echo "user_DivID ". $user_div_ID;
-  echo "wod_ID ". $wod_ID;
+//  echo "res_score ". $res_score;
+//  echo "res_ID ". $res_ID;
+//  echo "user_DivID ". $user_div_ID;
+//  echo "wod_ID ". $wod_ID;
   
   
   if ($valid && $res_ID == 0)
@@ -54,8 +54,11 @@ foreach($_POST as $key => $value)
   
 }
 
-//header("Location:input_result1.php");
+
 Database::disconnect();
+
+header("Location:input_result1.php");
+
 
 ?>
 

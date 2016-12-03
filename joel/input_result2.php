@@ -83,9 +83,12 @@ $subsql = "";
         
         $sql = "select d.user_div_ID, u.user_name as Name, u.user_box as Box"
                 .$subsql
-                ." from tbl_result r join tbl_user_division d on r.fk_user_div_ID = d.user_div_ID join tbl_user u "
-                ."on d.fk_user_ID = u.user_ID where d.fk_div_ID ="
-                .$divison." group by Name";
+                
+               ."  from tbl_user u join tbl_user_division d on d.fk_user_ID = u.user_ID"
+               ." left join tbl_result r on r.fk_user_div_ID = d.user_div_ID "
+               ."  where d.fk_div_ID ="
+                .$divison." group by Name"; 
+          
 
 
 
