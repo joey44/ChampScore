@@ -87,7 +87,7 @@
         $wod_array = array();
         $wod_count = 1;
         
-        $pdo = Database::connect();
+      //  $pdo = Database::connect();
         $sql = "SELECT evt_ID, wod_ID, wod_name, evt_name FROM `tbl_wod` join tbl_event on fk_evt_ID = evt_ID WHERE `fk_div_ID` = $divison";
         foreach ($pdo->query($sql) as $row) {
         echo 
