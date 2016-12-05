@@ -116,7 +116,12 @@
              {
              
         
-       if ($selected_wod != "overall123"){
+       if ($selected_wod == "overall123"){
+           
+             echo "<p>Overall Ranking </p>";
+           
+       }
+       else{
           
                $sql=  "SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =".$selected_wod;
         
@@ -134,7 +139,7 @@
       <tr>
         <th>Name</th>
         <th>Box</th>
-        <th>Punkte</th>
+        <th>Points</th>
       </tr>
     </thead>
 	<tbody>
@@ -145,11 +150,12 @@
 
   if ($selected_wod == "overall123"){
       
-$sql = "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner "
-        . "join tbl_user_division d\n"
-    . " on u.user_ID = d.fk_user_ID inner "
-        . "join tbl_result r on d.user_div_ID = r.fk_user_div_ID "
-        . "WHERE d.fk_div_ID = ".$divison." ORDER by Punkte ASC";
+$sql = "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner \n"
+    . " join tbl_user_division d\n"
+    . " on u.user_ID = d.fk_user_ID inner \n"
+    . " join tbl_result r on d.user_div_ID = r.fk_user_div_ID \n"
+    . " WHERE d.fk_div_ID = ".$divison." GROUP by Name ORDER by Punkte ASC";
+        
 
 
 foreach ($pdo->query($sql) as $row) {
