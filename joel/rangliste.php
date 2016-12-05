@@ -64,7 +64,12 @@
   <form class="form-horizontal" action="rangliste.php" method="post"> 
    <table class="table table-hover">
       <tr>
+          
+          
          <?php
+         
+         
+      
         $wod_array = array();
         $wod_count = 1;
         
@@ -77,7 +82,9 @@
              else{
                    $divison = $_POST['divselectbasic'];
              }
-
+             
+        echo "<th><button type='submit' value='".$divison."Xoverall123' id='overall' name='wod_button' class='btn btn-primary'>overall</button>  </th> ";
+      
       
   //      include 'Database.php';
   //      $pdo = Database::connect();
@@ -109,14 +116,17 @@
              {
              
         
-       
-
-      $sql=  "SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =".$selected_wod;
+       if ($selected_wod != "overall123"){
+          
+               $sql=  "SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =".$selected_wod;
         
       foreach ($pdo->query($sql) as $row) {
         echo "<p>". $row['Description']."</p>";
       }
         
+       }
+
+  
   ?>
           
   <table class="table table-hover">
@@ -133,7 +143,33 @@
 <?php
 
 
+  if ($selected_wod == "overall123"){
+      
+$sql = "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner "
+        . "join tbl_user_division d\n"
+    . " on u.user_ID = d.fk_user_ID inner "
+        . "join tbl_result r on d.user_div_ID = r.fk_user_div_ID "
+        . "WHERE d.fk_div_ID = ".$divison." ORDER by Punkte ASC";
 
+
+foreach ($pdo->query($sql) as $row) {
+   echo "
+      <tr>
+        <td>".$row['Name']."</td>
+        <td> ".$row['Box']." </td>
+        <td> ".$row['Punkte']." </td>
+      </tr>";
+  
+
+	  
+	}
+      
+  }
+  
+  else{
+      
+  
+  
 $sql = "SELECT u.user_name as Name, u.user_box as Box, r.res_score as Punkte FROM tbl_user u inner join tbl_user_division d \n"
     . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID where r.fk_wod_ID =".$selected_wod." ORDER BY Punkte ASC";
 	
@@ -149,6 +185,8 @@ foreach ($pdo->query($sql) as $row) {
 
 	  
 	}
+        
+  }     
 
 Database::disconnect();
 ?>
