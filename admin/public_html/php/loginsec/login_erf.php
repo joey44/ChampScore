@@ -13,7 +13,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
   $passwort1 = $_POST["passwort1"];
   $passwort2 = $_POST["passwort2"];
   $pass = md5($passwort1);
-  $_SESSION['benutzer'] =$benutzername;
+  $_SESSION['username'] =$benutzername;
 
     if (($passwort1 == $passwort2) && (strlen($passwort1) >= 8))
     {

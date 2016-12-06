@@ -83,7 +83,6 @@ if (!isset($_SESSION['visited'])) {
                             
                             
                             
-                            
                         </div>
                     </div>
                     <div class="row">

@@ -41,52 +41,62 @@ if (!isset($_SESSION['visited'])) {
 
     <body>
 
-        <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="public_html/ChampScoreIndex.php">CHAMPSCORE®</a>
+            </div>
+            <!-- Top Menu Items -->
 
-            <!-- Navigation -->
-            <?php include './navigation.php'; ?>
+        </nav>
 
-            <div id="page-wrapper">
+        <div id="page-wrapper">
 
-                <div class="container-fluid">
+            <div class="container-fluid">
 
-                    
-                    <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <?php
-                    require ("./public_html/php/loginsec/db.inc.php");
 
-                    $link = mysqli_connect("localhost", $benutzer, $passwort);
-                    mysqli_select_db($link, $dbname);
-                    $comp_ID = $_GET['comp_ID'];
-                    $abfrage = "select comp_ID, comp_name from tbl_competition";
-                    $ergebnis = mysqli_query($link, $abfrage) or die(mysqli_error());
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php
+                        require ("./public_html/php/loginsec/db.inc.php");
 
-                    /* echo "<div id=\"products\" class=\"row list-group\">"; */
-                    while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
-                        $comp_ID = $zeile['comp_ID'];
-                        /* echo "<div name\"$ranglisteID\" class=\"item  col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0\">";
-                          echo "<div class=\"thumbnail\">";
-                          echo "<img class=\"group list-group-image\" src=\"http://placehold.it/400x250/000/fff\" alt=\"\" />";
-                          echo "<div class=\"caption\">"; */
-                        echo "<h1 class=\"page-header\">" . $zeile['comp_name'] . "</h1>";
-                    }
-                    mysqli_close($link);
-                    ?>
-                           
-                            
-                        </div>
+                        $link = mysqli_connect("localhost", $benutzer, $passwort);
+                        mysqli_select_db($link, $dbname);
+                        $comp_ID = $_GET['comp_ID'];
+                        $abfrage = "select comp_ID, comp_name from tbl_competition";
+                        $ergebnis = mysqli_query($link, $abfrage) or die(mysqli_error());
+
+                        /* echo "<div id=\"products\" class=\"row list-group\">"; */
+                        while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
+                            $comp_ID = $zeile['comp_ID'];
+                            /* echo "<div name\"$ranglisteID\" class=\"item  col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0\">";
+                              echo "<div class=\"thumbnail\">";
+                              echo "<img class=\"group list-group-image\" src=\"http://placehold.it/400x250/000/fff\" alt=\"\" />";
+                              echo "<div class=\"caption\">"; */
+                            echo "<h1 class=\"page-header\">" . $zeile['comp_name'] . "</h1>";
+                        }
+                        mysqli_close($link);
+                        ?>
+
+
                     </div>
-                    <!-- /.row -->
-                    
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.row -->
 
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /.container-fluid -->
 
         </div>
+        <!-- /#page-wrapper -->
+
+
         <!-- /#wrapper -->
 
         <!-- jQuery -->

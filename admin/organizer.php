@@ -100,7 +100,7 @@ if (!isset($_SESSION['visited'])) {
                     <!-- /.row -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
+                            <div class="panel panel-custom-blue">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"> My Competitions</h3>
                                 </div>

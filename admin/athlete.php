@@ -54,7 +54,7 @@ if (!isset($_SESSION['visited'])) {
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Athlete
-                               
+
                             </h1>
                             <ol class="breadcrumb">
                                 <li>
@@ -68,20 +68,74 @@ if (!isset($_SESSION['visited'])) {
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"> Register for a Competition</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><a href="enterRegCode.php" class="btn btn-danger btn-lg" role="button">Enter Code &raquo;</a>
-                    </p>
+                        <div class="col-lg-6">
+                            <div class="panel panel-custom-blue">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"> Register for a Competition</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p><a href="enterRegCode.php" class="btn btn-custom-blue btn-lg" role="button">Enter Code &raquo;</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="panel panel-custom-blue">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"> Registered Competitions</h3>
+                                </div>
+                                <div class="panel-body">
+                                    
+                                    <?php
+                                    require ("./public_html/php/loginsec/db.inc.php");
+
+                                    $link = mysqli_connect("localhost", $benutzer, $passwort);
+                                    mysqli_select_db($link, $dbname);
+                                    $abfrage = "select comp_ID, comp_name, comp_date from tbl_competition where comp_ID IN ( select fk_comp_ID from tbl_division join tbl_user_division on tbl_user_division.fk_div_ID = tbl_division.div_ID where tbl_user_division.fk_user_id = " . $_SESSION['user_id']. ")";
+                                    $ergebnis = mysqli_query($link, $abfrage) or die(mysqli_error());
+
+
+
+                                    echo"<br><div class=\"table-responsive\">
+                                    <table class=\"table  table-hover table-striped\">
+                                        <thead>
+                                            <tr>
+                                                <th>Competition</th>
+                                                <th>Date</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>";
+
+                                    while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
+                                        $ranglisteID = $zeile['comp_ID'];
+
+                                        $zeile['comp_name'] . "</b></h4>";
+                                       
+                                       
+                                        
+
+                                        echo "<tr id=\"row" . $zeile['comp_ID'] . "\">
+                                                <td><a href = \"ScoreboardView.php?comp_ID=$ranglisteID\" >" . $zeile['comp_name'] . "</a></td>
+                                                <td>" . $zeile['comp_date'] . "</td>
+                                                </tr>";
+                                    }
+
+                                    echo"</tbody>
+                                    </table>
+                                </div>";
+
+
+                                    mysqli_close($link);
+                                    ?>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
-                    
-                    
-                </div>
 
                 </div>
                 <!-- /.container-fluid -->

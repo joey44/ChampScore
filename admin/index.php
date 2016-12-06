@@ -77,7 +77,7 @@ if (!isset($_SESSION['visited'])) {
 
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -99,7 +99,7 @@ if (!isset($_SESSION['visited'])) {
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -121,7 +121,7 @@ if (!isset($_SESSION['visited'])) {
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -143,7 +143,7 @@ if (!isset($_SESSION['visited'])) {
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -169,23 +169,23 @@ if (!isset($_SESSION['visited'])) {
                 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="panel panel-default">
+                        <div class="panel panel-custom-blue">
                             <div class="panel-heading">
                                 <h3 class="panel-title"> Organizer</h3>
                             </div>
                             <div class="panel-body">
-                                <p><a href="organizer.php" class="btn btn-danger btn-lg" role="button">Organizer View &raquo;</a>
+                                <p><a href="organizer.php" class="btn btn-custom-blue btn-lg" role="button">Organizer View &raquo;</a>
                     </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="panel panel-default">
+                        <div class="panel panel-custom-blue">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Athletes</h3>
                             </div>
                             <div class="panel-body">
-                                <p><a href="athlete.php" class="btn btn-danger btn-lg" role="button">Athlete View &raquo;</a>
+                                <p><a href="athlete.php" class="btn btn-custom-blue btn-lg" role="button">Athlete View &raquo;</a>
                     </p> 
                             </div>
                         </div>
@@ -206,7 +206,7 @@ if (!isset($_SESSION['visited'])) {
                     </div>
                 </div>
                 <!-- /.row -->
-
+<!--
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="panel panel-default">
