@@ -7,7 +7,7 @@ if (!isset($_SESSION['visited'])) {
     
     $_SESSION['visited'] = true;
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+    /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
 

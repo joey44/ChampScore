@@ -5,7 +5,7 @@ if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
     $_SESSION['visited'] = true;
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+    /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
 <html lang="en">
@@ -174,7 +174,7 @@ if (!isset($_SESSION['visited'])) {
                         echo "<div id=\"msg" .$comp_ID. "\">
 
                                                                  </div>
-                                                            <button type=\"submit\" onclick= \"comp_ID=$comp_ID\" class=\"btn btn-danger btn-md\" >Submit</button>
+                                                            <button type=\"submit\" onclick= \"comp_ID=$comp_ID\" class=\"btn btn-custom-blue btn-md\" >Submit</button>
                                                         </form>";
 
 

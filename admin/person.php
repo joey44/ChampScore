@@ -5,7 +5,7 @@ if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
     $_SESSION['visited'] = true;
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+   /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
 
@@ -367,7 +367,7 @@ if (!isset($_SESSION['visited'])) {
 
                                     </div>
 
-                                    <button type="submit" class="btn btn-default">Save</button>
+                                    <button type="submit" class="btn btn-custom-blue">Save</button>
                                 </form>
                             </div>
                         </div>
