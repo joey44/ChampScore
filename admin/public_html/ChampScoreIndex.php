@@ -181,9 +181,13 @@ if (ini_get("session.use_cookies")) {
                 
             <input class="form-control" type="text" name="email" placeholder="E-Mail">
             <input class="form-control" type="password" name="passwort" placeholder="Password">
+            <a href="#" class="passforgot"  data-toggle="modal" data-target="#passwordforgot">Forgot Password?</a>
+            
+            <br>
+            <br>
+            <br>
             
             <button type="submit" name="submit" >Sign In</button><br><br><br>
-            <a href="#"  data-toggle="modal" data-target="#passwordforgot">Forgot Password?</a>
             </form>
             </div>
           <!--  <div class="social-login">

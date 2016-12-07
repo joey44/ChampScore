@@ -11,27 +11,26 @@
 body {
     margin-top: 100px;
     background-color: #fff;
-    
+
 }
 
 .navbar-brand
 {
-    color:#c01313;
+    color:#FFF;
     font-size:20px;
-    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-    }
-    .navbar-brand:hover
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+.navbar-brand:hover
 {
     color:#fff;
-    
-    }
 
+}
 
 
 @media(min-width:768px) {
     body {
         margin-top: 50px;
-        
+
     }
 }
 
@@ -64,19 +63,42 @@ body {
 
 .top-nav {
     padding: 0 15px;
+
+    background: rgba(192,19,19,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(192,19,19,1)), color-stop(2%, rgba(192,19,19,1)), color-stop(100%, rgba(179,2,2,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c01313', endColorstr='#b30202', GradientType=1 );
+}
+
+.top-nav>ul {
+
+    background-color: transparent;
+
+
 }
 
 .top-nav>li {
+
     display: inline-block;
     float: left;
+
+
+
 }
 
 .top-nav>li>a {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
+
+
     /*color: #999;*/
     color: #fff;
+
 }
 
 .top-nav>li>a:hover,
@@ -85,7 +107,7 @@ body {
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #0B3C5D;
+    background-color: rgba(192, 19, 19, 0); 
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -141,22 +163,38 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #222;
+        -webkit-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
+box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
-        
-    }
+
+        background: rgba(26,26,26,1);
+        background: -moz-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(26,26,26,1)), color-stop(100%, rgba(0,0,0,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: linear-gradient(135deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a1a1a', endColorstr='#000000', GradientType=1 );}
 
     .side-nav>li>a {
         width: 225px;
-        color: #fff;
+        color: #c0c0c0;
     }
 
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #0B3C5D !important;
+        background: rgba(54,54,54,1);
+        background: -moz-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(54,54,54,1)), color-stop(100%, rgba(46,46,46,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: linear-gradient(135deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#2e2e2e', GradientType=1 );
     }
 }
 
