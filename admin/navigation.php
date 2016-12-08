@@ -129,27 +129,32 @@
                             <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Home</a>
                         </li>
                         <li>
-                            <a href="athlete.php"><i class="fa fa-fw fa-user"></i> Athlete View</a>
+                            <a href="person.php"><i class="fa fa-fw fa-user"></i> My Profile</a>
                         </li>
+                        
                         <li>
-                            <a href="organizer.php"><i class="fa fa-fw fa-fire"></i> Organizer View</a>
-                        </li>
-                         
-                        <!--<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#dropScoreboard"><i class="fa fa-fw fa-th-list"></i> My Scoreboard <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="dropScoreboard" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#dropAthlete"><i class="fa fa-fw fa-user"></i> Athlete <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="dropAthlete" class="collapse">
                             <li>
-                                <a href="scoreboardShow.php"><i class="fa fa-fw fa-eye"></i>Show</a>
+                                <a href="athlete.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="scoreboardCustomize.php"><i class="fa fa-fw fa-cog"></i>Customize</a>
+                                <a href="enterRegCode.php"><i class="fa fa-fw fa-pencil"></i> Enter Reg Code</a>
                             </li>
-                            <li>
-                                <a href="scoreboardBroadcast.php"><i class="fa fa-fw fa-desktop"></i>Broadcast</a>
-                            </li>
+                            
                         </ul>
                     </li>
+                         
                         <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#dropOrganizer"><i class="fa fa-fw fa-user"></i> Competition Host <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="dropOrganizer" class="collapse">
+                            <li>
+                                <a href="organizer.php"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                       <!-- <li>
                             <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                         </li>
                         <li>

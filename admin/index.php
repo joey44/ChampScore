@@ -22,7 +22,7 @@ if (!isset($_SESSION['visited'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>ChampScore</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -65,7 +65,7 @@ if (!isset($_SESSION['visited'])) {
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
+                                <i class="fa fa-dashboard"></i> Home
                             </li>
                         </ol>
                     </div>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['visited'])) {
                 
                 <!-- /.row -->
 
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-custom-red">
                             <div class="panel-heading">
@@ -169,26 +169,23 @@ if (!isset($_SESSION['visited'])) {
                 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="panel panel-custom-blue">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"> Organizer</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><a href="organizer.php" class="btn btn-custom-blue btn-lg" role="button">Organizer View &raquo;</a>
+                        
+                                <h3 class="page-header">
+                            
+                         For Competitions Hosts</h3>
+                            
+                        <p><a href="organizer.php" class="btn btn-custom-red btn-lg" role="button">Host View <i class="fa fa-arrow-circle-right"></i></a>
                     </p>
-                            </div>
-                        </div>
+                            
                     </div>
                     <div class="col-lg-6">
-                        <div class="panel panel-custom-blue">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Athletes</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><a href="athlete.php" class="btn btn-custom-blue btn-lg" role="button">Athlete View &raquo;</a>
+                        <h3 class="page-header">
+                            
+                         For Athletes</h3>
+                        <p><a href="athlete.php" class="btn btn-custom-red btn-lg" role="button">Athlete View <i class="fa fa-arrow-circle-right"></i></a>
                     </p> 
                             </div>
-                        </div>
+                       
                     </div>
                     
                 </div>

@@ -164,8 +164,8 @@ ul.alert-dropdown {
         border-radius: 0;
         overflow-y: auto;
         -webkit-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
--moz-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
+        box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
@@ -250,13 +250,67 @@ box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
 
 
 .btn-custom-red{
+    width: 150px;
+
+   
+
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+
     background-color: #c01313;
     color: #fff;
 }
 .btn-custom-red:hover{
+    background-color: #990f0f;
+    color: #fff;
+}
+
+
+.panel-custom-black {
+    border-color: black;
+}
+
+.panel-custom-black > .panel-heading {
+    border-color: black;
+    color: #fff;
+    background: rgba(26,26,26,1);
+    background: -moz-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(26,26,26,1)), color-stop(100%, rgba(0,0,0,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(135deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a1a1a', endColorstr='#000000', GradientType=1 );
+}
+
+
+
+.panel-custom-black > a {
+    color: black;
+}
+
+.panel-custom-black > a:hover {
+    color: grey;
+}
+
+
+.btn-custom-black{
+
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+
+
     background-color: black;
     color: #fff;
 }
+.btn-custom-black:hover{
+    background-color: grey;
+    color: #fff;
+}
+
+
 
 .panel-custom-blue {
     border-color: #1D2731;

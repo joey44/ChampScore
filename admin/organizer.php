@@ -18,7 +18,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Bootstrap Admin Template</title>
+        <title>ChampScore</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -84,7 +84,7 @@ if (!isset($_SESSION['visited'])) {
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Organizer
+                                Competition Host
 
                             </h1>
                             <ol class="breadcrumb">
@@ -92,19 +92,111 @@ if (!isset($_SESSION['visited'])) {
                                     <i class="fa fa-dashboard"></i>  <a href="index.php">Home</a>
                                 </li>
                                 <li class="active">
-                                    <i class="fa fa-file"></i> Organizer
+                                    <i class="fa fa-file"></i> Competition Host
                                 </li>
                             </ol>
                         </div>
                     </div>
                     <!-- /.row -->
+                    
+                    <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-user fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">26</div>
+                                        <div>Athletes signed in!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-tasks fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">1</div>
+                                        <div>Active Competition!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>New Orders!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>Support Tickets!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-custom-blue">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"> My Competitions</h3>
-                                </div>
-                                <div class="panel-body">
+                            
+                                    <h3 class="page-header">
+                                My Competitions  
+
+                            </h3>
+                                
                                     <a href = "competitionCustomize.php" >New <i class="fa fa-plus"></i></a>
                                     <br>
                                     <?php
@@ -169,8 +261,7 @@ if (!isset($_SESSION['visited'])) {
                                     ?>
 
 
-                                </div>
-                            </div>
+                                
                         </div>
 
 

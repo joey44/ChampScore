@@ -1,8 +1,5 @@
-
 <?php
 session_start();
-
-
 if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
     /* $_SESSION['visited'] = true; */
@@ -10,6 +7,7 @@ if (!isset($_SESSION['visited'])) {
     /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +19,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-    <title>Preview</title>
+        <title>ChampScore</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,91 +41,62 @@ if (!isset($_SESSION['visited'])) {
 
     <body>
 
-        
+        <nav class="navbar top-nav navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="public_html/ChampScoreIndex.php">CHAMPSCORE®</a>
+            </div>
+            <!-- Top Menu Items -->
 
-            <!-- Navigation -->
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="public_html/ChampScoreIndex.php">CHAMPSCORE®</a>
-                </div>
-                <!-- Top Menu Items -->
-                
-            </nav>
+        </nav>
 
-            <div id="page-wrapper">
+        <div id="page-wrapper">
 
-                <div class="container-fluid">
+            <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">
-                                All Scoreboards
-                                
-                            </h1>
-                           
-                           
-                        </div>
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php
+                        require ("./public_html/php/loginsec/db.inc.php");
+
+                        $link = mysqli_connect("localhost", $benutzer, $passwort);
+                        mysqli_select_db($link, $dbname);
+                        $comp_ID = $_GET['comp_ID'];
+                        $abfrage = "select comp_ID, comp_name from tbl_competition";
+                        $ergebnis = mysqli_query($link, $abfrage) or die(mysqli_error());
+
+                        /* echo "<div id=\"products\" class=\"row list-group\">"; */
+                        while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
+                            $comp_ID = $zeile['comp_ID'];
+                            /* echo "<div name\"$ranglisteID\" class=\"item  col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0\">";
+                              echo "<div class=\"thumbnail\">";
+                              echo "<img class=\"group list-group-image\" src=\"http://placehold.it/400x250/000/fff\" alt=\"\" />";
+                              echo "<div class=\"caption\">"; */
+                            echo "<h1 class=\"page-header\">" . $zeile['comp_name'] . "</h1>";
+                        }
+                        mysqli_close($link);
+                        ?>
+
+
                     </div>
-                    <!-- /.row -->
-
                 </div>
-
-
-                <?php
-                require ("./public_html/php/loginsec/db.inc.php");
-
-                $link = mysqli_connect("localhost", $benutzer, $passwort);
-                mysqli_select_db($link, $dbname);
-                $abfrage = "select comp_ID, comp_name from tbl_competition";
-                $ergebnis = mysqli_query($link, $abfrage) or die(mysqli_error());
-
-                echo "<div id=\"products\" class=\"row list-group\">";
-                while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
-                    $ranglisteID = $zeile['comp_ID'];
-                    echo "<div name\"$ranglisteID\" class=\"item  col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0\">";
-                    echo "<div class=\"thumbnail\">";
-                    echo "<img class=\"group list-group-image\" src=\"http://placehold.it/400x250/000/fff\" alt=\"\" />";
-                    echo "<div class=\"caption\">";
-                    echo "<h4 class=\"group inner list-group-item-heading\"><b>" .
-                    $zeile['comp_name'] . "</b></h4>";
-
-                    /* while (list($schluessel, $wert) = each($zeile)) {
-
-
-                      } */
-
-                    echo "<p class=\"group inner list-group-item-text\">Beschreibung</p>";
-                    echo "</br>";
-                    echo "<div class=\"row\">";
-                    echo "<div class=\"col-xs-12 col-md-6\">";
-                    echo "<p class=\"lead\">$21.000</p></div>";
-                    echo "<div class=\"col-xs-12 col-md-6\">";
-                    echo "<a class=\"btn btn-primary\" href=ScoreboardView.php?comp_ID=$ranglisteID>Show more</a>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-                echo "</div>";
-
-                mysqli_close($link);
-                ?>
-
-                <!-- /.container-fluid -->
+                <!-- /.row -->
 
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /.container-fluid -->
 
-        
+        </div>
+        <!-- /#page-wrapper -->
+
+
         <!-- /#wrapper -->
 
         <!-- jQuery -->
@@ -139,4 +108,3 @@ if (!isset($_SESSION['visited'])) {
     </body>
 
 </html>
-
