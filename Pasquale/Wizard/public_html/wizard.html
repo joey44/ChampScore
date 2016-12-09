@@ -35,14 +35,14 @@
                                 <li role="presentation" class="disabled">
                                     <a href="#boxInfo" data-toggle="tab" aria-controls="boxInfo" role="tab" title="Box">
                                         <span class="round-tab">
-                                            <i class="glyphicon glyphicon-menu-right"></i>
+                                            <i class="glyphicon glyphicon-pencil"></i>
                                         </span>
                                     </a>
                                 </li>
                                 <li role="presentation" class="disabled">
-                                    <a href="#compInfo" data-toggle="tab" aria-controls="compInfo" role="tab" title="Competition">
+                                    <a href="#compInfo" data-toggle="tab" aria-controls="compInfo" role="tab" title="Competition" id="tabWod">
                                         <span class="round-tab">
-                                            <i class="glyphicon glyphicon glyphicon-menu-right"></i>
+                                            <i class="glyphicon glyphicon-search"></i>
                                         </span>
                                     </a>
                                 </li>
@@ -57,14 +57,14 @@
                             </ul>
                         </div>
 
-                        <form role="form">
+                        <form role="form" action="inputDB.php" method="post">
                             <div class="tab-content">
                                 <div class="tab-pane active" role="tabpanel" id="persInfo">
                                     <div class="persInfo">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Competition Name</label>
-                                                <input type="text" class="form-control" id="compName" placeholder="Competition Name">
+                                                <input type="text" class="form-control" id="compName" name="fickdichphp" placeholder="Competition Name">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Registration Code for athletes</label>
@@ -144,257 +144,408 @@
                                         <script>
                                             $(document).ready(function () {
 
-                                            $('#selectDiv').change(function () {
-                                            var sel_value = $('#selectDiv option:selected').val();
+                                                $("#nextWod").click(function () {
+
+                                                    var sel_valueDiv = $('#selectDiv option:selected').val();
+
+                                                    for (var i = 1; i <= sel_valueDiv; i++) {
+
+                                                         $("#Div" + i).empty();
+                                                        var sel_valueEv = $('#selectEvent' + i + ' option:selected').val();
+                                                        (function (i) {
+
+                                                            var $this1 = $("#nameDiv_" + i);
+                                                            $("#Div" + i).append($("<h1/>"
+
+                                                                    ).text($this1.val() + " (Division " + i + ")"));
+
+
+                                                            for (var a = 1; a <= sel_valueEv; a++) {
+                                                                //$("#eventa" +a+ i).remove();
+                                                                (function (a) {
+                                                                    var $this = $("#event_" + a + i).val();
+
+                                                                    $("#Div" + i).append($("<div/>", {
+                                                                        id: 'DivEv' + a + i
+                                                                    }));
+                                                                    $("#DivEv" + a + i).append($("<h2/>"
+
+                                                                            ).text($this + " (Event " + a + ")")
+
+
+
+
+                                                                            );
+                                                                    
+                                                                    var sel_valueWod = $('#selectWod' + a + i + ' option:selected').val();
+
+                                                                    for (var c = 1; c <= sel_valueWod; c++) {
+                                                                        //$("#eventa" +a+ i).remove();
+                                                                        (function (c) {
+                                                                            var $this = $("#inputWod" + a + i+c).val();
+                                                                            var $this1 = $("#textWod" + a + i+c).val();
+
+                                                                            $("#DivEv"+a + i).append($("<div/>", {
+                                                                                id: 'DivWod' + a + i+c
+                                                                            }));
+                                                                            $("#DivWod" + a + i+c).append($("<h3/>"
+
+                                                                                    ).text($this + " (WOD Name " + c + ")"),
+                                                                        $("<p/>").text($this1 + " (WOD Description " + c + ")")
+
+
+
+
+                                                                                    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        })(c);
+                                                                    }
+
+
+
+
+
+
+
+
+
+
+
+                                                                })(a);
+                                                            }
+
+                                                        })(i);
+
+                                                    }
+
+
+
+
+
+                                                    //$("#Div1").text(sel_value);
+
+
+                                                });
+
+                                                $("#tabWod").click(function (e) {
+                                                    var sel_valueDiv = $('#selectDiv option:selected').val();
+
+                                                    //$("#Div1").text(sel_valueDiv);
+
+
+                                                });
+
+
+
+                                                $('#selectDiv').change(function () {
+                                                    var sel_value = $('#selectDiv option:selected').val();
                                                     if (sel_value == 0) {
 
 
-                                            $("#divDivison1").empty(); // Resetting Form
-                                                    $("#divDivison2").empty(); // Resetting Form
-                                                    $("#divDivison3").empty(); // Resetting Form
-                                                    $("#divDivison4").empty(); // Resetting Form
-                                                    $("#divDivison1").removeAttr("style");
-                                                    $("#divDivison2").removeAttr("style");
-                                                    $("#divDivison3").removeAttr("style");
-                                                    $("#divDivison4").removeAttr("style");
-                                                    $("#Div1").empty(); // Resetting Form
-                                                    $("#Div2").empty(); // Resetting Form
-                                                    $("#Div3").empty(); // Resetting Form
-                                                    $("#Div4").empty(); // Resetting Form
-                                                    $("#Div1").removeAttr("style");
-                                                    $("#Div2").removeAttr("style");
-                                                    $("#Div3").removeAttr("style");
-                                                    $("#Div4").removeAttr("style");
-                                            } else {
+                                                        $("#divDivison1").empty(); // Resetting Form
+                                                        $("#divDivison2").empty(); // Resetting Form
+                                                        $("#divDivison3").empty(); // Resetting Form
+                                                        $("#divDivison4").empty(); // Resetting Form
+                                                        $("#divDivison1").removeAttr("style");
+                                                        $("#divDivison2").removeAttr("style");
+                                                        $("#divDivison3").removeAttr("style");
+                                                        $("#divDivison4").removeAttr("style");
+                                                        /* $("#Div1").empty(); // Resetting Form
+                                                         $("#Div2").empty(); // Resetting Form
+                                                         $("#Div3").empty(); // Resetting Form
+                                                         $("#Div4").empty(); // Resetting Form
+                                                         $("#Div1").removeAttr("style");
+                                                         $("#Div2").removeAttr("style");
+                                                         $("#Div3").removeAttr("style");
+                                                         $("#Div4").removeAttr("style");
+                                                         */
+                                                    } else {
 
-                                            $("#divDivison1").empty(); // Resetting Form
-                                                    $("#divDivison2").empty(); // Resetting Form
-                                                    $("#divDivison3").empty(); // Resetting Form
-                                                    $("#divDivison4").empty(); // Resetting Form
-                                                    $("#divDivison1").removeAttr("style");
-                                                    $("#divDivison2").removeAttr("style");
-                                                    $("#divDivison3").removeAttr("style");
-                                                    $("#divDivison4").removeAttr("style");
-                                                    $("#Div1").empty(); // Resetting Form
-                                                    $("#Div2").empty(); // Resetting Form
-                                                    $("#Div3").empty(); // Resetting Form
-                                                    $("#Div4").empty(); // Resetting Form
-                                                    $("#Div1").removeAttr("style");
-                                                    $("#Div2").removeAttr("style");
-                                                    $("#Div3").removeAttr("style");
-                                                    $("#Div4").removeAttr("style");
-                                                    create(sel_value);
-                                            }
-                                            });
-                                                    function create(sel_value) {
+                                                        $("#divDivison1").empty(); // Resetting Form
+                                                        $("#divDivison2").empty(); // Resetting Form
+                                                        $("#divDivison3").empty(); // Resetting Form
+                                                        $("#divDivison4").empty(); // Resetting Form
+                                                        $("#divDivison1").removeAttr("style");
+                                                        $("#divDivison2").removeAttr("style");
+                                                        $("#divDivison3").removeAttr("style");
+                                                        $("#divDivison4").removeAttr("style");
+
+                                                        /*$("#Div1").empty(); // Resetting Form
+                                                         $("#Div2").empty(); // Resetting Form
+                                                         $("#Div3").empty(); // Resetting Form
+                                                         $("#Div4").empty(); // Resetting Form
+                                                         $("#Div1").removeAttr("style");
+                                                         $("#Div2").removeAttr("style");
+                                                         $("#Div3").removeAttr("style");
+                                                         $("#Div4").removeAttr("style");
+                                                         */
+                                                        create(sel_value);
+                                                    }
+                                                });
+                                                function create(sel_value) {
                                                     for (var i = 1; i <= sel_value; i++) {
-                                                    (function (i) {
-                                                    document.getElementById('divDivison' + i).setAttribute('style', 'border:0.5px solid grey; ');
+                                                        (function (i) {
+                                                            document.getElementById('divDivison' + i).setAttribute('style', 'border:0.5px solid grey; ');
                                                             document.getElementById('Div' + i).setAttribute('style', 'border:0.5px solid grey; ');
                                                             $("#divDivison" + i).append(
-                                                            $("<h1/>").text("Division " + i), $("<input/>", {
-                                                    class: 'form-control',
-                                                            type: 'text',
-                                                            id: "nameDiv_" + i,
-                                                            name: 'NumbDiv_' + i
-                                                    }),
-                                                            $('<br/>'),
-                                                            $("<label/>").text("Number of Events"),
-                                                            $("<select/>", {
-                                                            class: 'form-control',
-                                                                    id: 'selectEvent' + i,
-                                                                    name: 'selEvent' + i
-
+                                                                    $("<h1/>").text("Division " + i), $("<input/>", {
+                                                                class: 'form-control',
+                                                                type: 'text',
+                                                                id: "nameDiv_" + i,
+                                                                name: 'NumbDiv_' + i
                                                             }),
-                                                            $("<div/>", {
+                                                                    $("<label/>").text("Number of Events"),
+                                                                    $("<select/>", {
+                                                                        class: 'form-control',
+                                                                        id: 'selectEvent' + i,
+                                                                        name: 'selEvent' + i
 
-                                                            id: 'divEvent' + i}),
-                                                            $("<br/>"), $("<br/>")
-                                                            );
-                                                            $("#nameDiv_" + i).focusin(function () {
-                                                    var $this = $("#nameDiv_" + i);
-                                                            window.setTimeout(function () {
-                                                            $("#Div" + i).empty();
-                                                            }, 0);
-                                                    });
-                                                            $("#nameDiv_" + i).focusout(function () {
-                                                    var $this = $("#nameDiv_" + i);
-                                                            window.setTimeout(function () {
-                                                            $("#Div" + i).append($("<h2/>").text($this.val() + i + " (Division " + i + ")"));
-                                                            }, 0);
-                                                    });
+                                                                    }),
+                                                                    $("<div/>", {
+
+                                                                        id: 'divEvent' + i}),
+                                                                    $("<br/>"), $("<br/>")
+                                                                    );
+
+                                                            /*     $("#nameDiv_" + i).focusin(function () {
+                                                             var $this = $("#nameDiv_" + i);
+                                                             window.setTimeout(function () {
+                                                             $("#Div" + i).empty();
+                                                             }, 0);
+                                                             });
+                                                             */
+
+                                                            /*    $("#nameDiv_" + i).focusout(function () {
+                                                             var $this = $("#nameDiv_" + i);
+                                                             window.setTimeout(function () {
+                                                             $("#Div" + i).append($("<h2/>").text($this.val() + i + " (Division " + i + ")"));
+                                                             }, 0);
+                                                             });
+                                                             */
+
                                                             $("#selectEvent" + i).append($("<option/>", {
-                                                    text: '0',
-                                                            value: '0'
-                                                    }),
-                                                            $("<option/>", {
-                                                            text: '1',
-                                                                    value: '1'
+                                                                text: '0',
+                                                                value: '0'
                                                             }),
-                                                            $("<option/>", {
-                                                            text: '2',
-                                                                    value: '2'
-                                                            }),
-                                                            $("<option/>", {
-                                                            text: '3',
-                                                                    value: '3'
-                                                            }),
-                                                            $("<option/>", {
-                                                            text: '4',
-                                                                    value: '4'
-                                                            })
+                                                                    $("<option/>", {
+                                                                        text: '1',
+                                                                        value: '1'
+                                                                    }),
+                                                                    $("<option/>", {
+                                                                        text: '2',
+                                                                        value: '2'
+                                                                    }),
+                                                                    $("<option/>", {
+                                                                        text: '3',
+                                                                        value: '3'
+                                                                    }),
+                                                                    $("<option/>", {
+                                                                        text: '4',
+                                                                        value: '4'
+                                                                    })
 
 
-                                                            );
-                                                    })(i);
+                                                                    );
+                                                        })(i);
                                                     }
 
-                                                    }
-
-
-
-
-                                            $('#selectDiv').change(function () {
-                                            var sel_value = $('#selectDiv option:selected').val();
-                                                    for (var i = 1; i <= sel_value; i++) {
-
-
-
-                                            (function (i) {
-
-
-                                            $('#numbDiv').on('change', '#selectEvent' + i, function () {
-
-                                            var sel_value1 = $('#selectEvent' + i + ' option:selected').val();
-                                                    if (sel_value1 == 0) {
-                                            $("#divEvent" + i).empty(); // Resetting Form
-                                                    $('#DivE1' + i).empty();
-                                                    $('#DivE2' + i).empty();
-                                                    $('#DivE3' + i).empty();
-                                                    $('#DivE4' + i).empty();
-                                            } else {
-                                            $("#divEvent" + i).empty(); //Resetting Form
-                                                    // $("#Div" + i).empty();
-                                                    $('#DivE1' + i).empty();
-                                                    $('#DivE2' + i).empty();
-                                                    $('#DivE3' + i).empty();
-                                                    $('#DivE4' + i).empty();
-                                                    create1(sel_value1);
-                                            }
-
-                                            function create1(sel_value1) {
-
-                                            for (var a = 1; a <= sel_value1; a++) {
-
-
-                                            (function (a) {
-                                            $("#divEvent" + i).append($("<label/>").text("Event " + a + i),
-                                                    $("<input/>", {
-                                                    class: 'form-control',
-                                                            type: 'text',
-                                                            id: "event_" + a + i,
-                                                            name: 'NumbEvent_' + a + i
-                                                    }));
-                                                    $("#event_" + a + i).focusin(function () {
-                                            var $this = $("#event_" + a + i);
-                                                    window.setTimeout(function () {
-                                                    $("#DivE" + a + i).empty();
-                                                    }, 0);
-                                            });
-                                                    $("#event_" + a + i).focusout(function () {
-                                            var $this = $("#event_" + a + i);
-                                                    window.setTimeout(function () {
-                                                    $("#Div" + i).append($("<div/>", {
-                                                    id: 'DivE' + a + i
-                                                    }));
-                                                            $("#DivE" + a + i).append(($this.val() + " (Event " + a + ")"),
-                                                            $("<br/>"),
-                                                            $("<label/>").text("Number of Wods"),
-                                                            $("<select/>", {
-                                                            class: 'form-control',
-                                                                    id: 'selectWod' + a + i,
-                                                                    name: 'selWod' + a + i
-
-
-
-                                                            }), $("<br/>"));
-                                                            $("#selectWod" + a + i).append($("<option/>", {
-                                                    text: '0',
-                                                            value: '0'
-                                                    }),
-                                                            $("<option/>", {
-                                                            text: '1',
-                                                                    value: '1'
-                                                            }),
-                                                            $("<option/>", {
-                                                            text: '2',
-                                                                    value: '2'
-                                                            }),
-                                                            $("<option/>", {
-                                                            text: '3',
-                                                                    value: '3'
-                                                            }),
-                                                            $("<option/>", {
-                                                            text: '4',
-                                                                    value: '4'
-                                                            })
-
-
-                                                            );
-                                                    }, 0);
-                                            });
-                                            })(a);
-                                            }
-                                            }
-
-                                            });
-                                            })(i);
-                                            }
-
-                                            });
-                                                    $('#selectDiv').change(function () {
-                                            var sel_value = $('#selectDiv option:selected').val();
-                                                    for (var i = 1; i <= sel_value; i++) {
-
-
-
-                                            (function (i) {
-
-
-                                            $('#numbDiv').on('change', '#selectEvent' + i, function () {
-
-                                            var sel_value1 = $('#selectEvent' + i + ' option:selected').val();
-                                                    for (var a = 1; a <= sel_value1; a++) {
-
-                                            (function (a) {
-                                            $('#divmaster').on('change', '#selectWod' + a + i, function () {
-
-                                            var sel_value1 = $('#selectWod' +a+ i + ' option:selected').val();
-                                                    if (sel_value1 == 0) {
-                                            $("#divEvent" + i).empty(); // Resetting Form
-                                                    $('#DivE1' + i).empty();
-                                                    $('#DivE2' + i).empty();
-                                                    $('#DivE3' + i).empty();
-                                                    $('#DivE4' + i).empty();
-                                            } else {
-                                            $("#divEvent" + i).empty(); //Resetting Form
-                                                    // $("#Div" + i).empty();
-                                                    $('#DivE1' + i).empty();
-                                                    $('#DivE2' + i).empty();
-                                                    $('#DivE3' + i).empty();
-                                                    $('#DivE4' + i).empty();
-                                                    create1(sel_value1);
                                                 }
-                                            });
-                                            })(a);
-                                            }
 
 
-                                            });
-                                            })(i);
-                                            }
 
-                                            });
+
+                                                $('#selectDiv').change(function () {
+                                                    var sel_value = $('#selectDiv option:selected').val();
+                                                    for (var i = 1; i <= sel_value; i++) {
+
+
+
+                                                        (function (i) {
+
+
+                                                            $('#numbDiv').on('change', '#selectEvent' + i, function () {
+
+                                                                var sel_value1 = $('#selectEvent' + i + ' option:selected').val();
+                                                                if (sel_value1 == 0) {
+                                                                    $("#divEvent" + i).empty(); // Resetting Form
+                                                                    /*  $('#DivE1' + i).empty();
+                                                                     $('#DivE2' + i).empty();
+                                                                     $('#DivE3' + i).empty();
+                                                                     $('#DivE4' + i).empty();
+                                                                     */
+                                                                } else {
+
+                                                                    $("#divEvent" + i).empty(); //Resetting Form
+                                                                    // $("#Div" + i).empty();
+                                                                    /*  $('#DivE1' + i).empty();
+                                                                     $('#DivE2' + i).empty();
+                                                                     $('#DivE3' + i).empty();
+                                                                     $('#DivE4' + i).empty();
+                                                                     */
+                                                                    create1(sel_value1);
+                                                                }
+
+                                                                function create1(sel_value1) {
+
+                                                                    for (var a = 1; a <= sel_value1; a++) {
+
+
+                                                                        (function (a) {
+
+                                                                            $("#divEvent" + i).append($("<h2/>").text("Event " + a),
+                                                                                    $("<input/>", {
+                                                                                        class: 'form-control',
+                                                                                        type: 'text',
+                                                                                        id: "event_" + a + i,
+                                                                                        name: 'NumbEvent_' + a + i
+                                                                                    }));
+
+                                                                            $("#divEvent" + i).append($("<div/>", {
+                                                                                id: 'DivE' + a + i
+                                                                            }));
+                                                                            $("#DivE" + a + i).append(
+                                                                                    $("<label/>").text("Number of Wods"),
+                                                                                    $("<select/>", {
+                                                                                        class: 'form-control',
+                                                                                        id: 'selectWod' + a + i,
+                                                                                        name: 'selWod' + a + i
+
+
+
+                                                                                    }), $('<br/>'));
+                                                                            $("#selectWod" + a + i).append($("<option/>", {
+                                                                                text: '0',
+                                                                                value: '0'
+                                                                            }),
+                                                                                    $("<option/>", {
+                                                                                        text: '1',
+                                                                                        value: '1'
+                                                                                    }),
+                                                                                    $("<option/>", {
+                                                                                        text: '2',
+                                                                                        value: '2'
+                                                                                    }),
+                                                                                    $("<option/>", {
+                                                                                        text: '3',
+                                                                                        value: '3'
+                                                                                    }),
+                                                                                    $("<option/>", {
+                                                                                        text: '4',
+                                                                                        value: '4'
+                                                                                    })
+
+
+                                                                                    );
+                                                                           
+                                                                        })(a);
+                                                                    }
+                                                                }
+
+                                                            });
+                                                        })(i);
+                                                    }
+
+                                                });
+                                                $('#selectDiv').change(function () {
+                                                    var sel_value = $('#selectDiv option:selected').val();
+                                                    for (var i = 1; i <= sel_value; i++) {
+
+
+
+                                                        (function (i) {
+
+
+                                                            $('#numbDiv').on('change', '#selectEvent' + i, function () {
+
+                                                                var sel_value1 = $('#selectEvent' + i + ' option:selected').val();
+                                                                for (var a = 1; a <= sel_value1; a++) {
+
+                                                                    (function (a) {
+                                                                        $('#numbDiv').on('change', '#selectWod' + a + i, function () {
+
+
+                                                                            var sel_value2 = $('#selectWod' + a + i + ' option:selected').val();
+                                                                            //var sel_value2 =2;
+                                                                            if (sel_value2 == 0) {
+                                                                                // $("#divEvent" + i).empty(); // Resetting Form
+                                                                                $('#divWod' + a + i + "1").empty();
+                                                                                $('#divWod' + a + i + "2").empty();
+                                                                                $('#divWod' + a + i + "3").empty();
+                                                                                $('#divWod' + a + i + "4").empty();
+
+
+                                                                            } else {
+                                                                                /*  $("#divEvent" + i).empty(); //Resetting Form
+                                                                                 // $("#Div" + i).empty();
+                                                                                 $('#DivE1' + i).empty();
+                                                                                 $('#DivE2' + i).empty();
+                                                                                 $('#DivE3' + i).empty();
+                                                                                 $('#DivE4' + i).empty();
+                                                                                 */
+                                                                                $('#divWod' + a + i + "1").empty();
+                                                                                $('#divWod' + a + i + "2").empty();
+                                                                                $('#divWod' + a + i + "3").empty();
+                                                                                $('#divWod' + a + i + "4").empty();
+
+                                                                                create2(sel_value2);
+
+                                                                            }
+                                                                            function create2(sel_value2) {
+
+                                                                                for (var c = 1; c <= sel_value2; c++) {
+
+
+                                                                                    (function (c) {
+                                                                                        $("#DivE" + a + i).append($("<div/>", {
+                                                                                            id: 'divWod' + a + i + c
+                                                                                        }));
+
+                                                                                        $("#divWod" + a + i + c).append($("<label/>").text("Name Wod " + c),
+                                                                                                $("<br/>"),
+                                                                                                $("<input/>", {
+                                                                                                    class: 'form-control',
+                                                                                                    type: 'text',
+                                                                                                    id: 'inputWod' + a + i + c
+                                                                                                }
+                                                                                                ), $("<label/>").text("Description of Wod" + 1),
+                                                                                                $("<textarea/>", {
+                                                                                                    class: 'form-control',
+                                                                                                    id: 'textWod' + a + i + c
+                                                                                                }),
+                                                                                                $("<br/>")
+
+                                                                                                );
+
+
+                                                                                    })(c);
+                                                                                }
+                                                                            }
+
+
+
+
+                                                                        });
+                                                                    })(a);
+                                                                }
+
+
+                                                            });
+                                                        })(i);
+                                                    }
+
+                                                });
                                             });
                                         </script>
 
@@ -458,14 +609,14 @@
                                     <ul class="list-inline pull-right">
 
                                         <li><button type="button" class="btn btn-default prev-step">Back</button></li>
-                                        <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+                                        <li><button type="button" class="btn btn-primary next-step" id="nextWod">Next</button></li>
                                     </ul>
                                 </div>
 
 
 
-                                <div class="tab-pane" role="tabpanel" id="compInfo">
-                                    <div class="compInfo">
+                                <div class="tab-pane" role="tabpanel" id="complete">
+                                    <div class="step44">
 
                                         <div id="divmaster">
                                             <div class="row">
@@ -512,6 +663,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
+                            <button type="submit" class="btn btn-default prev-step">Speichern</button>
                         </form>
                     </div>
                 </section>
