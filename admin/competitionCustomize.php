@@ -1,11 +1,17 @@
 <?php
 session_start();
 
+if ($_SESSION['eingeloggt'] == false){
+    
+    header("Location: public_html/ChampScoreIndex.php");
+    exit();
+}
+
 if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
     $_SESSION['visited'] = true;
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+    /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
 <html lang="en">
@@ -18,7 +24,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Bootstrap Admin Template</title>
+        <title>ChampScore</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">

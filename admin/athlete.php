@@ -1,11 +1,18 @@
 <?php
 session_start();
 
+if ($_SESSION['eingeloggt'] == false){
+    
+    header("Location: public_html/ChampScoreIndex.php");
+    exit();
+}
+
+
 if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
     $_SESSION['visited'] = true;
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+    /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
 <html lang="en">
@@ -18,7 +25,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Bootstrap Admin Template</title>
+        <title>ChampScore</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +61,7 @@ if (!isset($_SESSION['visited'])) {
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Athlete
-                               
+
                             </h1>
                             <ol class="breadcrumb">
                                 <li>
@@ -67,21 +74,168 @@ if (!isset($_SESSION['visited'])) {
                         </div>
                     </div>
                     <!-- /.row -->
+                    
                     <div class="row">
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-black">
                             <div class="panel-heading">
-                                <h3 class="panel-title"> Register for a Competition</h3>
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-fire fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">3</div>
+                                        <div>Competition requests</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="panel-body">
-                                <p><a href="enterRegCode.php" class="btn btn-danger btn-lg" role="button">Enter Code &raquo;</a>
-                    </p>
-                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    
-                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-black">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-tasks fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">2</div>
+                                        <div>coming Competitions</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-black">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>New Orders!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-custom-black">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>Support Tickets!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3 class="page-header">
+                                Register for a Competition
+
+                            </h3>
+                            
+                                
+                                    <p><a href="enterRegCode.php" class="btn btn-custom-red btn-lg" role="button">Enter Code <i class="fa fa-arrow-circle-right"></i></a>
+                                    </p>
+                                
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="page-header">
+                                Registered Competitions
+
+                            </h3>
+                           
+                                
+                                
+                                    
+                                    <?php
+                                    require ("./public_html/php/loginsec/db.inc.php");
+
+                                    $link = mysqli_connect("localhost", $benutzer, $passwort);
+                                    mysqli_select_db($link, $dbname);
+                                    $abfrage = "select comp_ID, comp_name, comp_date from tbl_competition where comp_ID IN ( select fk_comp_ID from tbl_division join tbl_user_division on tbl_user_division.fk_div_ID = tbl_division.div_ID where tbl_user_division.fk_user_id = " . $_SESSION['user_id']. ")";
+                                    $ergebnis = mysqli_query($link, $abfrage) or die(mysqli_error());
+
+
+
+                                    echo"<br><div class=\"table-responsive\">
+                                    <table class=\"table  table-hover table-striped\">
+                                        <thead>
+                                            <tr>
+                                                <th>Competition</th>
+                                                <th>When</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>";
+
+                                    while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
+                                        $ranglisteID = $zeile['comp_ID'];
+
+                                        $zeile['comp_name'] . "</b></h4>";
+                                       
+                                       
+                                        
+
+                                        echo "<tr id=\"row" . $zeile['comp_ID'] . "\">
+                                                <td><a href = \"ScoreboardView.php?comp_ID=$ranglisteID\" >" . $zeile['comp_name'] . "</a></td>
+                                                <td>" . $zeile['comp_date'] . "</td>
+                                                </tr>";
+                                    }
+
+                                    echo"</tbody>
+                                    </table>
+                                </div>";
+
+
+                                    mysqli_close($link);
+                                    ?>
+                                    
+                               
+                            
+                        </div>
+
+
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->

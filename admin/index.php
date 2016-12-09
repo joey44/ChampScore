@@ -1,5 +1,14 @@
 <?php
+
+
+
 session_start();
+
+if ($_SESSION['eingeloggt'] == false){
+    
+    header("Location: public_html/ChampScoreIndex.php");
+    exit();
+}
 
 
 if (!isset($_SESSION['visited'])) {
@@ -7,7 +16,7 @@ if (!isset($_SESSION['visited'])) {
     
     $_SESSION['visited'] = true;
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+    /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
 
@@ -22,7 +31,7 @@ if (!isset($_SESSION['visited'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>ChampScore</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -65,7 +74,7 @@ if (!isset($_SESSION['visited'])) {
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
+                                <i class="fa fa-dashboard"></i> Home
                             </li>
                         </ol>
                     </div>
@@ -75,9 +84,9 @@ if (!isset($_SESSION['visited'])) {
                 
                 <!-- /.row -->
 
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -99,7 +108,7 @@ if (!isset($_SESSION['visited'])) {
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -121,7 +130,7 @@ if (!isset($_SESSION['visited'])) {
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -143,7 +152,7 @@ if (!isset($_SESSION['visited'])) {
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
+                        <div class="panel panel-custom-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -169,26 +178,23 @@ if (!isset($_SESSION['visited'])) {
                 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"> Organizer</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><a href="organizer.php" class="btn btn-danger btn-lg" role="button">Organizer View &raquo;</a>
+                        
+                                <h3 class="page-header">
+                            
+                         For Competitions Hosts</h3>
+                            
+                        <p><a href="organizer.php" class="btn btn-custom-red btn-lg" role="button">Host View <i class="fa fa-arrow-circle-right"></i></a>
                     </p>
-                            </div>
-                        </div>
+                            
                     </div>
                     <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Athletes</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><a href="athlete.php" class="btn btn-danger btn-lg" role="button">Athlete View &raquo;</a>
+                        <h3 class="page-header">
+                            
+                         For Athletes</h3>
+                        <p><a href="athlete.php" class="btn btn-custom-red btn-lg" role="button">Athlete View <i class="fa fa-arrow-circle-right"></i></a>
                     </p> 
                             </div>
-                        </div>
+                       
                     </div>
                     
                 </div>
@@ -206,7 +212,7 @@ if (!isset($_SESSION['visited'])) {
                     </div>
                 </div>
                 <!-- /.row -->
-
+<!--
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="panel panel-default">
@@ -350,7 +356,7 @@ if (!isset($_SESSION['visited'])) {
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
+    
     <!-- /#wrapper -->
 
     <!-- jQuery -->

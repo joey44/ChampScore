@@ -1,11 +1,17 @@
 <?php
 session_start();
 
+if ($_SESSION['eingeloggt'] == false){
+    
+    header("Location: public_html/ChampScoreIndex.php");
+    exit();
+}
+
 if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
     $_SESSION['visited'] = true;
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+    /*echo "Du hast diese Seite zuvor schon aufgerufen";*/
 }
 ?>
 <html lang="en">
@@ -30,7 +36,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Bootstrap Admin Template</title>
+        <title>ChampScore</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -136,6 +142,7 @@ if (!isset($_SESSION['visited'])) {
                             echo"<div class=\"panel-body\">";
 
 
+                
                             echo "<h4 class=\"group inner list-group-item-heading\"><b>" .
                             $compZeile['comp_name'] . "</b></h4>";
                             echo "<img class=\"group list-group-image\"  alt=\"\"  />";
@@ -174,7 +181,7 @@ if (!isset($_SESSION['visited'])) {
                         echo "<div id=\"msg" .$comp_ID. "\">
 
                                                                  </div>
-                                                            <button type=\"submit\" onclick= \"comp_ID=$comp_ID\" class=\"btn btn-danger btn-md\" >Submit</button>
+                                                            <button type=\"submit\" onclick= \"comp_ID=$comp_ID\" class=\"btn btn-custom-red btn-lg\" >Submit</button>
                                                         </form>";
 
 

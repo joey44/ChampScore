@@ -1,10 +1,13 @@
 <?php
 session_start();
+
+
+
 if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
     /* $_SESSION['visited'] = true; */
 } else {
-    echo "Du hast diese Seite zuvor schon aufgerufen";
+    /* echo "Du hast diese Seite zuvor schon aufgerufen"; */
 }
 ?>
 
@@ -19,7 +22,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Bootstrap Admin Template</title>
+        <title>ChampScore</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,52 +44,203 @@ if (!isset($_SESSION['visited'])) {
 
     <body>
 
-        <div id="wrapper">
+        <nav class="navbar top-nav navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="public_html/ChampScoreIndex.php">CHAMPSCORE®</a>
+            </div>
+            <!-- Top Menu Items -->
 
-            <!-- Navigation -->
-            <?php include './navigation.php'; ?>
+        </nav>
 
-            <div id="page-wrapper">
+        <div id="page-wrapper">
 
-                <div class="container-fluid">
+            <div class="container-fluid">
 
-                    
-                    <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12"><div class="container">
+
                             <?php
-                    require ("./public_html/php/loginsec/db.inc.php");
+                            include 'Database.php';
 
-                    $link = mysqli_connect("localhost", $benutzer, $passwort);
-                    mysqli_select_db($link, $dbname);
-                    $comp_ID = $_GET['comp_ID'];
-                    $abfrage = "select comp_ID, comp_name from tbl_competition";
-                    $ergebnis = mysqli_query($link, $abfrage) or die(mysqli_error());
+                            $pdo = Database::connect();
 
-                    /* echo "<div id=\"products\" class=\"row list-group\">"; */
-                    while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
-                        $comp_ID = $zeile['comp_ID'];
-                        /* echo "<div name\"$ranglisteID\" class=\"item  col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0\">";
-                          echo "<div class=\"thumbnail\">";
-                          echo "<img class=\"group list-group-image\" src=\"http://placehold.it/400x250/000/fff\" alt=\"\" />";
-                          echo "<div class=\"caption\">"; */
-                        echo "<h1 class=\"page-header\">" . $zeile['comp_name'] . "</h1>";
-                    }
-                    mysqli_close($link);
-                    ?>
-                           
+                            $compID = $_GET['comp_ID'];
                             
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    
+                          $sql = "SELECT comp_name from tbl_competition where comp_id = $compID";
+                          
+                          
+                            foreach ($pdo->query($sql) as $row) {
+                                echo "<h2>Results: " . $row['comp_name'] . "</h2>";
+                            }
+                            ?>
+
+
+                            <form class="form-horizontal" action="ScoreboardView.php?comp_ID=<?php echo $compID ?>" method="post"> 
+                                <table class="table table-hover">
+                                    <tr>
+<?php
+$sql = "SELECT div_name, div_ID FROM `tbl_division` where fk_comp_id = $compID";
+
+foreach ($pdo->query($sql) as $row) {
+    echo
+
+    "<th><button type='submit' value='" . $row['div_ID'] . "' id='" . $row['div_ID'] . "' name='divselectbasic' class=' btn btn-custom-red btn-lg'>" . $row['div_name'] . "  </button>  </th> ";
+}
+?>
+
+                                    </tr>
+                                </table>
+                            </form>
+
+                        </div>       
+
+                                        <?php
+                                        if (isset($_POST['divselectbasic']) || isset($_POST['wod_button'])) {
+                                            ?>
+
+                            <div class="container">
+
+                                <form class="form-horizontal" action="ScoreboardView.php?comp_ID=<?php echo $compID ?>" method="post"> 
+                                    <table class="table table-hover">
+                                        <tr>
+
+
+                            <?php
+                            $wod_array = array();
+                            $wod_count = 1;
+
+                            if (isset($_POST['wod_button'])) {
+                                $dataString = $_POST['wod_button'];
+                                list ($divison, $selected_wod) = explode('X', $dataString);
+                            } else {
+                                $divison = $_POST['divselectbasic'];
+                            }
+
+                            echo "<th><button type='submit' value='" . $divison . "Xoverall123' id='overall' name='wod_button' class='btn btn-custom-red btn-lg'>overall</button>  </th> ";
+
+
+                            //      include 'Database.php';
+                            //      $pdo = Database::connect();
+                            $sql = "SELECT evt_ID, wod_ID, wod_name, evt_name FROM `tbl_wod` join tbl_event on fk_evt_ID = evt_ID WHERE `fk_div_ID` = $divison";
+                            foreach ($pdo->query($sql) as $row) {
+                                echo
+
+                                "<th><button type='submit' value='" . $divison . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' name='wod_button' class='btn btn-custom-red btn-lg'>" . $row['evt_name'] . " <br/> " . $row['wod_name'] . " </button>  </th> ";
+
+
+                                $wod_array[$wod_count] = $row['wod_ID'];
+
+                                $wod_count++;
+                            }
+                            ?>
+
+                                        </tr>
+                                    </table>
+                                </form>
+                                            <?php
+                                            if (isset($_POST['wod_button'])) {
+
+
+                                                if ($selected_wod == "overall123") {
+
+                                                    echo "<p>Overall Ranking </p>";
+                                                } else {
+
+                                                    $sql = "SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =" . $selected_wod;
+
+                                                    foreach ($pdo->query($sql) as $row) {
+                                                        echo "<p>" . $row['Description'] . "</p>";
+                                                    }
+                                                }
+                                                ?>
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Box</th>
+                                                <th>Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                    <?php
+                                    if ($selected_wod == "overall123") {
+
+                                        $sql = "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner \n"
+                                                . " join tbl_user_division d\n"
+                                                . " on u.user_ID = d.fk_user_ID inner \n"
+                                                . " join tbl_result r on d.user_div_ID = r.fk_user_div_ID \n"
+                                                . " WHERE d.fk_div_ID = " . $divison . " GROUP by Name ORDER by Punkte ASC";
+
+
+
+                                        foreach ($pdo->query($sql) as $row) {
+                                            echo "
+      <tr>
+        <td>" . $row['Name'] . "</td>
+        <td> " . $row['Box'] . " </td>
+        <td> " . $row['Punkte'] . " </td>
+      </tr>";
+                                        }
+                                    } else {
+
+
+
+                                        $sql = "SELECT u.user_name as Name, u.user_box as Box, r.res_score as Punkte FROM tbl_user u inner join tbl_user_division d \n"
+                                                . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID where r.fk_wod_ID =" . $selected_wod . " ORDER BY Punkte ASC";
+
+
+                                        foreach ($pdo->query($sql) as $row) {
+                                            echo "
+      <tr>
+        <td>" . $row['Name'] . "</td>
+        <td> " . $row['Box'] . " </td>
+        <td> " . $row['Punkte'] . " </td>
+      </tr>";
+                                        }
+                                    }
+
+                                    Database::disconnect();
+                                    ?>
+
+                                        </tbody>
+                                    </table>
+
+                                    <form  action="rangliste_pdf.php" method="post">  
+
+                                        <button type="submit" value="<?php echo $selected_wod ?>" id="btn_pdf" name="btn_pdf" class="btn btn-custom-red btn-lg">PDF Export</button>
+
+                                    </form > 
+
+                                            <?php
+                                        }
+                                        ?>
+                            </div>
+
+                                        <?php
+                                    }
+                                    ?>   </div>
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.row -->
 
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /.container-fluid -->
 
         </div>
+        <!-- /#page-wrapper -->
+
+
         <!-- /#wrapper -->
 
         <!-- jQuery -->

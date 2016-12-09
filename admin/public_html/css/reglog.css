@@ -1,8 +1,9 @@
 /* form */
 body{
     background:#efefef;
+    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    
 }
-
 label{
 
     color:black;
@@ -12,16 +13,19 @@ p{
     color:black;
 }
 .form-body{
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, .9);
     padding:20px;
-    height: 300px;
+    height: 320px;
 
     -moz-border-radius: 5px;
     border-radius: 5px;
+    -webkit-box-shadow: 0px 2px 45px 9px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 2px 45px 9px rgba(0,0,0,0.75);
+box-shadow: 0px 2px 45px 9px rgba(0,0,0,0.75);
 
 }
 .login-form{
-    background:rgba(255,255,255,0.8);
+    
     padding:10px;
     border-top:3px solid#3e4043;
 }
@@ -36,23 +40,51 @@ p{
     border-bottom: none !important;
 }
 
+.passforgot{
+    
+    color:#c01313;
+}
+.passforgot:hover{
+    
+    color:#c01313;
+}
+
 .nav-tabs>li{
     color:#222 !important;
 }
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-    color: #fff;
-    background-color: #c01313;
+.nav-tabs>li.active>a, 
+.nav-tabs>li.active>a:hover, 
+.nav-tabs>li.active>a:focus {
+    
+    font-size:20px;
+    color: #c01313;
+    background: rgba(192, 19, 19, 0);
     border: none !important;
     border-bottom-color: transparent;
     border-radius:none !important;
+    text-decoration: overline;
 }
 .nav-tabs>li>a {
+    font-size:20px;
+    color: black;
     margin-right: 2px;
     line-height: 1.428571429;
     border: none !important;
     border-radius:none !important;
     text-transform:uppercase;
-    font-size:16px;
+    
+}
+.nav-tabs>li>a:hover {
+    font-size:22px;
+    color: black;
+    text-decoration: overline;
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border: none !important;
+    border-radius:none !important;
+    text-transform:uppercase;
+    
+    background: rgba(192, 19, 19, 0);
 }
 
 .social-login{
@@ -88,13 +120,14 @@ p{
 .social-login ul li:nth-child(3) a{
     background:#3698d9;
 }
-.sa-innate-form input[type=text], input[type=password], input[type=file], textarea, select, email{
-    font-size:13px;
+.sa-innate-form input[type=text], input[type=password], input[type=file], input[type=email], textarea, select, email{
+    font-size:17px;
     padding:10px;
     border:1px solid#ccc;
     outline:none;
     width:100%;
     margin:8px 0;
+    
 
 }
 .sa-innate-form input[type=submit]{
@@ -112,19 +145,22 @@ p{
 }
 
 .sa-innate-form button{
+    width: 100%;
     border:1px solid#c01313;
     background:#c01313;
     color:#fff;
     padding:10px 25px;
     font-size:14px;
     margin-top:5px;
+    
 }
 .sa-innate-form button:hover{
-    border:1px solid#db3b2b;
-    background:#db3b2b;
+   border:1px solid#c01313;
+    background:#ac1111;
     color:#fff;
 }
 .sa-innate-form p{
     font-size:13px;
     padding-top:10px;
+    
 }

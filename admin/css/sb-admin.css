@@ -6,14 +6,31 @@
 
 /* Global Styles */
 
+
+
 body {
     margin-top: 100px;
-    background-color: #222;
+    background-color: #fff;
+
 }
+
+.navbar-brand
+{
+    color:#FFF;
+    font-size:20px;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+.navbar-brand:hover
+{
+    color:#fff;
+
+}
+
 
 @media(min-width:768px) {
     body {
         margin-top: 50px;
+
     }
 }
 
@@ -46,18 +63,42 @@ body {
 
 .top-nav {
     padding: 0 15px;
+
+    background: rgba(192,19,19,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(192,19,19,1)), color-stop(2%, rgba(192,19,19,1)), color-stop(100%, rgba(179,2,2,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c01313', endColorstr='#b30202', GradientType=1 );
+}
+
+.top-nav>ul {
+
+    background-color: transparent;
+
+
 }
 
 .top-nav>li {
+
     display: inline-block;
     float: left;
+
+
+
 }
 
 .top-nav>li>a {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
-    color: #999;
+
+
+    /*color: #999;*/
+    color: #fff;
+
 }
 
 .top-nav>li>a:hover,
@@ -66,7 +107,7 @@ body {
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #000;
+    background-color: rgba(192, 19, 19, 0); 
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -122,20 +163,38 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #222;
+        -webkit-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
+        box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
-    }
+
+        background: rgba(26,26,26,1);
+        background: -moz-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(26,26,26,1)), color-stop(100%, rgba(0,0,0,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        background: linear-gradient(135deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a1a1a', endColorstr='#000000', GradientType=1 );}
 
     .side-nav>li>a {
         width: 225px;
+        color: #c0c0c0;
     }
 
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #000 !important;
+        background: rgba(54,54,54,1);
+        background: -moz-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(54,54,54,1)), color-stop(100%, rgba(46,46,46,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        background: linear-gradient(135deg, rgba(54,54,54,1) 0%, rgba(46,46,46,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#2e2e2e', GradientType=1 );
     }
 }
 
@@ -171,7 +230,119 @@ ul.alert-dropdown {
 .huge {
     font-size: 40px;
 }
+.panel-custom-red {
+    border-color: #c01313;
+}
 
+.panel-custom-red > .panel-heading {
+    border-color: #c01313;
+    color: #fff;
+    background-color: #c01313;
+}
+
+.panel-custom-red > a {
+    color: #c01313;
+}
+
+.panel-custom-red > a:hover {
+    color: #3d8b3d;
+}
+
+
+.btn-custom-red{
+    width: 150px;
+
+   
+
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+
+    background-color: #c01313;
+    color: #fff;
+}
+.btn-custom-red:hover{
+    background-color: #990f0f;
+    color: #fff;
+}
+
+
+.panel-custom-black {
+    border-color: black;
+}
+
+.panel-custom-black > .panel-heading {
+    border-color: black;
+    color: #fff;
+    background: rgba(26,26,26,1);
+    background: -moz-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(26,26,26,1)), color-stop(100%, rgba(0,0,0,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(135deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a1a1a', endColorstr='#000000', GradientType=1 );
+}
+
+
+
+.panel-custom-black > a {
+    color: black;
+}
+
+.panel-custom-black > a:hover {
+    color: grey;
+}
+
+
+.btn-custom-black{
+
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+
+
+    background-color: black;
+    color: #fff;
+}
+.btn-custom-black:hover{
+    background-color: grey;
+    color: #fff;
+}
+
+
+
+.panel-custom-blue {
+    border-color: #1D2731;
+}
+
+.panel-custom-blue > .panel-heading {
+    border-color: #1D2731;
+    color: #fff;
+    background-color: #1D2731;
+}
+
+.panel-custom-blue > a {
+    color: #1D2731;
+}
+
+.panel-custom-blue > a:hover {
+    color: #3d8b3d;
+}
+
+
+.btn-custom-blue{
+    background-color: #0B3C5D;
+    color: #fff;
+}
+.btn-custom-blue:hover{
+    background-color: #1D2731;
+    color: #fff;
+}
+
+
+
+/*
 .panel-green {
     border-color: #5cb85c;
 }
@@ -225,3 +396,4 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+*/
