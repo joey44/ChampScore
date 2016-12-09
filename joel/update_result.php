@@ -1,4 +1,5 @@
 <?php 
+var_dump($_POST);
 
   include 'Database.php';
   $pdo = Database::connect();
@@ -57,7 +58,7 @@ foreach($_POST as $key => $value)
 
 Database::disconnect();
 
-header("Location:input_result2.php");
+//header("Location:input_result2.php");
 
 
 ?>
