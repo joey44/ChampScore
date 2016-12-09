@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if ($_SESSION['eingeloggt'] == false){
+    
+    header("Location: public_html/ChampScoreIndex.php");
+    exit();
+}
 
 if (!isset($_SESSION['visited'])) {
     echo "Du hast diese Seite noch nicht besucht";
@@ -68,7 +73,7 @@ if (!isset($_SESSION['visited'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            All Scoreboards
+                            All Competitions
 
                         </h1>
 

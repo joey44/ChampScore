@@ -1,5 +1,14 @@
 <?php
+
+
+
 session_start();
+
+if ($_SESSION['eingeloggt'] == false){
+    
+    header("Location: public_html/ChampScoreIndex.php");
+    exit();
+}
 
 
 if (!isset($_SESSION['visited'])) {
