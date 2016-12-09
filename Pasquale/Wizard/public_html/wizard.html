@@ -64,11 +64,11 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Competition Name</label>
-                                                <input type="text" class="form-control" id="compName" name="fickdichphp" placeholder="Competition Name">
+                                                <input type="text" class="form-control" id="compName" name="compName" placeholder="Competition Name">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Registration Code for athletes</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Registration Code for athletes">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" name="compregCode" placeholder="Registration Code for athletes">
                                             </div>
                                         </div>
 
@@ -76,56 +76,11 @@
 
 
                                             <div class="col-md-6">
-
                                                 <label for="exampleInputEmail1">Competition Date</label>
-                                                <div>
-                                                    <div class="col-md-4 col-xs-4 wdth">
+                                                <input type="date" class="form-control" name="compDate">
 
-                                                        <select name="visa_status" id="visa_status" class="dropselectsec1">
-                                                            <option value="">Day</option>
-                                                            <option value="2">1</option>
-                                                            <option value="1">2</option>
-                                                            <option value="4">3</option>
-                                                            <option value="5">4</option>
-                                                            <option value="6">5</option>
-                                                            <option value="3">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
-                                                            <option value="9">9</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-4 col-xs-4 wdth">
-
-                                                        <select name="visa_status" id="visa_status" class="dropselectsec1">
-                                                            <option value="">Month</option>
-                                                            <option value="2">Jan</option>
-                                                            <option value="1">Feb</option>
-                                                            <option value="4">Mar</option>
-                                                            <option value="5">Apr</option>
-                                                            <option value="6">May</option>
-                                                            <option value="3">June</option>
-                                                            <option value="7">July</option>
-                                                            <option value="8">Aug</option>
-                                                            <option value="9">Sept</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-4 col-xs-4 wdth">
-
-                                                        <select name="visa_status" id="visa_status" class="dropselectsec1">
-                                                            <option value="">Year</option>
-                                                            <option value="2">1990</option>
-                                                            <option value="1">1991</option>
-                                                            <option value="4">1992</option>
-                                                            <option value="5">1993</option>
-                                                            <option value="6">1994</option>
-                                                            <option value="3">1995</option>
-                                                            <option value="7">1996</option>
-                                                            <option value="8">1997</option>
-                                                            <option value="9">1998</option>
-                                                        </select>
-
-                                                    </div>
-                                                </div>
+                                                
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -150,7 +105,7 @@
 
                                                     for (var i = 1; i <= sel_valueDiv; i++) {
 
-                                                         $("#Div" + i).empty();
+                                                        $("#Div" + i).empty();
                                                         var sel_valueEv = $('#selectEvent' + i + ' option:selected').val();
                                                         (function (i) {
 
@@ -176,22 +131,22 @@
 
 
                                                                             );
-                                                                    
+
                                                                     var sel_valueWod = $('#selectWod' + a + i + ' option:selected').val();
 
                                                                     for (var c = 1; c <= sel_valueWod; c++) {
                                                                         //$("#eventa" +a+ i).remove();
                                                                         (function (c) {
-                                                                            var $this = $("#inputWod" + a + i+c).val();
-                                                                            var $this1 = $("#textWod" + a + i+c).val();
+                                                                            var $this = $("#inputWod" + a + i + c).val();
+                                                                            var $this1 = $("#textWod" + a + i + c).val();
 
-                                                                            $("#DivEv"+a + i).append($("<div/>", {
-                                                                                id: 'DivWod' + a + i+c
+                                                                            $("#DivEv" + a + i).append($("<div/>", {
+                                                                                id: 'DivWod' + a + i + c
                                                                             }));
-                                                                            $("#DivWod" + a + i+c).append($("<h3/>"
+                                                                            $("#DivWod" + a + i + c).append($("<h3/>"
 
                                                                                     ).text($this + " (WOD Name " + c + ")"),
-                                                                        $("<p/>").text($this1 + " (WOD Description " + c + ")")
+                                                                                    $("<p/>").text($this1 + " (WOD Description " + c + ")")
 
 
 
@@ -448,7 +403,7 @@
 
 
                                                                                     );
-                                                                           
+
                                                                         })(a);
                                                                     }
                                                                 }
@@ -615,8 +570,8 @@
 
 
 
-                                <div class="tab-pane" role="tabpanel" id="complete">
-                                    <div class="step44">
+                                <div class="tab-pane" role="tabpanel" id="compInfo">
+                                    <div class="compInfo">
 
                                         <div id="divmaster">
                                             <div class="row">
@@ -657,13 +612,14 @@
                                         <ul class="list-inline pull-right">
                                             <li><button type="button" class="btn btn-default prev-step">Back</button></li>
                                             <!--<li><button type="button" class="btn btn-default next-step">Skip</button></li>-->
-                                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Finish</button></li>
+
+                                            <li> <button type="submit" class="btn btn-primary btn-info-full next-step">Save</button></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <button type="submit" class="btn btn-default prev-step">Speichern</button>
+
                         </form>
                     </div>
                 </section>
