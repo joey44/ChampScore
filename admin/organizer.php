@@ -239,7 +239,7 @@ if (!isset($_SESSION['visited'])) {
                                         if ($zeile['comp_active'] == 1) {
 
                                             $valActive = "<i class=\"fa fa-check\"></i>";
-                                            $AddResultsField = "<a href = \"competitionAddScore.php\" ><i class=\"fa fa-plus\"></i> Add Score</a>";
+                                            $AddResultsField = "<a href = \"competitionAddScore.php?comp_ID=$ranglisteID\" ><i class=\"fa fa-plus\"></i> Add Score</a>";
                                         } else {
                                             $valActive = "";
                                             $AddResultsField ="";
