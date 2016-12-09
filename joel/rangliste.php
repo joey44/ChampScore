@@ -148,7 +148,7 @@
 <?php
 
 
-  if ($selected_wod == "overall123"){
+  if ($selected_wod == "overall123"){ 
       
 $sql = "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner \n"
     . " join tbl_user_division d\n"
@@ -202,7 +202,7 @@ Database::disconnect();
 
   <form  action="rangliste_pdf.php" method="post">  
 
-      <button type="submit" value="<?php echo $selected_wod ?>" id="btn_pdf" name="btn_pdf" class="btn btn-primary">PDF Export</button>
+      <button type="submit" value="<?php echo $selected_wod."X".$divison ?>" id="btn_pdf" name="btn_pdf" class="btn btn-primary">PDF Export</button>
 
 </form > 
 
