@@ -356,7 +356,7 @@ if (!isset($_SESSION['visited'])) {
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
+    
     <!-- /#wrapper -->
 
     <!-- jQuery -->

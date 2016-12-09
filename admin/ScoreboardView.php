@@ -93,7 +93,7 @@ $sql = "SELECT div_name, div_ID FROM `tbl_division` where fk_comp_id = $compID";
 foreach ($pdo->query($sql) as $row) {
     echo
 
-    "<th><button type='submit' value='" . $row['div_ID'] . "' id='" . $row['div_ID'] . "' name='divselectbasic' class='btn btn-primary'>" . $row['div_name'] . "  </button>  </th> ";
+    "<th><button type='submit' value='" . $row['div_ID'] . "' id='" . $row['div_ID'] . "' name='divselectbasic' class=' btn btn-custom-red btn-lg'>" . $row['div_name'] . "  </button>  </th> ";
 }
 ?>
 
@@ -125,7 +125,7 @@ foreach ($pdo->query($sql) as $row) {
                                 $divison = $_POST['divselectbasic'];
                             }
 
-                            echo "<th><button type='submit' value='" . $divison . "Xoverall123' id='overall' name='wod_button' class='btn btn-primary'>overall</button>  </th> ";
+                            echo "<th><button type='submit' value='" . $divison . "Xoverall123' id='overall' name='wod_button' class='btn btn-custom-red btn-lg'>overall</button>  </th> ";
 
 
                             //      include 'Database.php';
@@ -134,7 +134,7 @@ foreach ($pdo->query($sql) as $row) {
                             foreach ($pdo->query($sql) as $row) {
                                 echo
 
-                                "<th><button type='submit' value='" . $divison . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' name='wod_button' class='btn btn-primary'>" . $row['evt_name'] . " <br/> " . $row['wod_name'] . " </button>  </th> ";
+                                "<th><button type='submit' value='" . $divison . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' name='wod_button' class='btn btn-custom-red btn-lg'>" . $row['evt_name'] . " <br/> " . $row['wod_name'] . " </button>  </th> ";
 
 
                                 $wod_array[$wod_count] = $row['wod_ID'];
@@ -219,7 +219,7 @@ foreach ($pdo->query($sql) as $row) {
 
                                     <form  action="rangliste_pdf.php" method="post">  
 
-                                        <button type="submit" value="<?php echo $selected_wod ?>" id="btn_pdf" name="btn_pdf" class="btn btn-primary">PDF Export</button>
+                                        <button type="submit" value="<?php echo $selected_wod ?>" id="btn_pdf" name="btn_pdf" class="btn btn-custom-red btn-lg">PDF Export</button>
 
                                     </form > 
 
