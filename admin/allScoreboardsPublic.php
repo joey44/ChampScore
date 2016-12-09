@@ -68,7 +68,7 @@ if (!isset($_SESSION['visited'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            All Scoreboards
+                            All Competitions
 
                         </h1>
 

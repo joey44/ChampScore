@@ -18,7 +18,7 @@
        
         $pdo = Database::connect();
         
-          $compID = 1; //Session ID
+          $compID = 1;
           $sql = "SELECT `comp_name` FROM `tbl_competition` where comp_id = $compID";
         
         foreach ($pdo->query($sql) as $row) {
