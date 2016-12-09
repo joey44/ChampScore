@@ -126,7 +126,7 @@
                 <div  class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul  class="nav navbar-nav side-nav">
                         <li>
-                            <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Home</a>
+                            <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
                         </li>
                         <li>
                             <a href="person.php"><i class="fa fa-fw fa-user"></i> My Profile</a>
@@ -149,7 +149,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#dropOrganizer"><i class="fa fa-fw fa-user"></i> Competition Host <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="dropOrganizer" class="collapse">
                             <li>
-                                <a href="organizer.php"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
+                                <a href="organizer.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             
                         </ul>
