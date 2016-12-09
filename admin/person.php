@@ -79,7 +79,7 @@ if ($count == 1) {
             function mySubmitUserData()
             {
 
-                var comp = '&comp_ID=' + comp_ID;
+                var user_ID = 'user_ID=' + user_ID;
                 var code = document.getElementById('regcode' + comp_ID).value;
                 var regcode = 'regcode=' + code;
 
@@ -88,7 +88,7 @@ if ($count == 1) {
 
                 $.ajax({
                     type: "POST",
-                    url: "checkRegCode.php",
+                    url: "updateUserData.php",
                     cache: false,
                     data: all,
                     success: function (html)
@@ -474,7 +474,7 @@ if ($count == 1) {
 
 
                             <div class="col-lg-6">
-                                <button type="submit" onclick= "comp_ID =<?php echo$comp_ID ?>" class="btn btn-custom-red btn-lg">Save</button>
+                                <button type="submit" onclick= "user_ID =<?php $_SESSION['user_id'] ?>" class="btn btn-custom-red btn-lg">Save</button>
 
 
                             </div>
