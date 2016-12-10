@@ -78,13 +78,17 @@ if ($count == 1) {
 //Funktion zur Prüfung der Registrierungsdaten
             function mySubmitUserData()
             {
-
+                alert("hallo");
                 var user_ID = 'user_ID=' + user_ID;
-                var code = document.getElementById('regcode' + comp_ID).value;
-                var regcode = 'regcode=' + code;
-
-                var division = '&div_ID=' + document.querySelector('input[name = "Division' + comp_ID + '" ]:checked').value;
-                var all = regcode + comp + division;
+                var firstName = '&firstname=' + document.getElementById('userFirstName').value;
+                var lastName = '&lastname=' + document.getElementById('userFirstName').value;
+                var street = '&street=' + document.getElementById('userFirstName').value;
+                var zip = '&zip=' + document.getElementById('userFirstName').value;
+                var state = '&state=' + document.getElementById('userFirstName').value;
+                var country = '&country=' + $("#country").val();
+                var birthdate = '&birthdate=' + $("#userBirthDate").val();
+                var gender = '&gender=' + document.querySelector('input[name = "gender" ]:checked').value;
+                var all = user_ID + firstName + lastName + street + zip + state + country + gender + birthdate;
 
                 $.ajax({
                     type: "POST",
@@ -463,10 +467,10 @@ if ($count == 1) {
                                     <label>Gender</label>
                                     <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optionsRadiosInline" id="femaleRadio" value="option1" checked>Female
+                                        <input type="radio" name="gender" id="femaleRadio" value="1" checked>Female
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optionsRadiosInline" id="maleRadio" value="option2">Male
+                                        <input type="radio" name="gender" id="maleRadio" value="2">Male
                                     </label>
 
                                 </div>
@@ -474,7 +478,7 @@ if ($count == 1) {
 
 
                             <div class="col-lg-6">
-                                <button type="submit" onclick= "user_ID =<?php $_SESSION['user_id'] ?>" class="btn btn-custom-red btn-lg">Save</button>
+                                <button type="submit" class="btn btn-custom-red btn-lg">Save</button>
 
 
                             </div>
@@ -489,24 +493,25 @@ if ($count == 1) {
 
                 </div>
                 <!-- /#page-wrapper -->
+            </div>
+        </div>
+
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>
 
 
-                <!-- /#wrapper -->
-
-                <!-- jQuery -->
-                <script src="js/jquery.js"></script>
-
-                <!-- Bootstrap Core JavaScript -->
-                <script src="js/bootstrap.min.js"></script>
-
-                </body>
-
-                </html>
 
 
-
-
-                <!-- /#sidebar-wrapper -->
+<!-- /#sidebar-wrapper -->
 
 
 
