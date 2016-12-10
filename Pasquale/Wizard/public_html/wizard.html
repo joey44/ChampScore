@@ -148,34 +148,11 @@
                                                                                     ).text($this + " (WOD Name " + c + ")"),
                                                                                     $("<p/>").text($this1 + " (WOD Description " + c + ")")
 
-
-
-
                                                                                     );
-
-
-
-
-
-
-
-
-
-
-
 
 
                                                                         })(c);
                                                                     }
-
-
-
-
-
-
-
-
-
 
 
                                                                 })(a);
@@ -187,23 +164,76 @@
 
 
 
+                                                });
+
+                                                $("#tabWod").click(function () {
+                                                     var sel_valueDiv = $('#selectDiv option:selected').val();
+
+                                                    for (var i = 1; i <= sel_valueDiv; i++) {
+
+                                                        $("#Div" + i).empty();
+                                                        var sel_valueEv = $('#selectEvent' + i + ' option:selected').val();
+                                                        (function (i) {
+
+                                                            var $this1 = $("#nameDiv_" + i);
+                                                            $("#Div" + i).append($("<h1/>"
+
+                                                                    ).text($this1.val() + " (Division " + i + ")"));
 
 
-                                                    //$("#Div1").text(sel_value);
+                                                            for (var a = 1; a <= sel_valueEv; a++) {
+                                                                //$("#eventa" +a+ i).remove();
+                                                                (function (a) {
+                                                                    var $this = $("#event_" + a + i).val();
+
+                                                                    $("#Div" + i).append($("<div/>", {
+                                                                        id: 'DivEv' + a + i
+                                                                    }));
+                                                                    $("#DivEv" + a + i).append($("<h2/>"
+
+                                                                            ).text($this + " (Event " + a + ")")
+
+
+
+
+                                                                            );
+
+                                                                    var sel_valueWod = $('#selectWod' + a + i + ' option:selected').val();
+
+                                                                    for (var c = 1; c <= sel_valueWod; c++) {
+                                                                        //$("#eventa" +a+ i).remove();
+                                                                        (function (c) {
+                                                                            var $this = $("#inputWod" + a + i + c).val();
+                                                                            var $this1 = $("#textWod" + a + i + c).val();
+
+                                                                            $("#DivEv" + a + i).append($("<div/>", {
+                                                                                id: 'DivWod' + a + i + c
+                                                                            }));
+                                                                            $("#DivWod" + a + i + c).append($("<h3/>"
+
+                                                                                    ).text($this + " (WOD Name " + c + ")"),
+                                                                                    $("<p/>").text($this1 + " (WOD Description " + c + ")")
+
+                                                                                    );
+
+
+                                                                        })(c);
+                                                                    }
+
+
+                                                                })(a);
+                                                            }
+
+                                                        })(i);
+
+                                                    }
+
 
 
                                                 });
 
-                                                $("#tabWod").click(function (e) {
-                                                    var sel_valueDiv = $('#selectDiv option:selected').val();
 
-                                                    //$("#Div1").text(sel_valueDiv);
-
-
-                                                });
-
-
-
+                                                //DIFINE DIVISION
                                                 $('#selectDiv').change(function () {
                                                     var sel_value = $('#selectDiv option:selected').val();
                                                     if (sel_value == 0) {
@@ -217,15 +247,7 @@
                                                         $("#divDivison2").removeAttr("style");
                                                         $("#divDivison3").removeAttr("style");
                                                         $("#divDivison4").removeAttr("style");
-                                                        /* $("#Div1").empty(); // Resetting Form
-                                                         $("#Div2").empty(); // Resetting Form
-                                                         $("#Div3").empty(); // Resetting Form
-                                                         $("#Div4").empty(); // Resetting Form
-                                                         $("#Div1").removeAttr("style");
-                                                         $("#Div2").removeAttr("style");
-                                                         $("#Div3").removeAttr("style");
-                                                         $("#Div4").removeAttr("style");
-                                                         */
+                                                        
                                                     } else {
 
                                                         $("#divDivison1").empty(); // Resetting Form
@@ -237,15 +259,7 @@
                                                         $("#divDivison3").removeAttr("style");
                                                         $("#divDivison4").removeAttr("style");
 
-                                                        /*$("#Div1").empty(); // Resetting Form
-                                                         $("#Div2").empty(); // Resetting Form
-                                                         $("#Div3").empty(); // Resetting Form
-                                                         $("#Div4").empty(); // Resetting Form
-                                                         $("#Div1").removeAttr("style");
-                                                         $("#Div2").removeAttr("style");
-                                                         $("#Div3").removeAttr("style");
-                                                         $("#Div4").removeAttr("style");
-                                                         */
+                                                      
                                                         create(sel_value);
                                                     }
                                                 });
@@ -259,7 +273,7 @@
                                                                 class: 'form-control',
                                                                 type: 'text',
                                                                 id: "nameDiv_" + i,
-                                                                name: 'NumbDiv_' + i
+                                                                name: 'nameDiv_' + i
                                                             }),
                                                                     $("<label/>").text("Number of Events"),
                                                                     $("<select/>", {
@@ -274,21 +288,7 @@
                                                                     $("<br/>"), $("<br/>")
                                                                     );
 
-                                                            /*     $("#nameDiv_" + i).focusin(function () {
-                                                             var $this = $("#nameDiv_" + i);
-                                                             window.setTimeout(function () {
-                                                             $("#Div" + i).empty();
-                                                             }, 0);
-                                                             });
-                                                             */
-
-                                                            /*    $("#nameDiv_" + i).focusout(function () {
-                                                             var $this = $("#nameDiv_" + i);
-                                                             window.setTimeout(function () {
-                                                             $("#Div" + i).append($("<h2/>").text($this.val() + i + " (Division " + i + ")"));
-                                                             }, 0);
-                                                             });
-                                                             */
+                                                           
 
                                                             $("#selectEvent" + i).append($("<option/>", {
                                                                 text: '0',
@@ -335,20 +335,11 @@
                                                                 var sel_value1 = $('#selectEvent' + i + ' option:selected').val();
                                                                 if (sel_value1 == 0) {
                                                                     $("#divEvent" + i).empty(); // Resetting Form
-                                                                    /*  $('#DivE1' + i).empty();
-                                                                     $('#DivE2' + i).empty();
-                                                                     $('#DivE3' + i).empty();
-                                                                     $('#DivE4' + i).empty();
-                                                                     */
+                                                                    
                                                                 } else {
 
                                                                     $("#divEvent" + i).empty(); //Resetting Form
-                                                                    // $("#Div" + i).empty();
-                                                                    /*  $('#DivE1' + i).empty();
-                                                                     $('#DivE2' + i).empty();
-                                                                     $('#DivE3' + i).empty();
-                                                                     $('#DivE4' + i).empty();
-                                                                     */
+                                                                    
                                                                     create1(sel_value1);
                                                                 }
 
@@ -364,7 +355,7 @@
                                                                                         class: 'form-control',
                                                                                         type: 'text',
                                                                                         id: "event_" + a + i,
-                                                                                        name: 'NumbEvent_' + a + i
+                                                                                        name: 'event_' + a + i
                                                                                     }));
 
                                                                             $("#divEvent" + i).append($("<div/>", {
@@ -432,9 +423,9 @@
 
 
                                                                             var sel_value2 = $('#selectWod' + a + i + ' option:selected').val();
-                                                                            //var sel_value2 =2;
+                                                                            
                                                                             if (sel_value2 == 0) {
-                                                                                // $("#divEvent" + i).empty(); // Resetting Form
+                                                                               
                                                                                 $('#divWod' + a + i + "1").empty();
                                                                                 $('#divWod' + a + i + "2").empty();
                                                                                 $('#divWod' + a + i + "3").empty();
@@ -442,13 +433,7 @@
 
 
                                                                             } else {
-                                                                                /*  $("#divEvent" + i).empty(); //Resetting Form
-                                                                                 // $("#Div" + i).empty();
-                                                                                 $('#DivE1' + i).empty();
-                                                                                 $('#DivE2' + i).empty();
-                                                                                 $('#DivE3' + i).empty();
-                                                                                 $('#DivE4' + i).empty();
-                                                                                 */
+                                                                                
                                                                                 $('#divWod' + a + i + "1").empty();
                                                                                 $('#divWod' + a + i + "2").empty();
                                                                                 $('#divWod' + a + i + "3").empty();
@@ -472,12 +457,14 @@
                                                                                                 $("<input/>", {
                                                                                                     class: 'form-control',
                                                                                                     type: 'text',
-                                                                                                    id: 'inputWod' + a + i + c
+                                                                                                    id: 'inputWod' + a + i + c,
+                                                                                                    name: 'inputWod' + a + i + c
                                                                                                 }
                                                                                                 ), $("<label/>").text("Description of Wod" + 1),
                                                                                                 $("<textarea/>", {
                                                                                                     class: 'form-control',
-                                                                                                    id: 'textWod' + a + i + c
+                                                                                                    id: 'textWod' + a + i + c,
+                                                                                                    name: 'textWod' + a + i + c
                                                                                                 }),
                                                                                                 $("<br/>")
 
@@ -519,7 +506,7 @@
 
                                         <div class="col-md-12">
                                             <label for="exampleSelect1">Number of Divisions</label>
-                                            <select class="form-control" id="selectDiv" name="select" >
+                                            <select class="form-control" id="selectDiv" name="selectDiv" >
                                                 <option value="0">0</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
