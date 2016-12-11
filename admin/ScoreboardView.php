@@ -40,6 +40,68 @@ if (!isset($_SESSION['visited'])) {
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+        <script type="text/javascript">
+
+
+            function onSelectDivision()
+            {
+
+                var div_ID = 'div_ID=' + document.getElementById("selDiv").options[document.getElementById("selDiv").selectedIndex].value;
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "ScoreboardViewSelWods.php",
+                    cache: false,
+                    data: div_ID,
+                    success: function (html)
+                    {
+                        $('#wods').html(html);
+                    },
+                    error: function (html)
+                    {
+
+                        alert('error');
+                    }
+
+                }
+                );
+
+                return false;
+
+            }
+
+            function onSelectWod(i_wod_ID, i_div_ID)
+            {
+
+                var wod_ID = 'wod_ID=' + i_wod_ID;
+                var div_ID = '&div_ID=' + i_div_ID;
+                var all = wod_ID + div_ID;
+                
+
+                $.ajax({
+                    type: "POST",
+                    url: "ScoreboardViewSelResults.php",
+                    cache: false,
+                    data: all,
+                    success: function (html)
+                    {
+                        $('#result').html(html);
+                    },
+                    error: function (html)
+                    {
+
+                        alert('error');
+                    }
+
+                }
+                );
+
+                return false;
+
+            }
+
+        </script>
     </head>
 
     <body>
@@ -74,28 +136,56 @@ if (!isset($_SESSION['visited'])) {
                             $pdo = Database::connect();
 
                             $compID = $_GET['comp_ID'];
-                            
-                          $sql = "SELECT comp_name from tbl_competition where comp_id = $compID";
-                          
-                          
+
+                            $sql = "SELECT comp_name from tbl_competition where comp_id = $compID";
+
+
                             foreach ($pdo->query($sql) as $row) {
                                 echo "<h2>Results: " . $row['comp_name'] . "</h2>";
                             }
                             ?>
 
+                            <!--Renato  -->
+                            <form class="form-horizontal"  method="post"> 
+
+                                <div class = "form-group col-lg-6 col-md-6" >
+
+                                    <select class = "form-control" id = "selDiv" onChange="onSelectDivision();">
+                                        <option value="0">Select Division</option>
+
+                                        <?php
+                                        $sql = "SELECT div_name, div_ID FROM `tbl_division` where fk_comp_id = $compID";
+
+                                        foreach ($pdo->query($sql) as $row) {
+
+
+                                            echo "<option value=" . $row['div_ID'] . ">" . $row['div_name'] . "</option>";
+                                        }
+                                        ?>
+
+
+                                    </select>
+                                </div>
+
+
+                            </form>
+                            <br>
+                            <div id ="wods" class="col-lg-12 col-md-12"></div>
+                            <br>
+                            <table class="table table-hover col-lg-12 col-md-12" id ="result" ></table>
 
                             <form class="form-horizontal" action="ScoreboardView.php?comp_ID=<?php echo $compID ?>" method="post"> 
                                 <table class="table table-hover">
                                     <tr>
-<?php
-$sql = "SELECT div_name, div_ID FROM `tbl_division` where fk_comp_id = $compID";
+                                        <?php
+                                        $sql = "SELECT div_name, div_ID FROM `tbl_division` where fk_comp_id = $compID";
 
-foreach ($pdo->query($sql) as $row) {
-    echo
+                                        foreach ($pdo->query($sql) as $row) {
+                                            echo
 
-    "<th><button type='submit' value='" . $row['div_ID'] . "' id='" . $row['div_ID'] . "' name='divselectbasic' class=' btn btn-custom-red btn-lg'>" . $row['div_name'] . "  </button>  </th> ";
-}
-?>
+                                            "<th><button type='submit' value='" . $row['div_ID'] . "' id='" . $row['div_ID'] . "' name='divselectbasic' class=' btn btn-custom-red btn-lg'>" . $row['div_name'] . "  </button>  </th> ";
+                                        }
+                                        ?>
 
                                     </tr>
                                 </table>
@@ -103,9 +193,9 @@ foreach ($pdo->query($sql) as $row) {
 
                         </div>       
 
-                                        <?php
-                                        if (isset($_POST['divselectbasic']) || isset($_POST['wod_button'])) {
-                                            ?>
+                        <?php
+                        if (isset($_POST['divselectbasic']) || isset($_POST['wod_button'])) {
+                            ?>
 
                             <div class="container">
 
@@ -114,54 +204,54 @@ foreach ($pdo->query($sql) as $row) {
                                         <tr>
 
 
-                            <?php
-                            $wod_array = array();
-                            $wod_count = 1;
+                                            <?php
+                                            $wod_array = array();
+                                            $wod_count = 1;
 
-                            if (isset($_POST['wod_button'])) {
-                                $dataString = $_POST['wod_button'];
-                                list ($divison, $selected_wod) = explode('X', $dataString);
-                            } else {
-                                $divison = $_POST['divselectbasic'];
-                            }
+                                            if (isset($_POST['wod_button'])) {
+                                                $dataString = $_POST['wod_button'];
+                                                list ($divison, $selected_wod) = explode('X', $dataString);
+                                            } else {
+                                                $divison = $_POST['divselectbasic'];
+                                            }
 
-                            echo "<th><button type='submit' value='" . $divison . "Xoverall123' id='overall' name='wod_button' class='btn btn-custom-red btn-lg'>overall</button>  </th> ";
-
-
-                            //      include 'Database.php';
-                            //      $pdo = Database::connect();
-                            $sql = "SELECT evt_ID, wod_ID, wod_name, evt_name FROM `tbl_wod` join tbl_event on fk_evt_ID = evt_ID WHERE `fk_div_ID` = $divison";
-                            foreach ($pdo->query($sql) as $row) {
-                                echo
-
-                                "<th><button type='submit' value='" . $divison . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' name='wod_button' class='btn btn-custom-red btn-lg'>" . $row['evt_name'] . " <br/> " . $row['wod_name'] . " </button>  </th> ";
+                                            echo "<th><button type='submit' value='" . $divison . "Xoverall123' id='overall' name='wod_button' class='btn btn-custom-red btn-lg'>overall</button>  </th> ";
 
 
-                                $wod_array[$wod_count] = $row['wod_ID'];
+                                            //      include 'Database.php';
+                                            //      $pdo = Database::connect();
+                                            $sql = "SELECT evt_ID, wod_ID, wod_name, evt_name FROM `tbl_wod` join tbl_event on fk_evt_ID = evt_ID WHERE `fk_div_ID` = $divison";
+                                            foreach ($pdo->query($sql) as $row) {
+                                                echo
 
-                                $wod_count++;
-                            }
-                            ?>
+                                                "<th><button type='submit' value='" . $divison . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' name='wod_button' class='btn btn-custom-red btn-lg'>" . $row['evt_name'] . " <br/> " . $row['wod_name'] . " </button>  </th> ";
+
+
+                                                $wod_array[$wod_count] = $row['wod_ID'];
+
+                                                $wod_count++;
+                                            }
+                                            ?>
 
                                         </tr>
                                     </table>
                                 </form>
-                                            <?php
-                                            if (isset($_POST['wod_button'])) {
+                                <?php
+                                if (isset($_POST['wod_button'])) {
 
 
-                                                if ($selected_wod == "overall123") {
+                                    if ($selected_wod == "overall123") {
 
-                                                    echo "<p>Overall Ranking </p>";
-                                                } else {
+                                        echo "<p>Overall Ranking </p>";
+                                    } else {
 
-                                                    $sql = "SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =" . $selected_wod;
+                                        $sql = "SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =" . $selected_wod;
 
-                                                    foreach ($pdo->query($sql) as $row) {
-                                                        echo "<p>" . $row['Description'] . "</p>";
-                                                    }
-                                                }
-                                                ?>
+                                        foreach ($pdo->query($sql) as $row) {
+                                            echo "<p>" . $row['Description'] . "</p>";
+                                        }
+                                    }
+                                    ?>
 
                                     <table class="table table-hover">
                                         <thead>
@@ -174,45 +264,45 @@ foreach ($pdo->query($sql) as $row) {
                                         <tbody>
 
 
-                                    <?php
-                                    if ($selected_wod == "overall123") {
+                                            <?php
+                                            if ($selected_wod == "overall123") {
 
-                                        $sql = "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner \n"
-                                                . " join tbl_user_division d\n"
-                                                . " on u.user_ID = d.fk_user_ID inner \n"
-                                                . " join tbl_result r on d.user_div_ID = r.fk_user_div_ID \n"
-                                                . " WHERE d.fk_div_ID = " . $divison . " GROUP by Name ORDER by Punkte ASC";
+                                                $sql = "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner \n"
+                                                        . " join tbl_user_division d\n"
+                                                        . " on u.user_ID = d.fk_user_ID inner \n"
+                                                        . " join tbl_result r on d.user_div_ID = r.fk_user_div_ID \n"
+                                                        . " WHERE d.fk_div_ID = " . $divison . " GROUP by Name ORDER by Punkte ASC";
 
 
 
-                                        foreach ($pdo->query($sql) as $row) {
-                                            echo "
+                                                foreach ($pdo->query($sql) as $row) {
+                                                    echo "
       <tr>
         <td>" . $row['Name'] . "</td>
         <td> " . $row['Box'] . " </td>
         <td> " . $row['Punkte'] . " </td>
       </tr>";
-                                        }
-                                    } else {
+                                                }
+                                            } else {
 
 
 
-                                        $sql = "SELECT u.user_name as Name, u.user_box as Box, r.res_score as Punkte FROM tbl_user u inner join tbl_user_division d \n"
-                                                . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID where r.fk_wod_ID =" . $selected_wod . " ORDER BY Punkte ASC";
+                                                $sql = "SELECT u.user_name as Name, u.user_box as Box, r.res_score as Punkte FROM tbl_user u inner join tbl_user_division d \n"
+                                                        . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID where r.fk_wod_ID =" . $selected_wod . " ORDER BY Punkte ASC";
 
 
-                                        foreach ($pdo->query($sql) as $row) {
-                                            echo "
+                                                foreach ($pdo->query($sql) as $row) {
+                                                    echo "
       <tr>
         <td>" . $row['Name'] . "</td>
         <td> " . $row['Box'] . " </td>
         <td> " . $row['Punkte'] . " </td>
       </tr>";
-                                        }
-                                    }
+                                                }
+                                            }
 
-                                    Database::disconnect();
-                                    ?>
+                                            Database::disconnect();
+                                            ?>
 
                                         </tbody>
                                     </table>
@@ -223,15 +313,17 @@ foreach ($pdo->query($sql) as $row) {
 
                                     </form > 
 
-                                            <?php
-                                        }
-                                        ?>
+                                    <?php
+                                }
+                                ?>
                             </div>
 
-                                        <?php
-                                    }
-                                    ?>   </div>
+                            <?php
+                        }
+                        ?>   </div>
                 </div>
+
+
                 <!-- /.row -->
 
             </div>
