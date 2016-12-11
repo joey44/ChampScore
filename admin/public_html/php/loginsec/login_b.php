@@ -25,9 +25,6 @@ if (isset($_POST['email']) AND isset($_POST['passwort'])) {
         $zeile = mysqli_fetch_assoc($ergebnis);
         $_SESSION['username'] = $zeile["user_name"];
         $_SESSION['user_id'] = $zeile["user_ID"];
-                
-
-
         $_SESSION['eingeloggt'] = true;
         $_SESSION['benutzer'] = $email;
 

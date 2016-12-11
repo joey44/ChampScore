@@ -2,6 +2,7 @@
 
 session_start();
 
+$userName = $_POST['username'];
 $firstName = $_POST['firstname'];
 $lastName = $_POST['lastname'];
 $street = $_POST['street'];
@@ -20,14 +21,36 @@ require ("./public_html/php/loginsec/db.inc.php");
 $link = mysqli_connect("localhost", $benutzer, $passwort);
 mysqli_select_db($link, $dbname);
 
+$abfrage = "UPDATE\n"
+        . " tbl_user_address\n"
+        . "SET\n"
+        . " user_addr_firstname ='$firstName',\n"
+        . " user_addr_lastname ='$lastName',\n"
+        . " user_addr_street ='$street',\n"
+        . " user_addr_zip = '$zip',\n"
+        . " user_addr_state = '$state',\n"
+        . " user_addr_country = '$country'\n"
+        . "WHERE\n"
+        . " fk_user_id =" . $_SESSION["user_id"];
 
+$ergebnis = mysqli_query($link, $abfrage) or die($msg = $abfrage);
 
-$abfrage = "update tbl_user_address
-        SET user_addr_firstname =$firstName, user_addr_lastname=$lastName, user_addr_street=$street, user_addr_zip=$zip,
-            user_addr_state=$state, user_addr_country=$country where fk_user_id=" . $_SESSION["user_id"];
-$ergebnis = mysqli_query($link, $abfrage) or die($msg = "Fehler");
-$count = mysqli_num_rows($ergebnis);
+mysqli_error($link);
+
+$abfrage = "UPDATE\n"
+        . " tbl_user\n"
+        . "SET\n"
+        . " user_name ='$userName',\n"
+        . " user_gender ='$gender',\n"
+        . " user_birthdate ='$birthdate'\n"
+        . "WHERE\n"
+        . " user_ID =" . $_SESSION["user_id"];
+
+$ergebnis = mysqli_query($link, $abfrage) or die($msg = $abfrage);
+
+mysqli_error($link);
 
 
 mysqli_close($link);
+$_SESSION['username'] = $userName;
 ?>

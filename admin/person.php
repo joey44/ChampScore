@@ -41,6 +41,19 @@ if ($count == 1) {
     $user_state = $zeile["user_addr_state"];
     $user_country = $zeile["user_addr_country"];
 }
+
+$abfrage = "select * from tbl_user "
+        . "where tbl_user.user_ID = " . $_SESSION['user_id'];
+
+$ergebnis = mysqli_query($link, $abfrage) or die("Fehler bei der SQL Ausführung");
+$count = mysqli_num_rows($ergebnis);
+
+if ($count == 1) {
+
+
+    $user_birthdate = $zeile["user_birthdate"];
+    $user_gender = $zeile["user_gender"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,20 +88,23 @@ if ($count == 1) {
 
         <script type="text/javascript">
 
+
+
 //Funktion zur Prüfung der Registrierungsdaten
             function mySubmitUserData()
             {
-                alert("hallo");
-                var user_ID = 'user_ID=' + user_ID;
+
+
+                var userName = 'username=' + document.getElementById('userName').value;
                 var firstName = '&firstname=' + document.getElementById('userFirstName').value;
-                var lastName = '&lastname=' + document.getElementById('userFirstName').value;
-                var street = '&street=' + document.getElementById('userFirstName').value;
-                var zip = '&zip=' + document.getElementById('userFirstName').value;
-                var state = '&state=' + document.getElementById('userFirstName').value;
+                var lastName = '&lastname=' + document.getElementById('userLastName').value;
+                var street = '&street=' + document.getElementById('userStreet').value;
+                var zip = '&zip=' + document.getElementById('userZip').value;
+                var state = '&state=' + document.getElementById('userState').value;
                 var country = '&country=' + $("#country").val();
                 var birthdate = '&birthdate=' + $("#userBirthDate").val();
                 var gender = '&gender=' + document.querySelector('input[name = "gender" ]:checked').value;
-                var all = user_ID + firstName + lastName + street + zip + state + country + gender + birthdate;
+                var all = userName + firstName + lastName + street + zip + state + country + gender + birthdate;
 
                 $.ajax({
                     type: "POST",
@@ -97,7 +113,7 @@ if ($count == 1) {
                     data: all,
                     success: function (html)
                     {
-                        $('#msg' + comp_ID).html(html);
+                        $('#msg').html(html);
                     },
                     error: function (html)
                     {
@@ -116,7 +132,7 @@ if ($count == 1) {
 
     </head>
 
-    <body>
+    <body onload = "loadstuff();">
 
         <div id="wrapper">
 
@@ -180,7 +196,7 @@ if ($count == 1) {
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Date of Birth</label>
-                                    <input type="date" id="userBirthDate" class="form-control" >
+                                    <input type="date" id="userBirthDate" class="form-control" value=<?php echo $user_birthdate ?> >
                                 </div>
                             </div>
 
@@ -208,7 +224,7 @@ if ($count == 1) {
                                 <div class="form-group">
                                     <label>Country</label>
 
-                                    <select id="country" class="form-control">
+                                    <select id="country" class="form-control" >
                                         <option value="AF">Afghanistan</option>
                                         <option value="AX">Åland Islands</option>
                                         <option value="AL">Albania</option>
@@ -482,6 +498,7 @@ if ($count == 1) {
 
 
                             </div>
+                            <div id="msg"></div>
                         </form>
 
 
