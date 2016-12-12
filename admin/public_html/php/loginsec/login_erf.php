@@ -1,6 +1,5 @@
 <?PHP
 
-// Session starten oder neu aufnehmen
 session_start();
 ob_start();
 
@@ -55,7 +54,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
 
                     // Benutzer erfassen, weil noch nicht in DB vorhanden
                     $insert = "INSERT INTO tbl_user (`user_ID`, `user_name`, `user_password`, `user_email`) VALUES('','$benutzername','$pass','$email')";
-                    mysqli_query($link, $insert)or die("DB-Eintrag hat nicht geklappt!");
+                    mysqli_query($link, $insert) or die("DB-Eintrag hat nicht geklappt!");
 
                     // prüfen ob es user und passwort gibt
                     $abfrage = "SELECT user_ID, user_email FROM `tbl_user` WHERE user_email='$email'";
@@ -68,12 +67,18 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
 
                         //Benutzer in der Adress Tabelle erfassen
                         $insertUserAddress = "INSERT INTO tbl_user_address (`fk_user_ID`) VALUE(" . $_SESSION['user_id'] . ")";
-                        mysqli_query($link, $insertUserAddress)or die("DB-Eintrag hat nicht geklappt!");
+                        mysqli_query($link, $insertUserAddress) or die("DB-Eintrag hat nicht geklappt!");
                     }
-                    session_write_close();
+
                     mysqli_close($link);
-                    header("Location: ../../../index.php");
-                    exit();
+
+                    if (headers_sent()) { //if headers already sent out print some message.
+                        echo "header schon gesendet";
+                    } else {
+//send the user automatically to test.php
+                        header("Location: ../../../index.php");
+                        exit();
+                    }
                 }
             }
             // Datenbankverbindung beenden
@@ -88,8 +93,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
             //exit;
         } // end if passwörter gleich und länger als 8 Zeichen
     } // end if isset email, passwort1
-}  // end if isset $submit
-ob_end_flush()
-?>
+} // end if isset $submit
+
 
 
