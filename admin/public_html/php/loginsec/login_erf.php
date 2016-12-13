@@ -24,7 +24,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
             mysqli_query($link, "SET NAMES 'utf8'");
 
             // falls vom Formular anpassen 
-            if ($vonwo == "anpassen") {
+            /*if ($vonwo == "anpassen") {
                 $anpassung = "UPDATE tbl_user SET `user_password`='$pass', `user_name`='$benutzername' WHERE `user_email`='$email'";
                 $angepasst = mysqli_query($link, $anpassung);
                 if ($angepasst == TRUE) {
@@ -36,7 +36,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
 
                     $_SESSION['eingeloggt'] = true;
                 }
-            }
+            }*/
 
             // falls vom Formular "Neues Login" 
             if ($vonwo == "erfassung") {
@@ -70,15 +70,8 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
                         mysqli_query($link, $insertUserAddress) or die("DB-Eintrag hat nicht geklappt!");
                     }
 
-                    mysqli_close($link);
-
-                    if (headers_sent()) { //if headers already sent out print some message.
-                        echo "header schon gesendet";
-                    } else {
-//send the user automatically to test.php
-                        header("Location: ../../../index.php");
-                        exit();
-                    }
+                    header("Location: ../../../index.php");
+                    exit();
                 }
             }
             // Datenbankverbindung beenden
