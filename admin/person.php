@@ -42,6 +42,7 @@ if ($count == 1) {
     $user_country = $zeile["user_addr_country"];
 }
 
+
 $abfrage = "select * from tbl_user "
         . "where tbl_user.user_ID = " . $_SESSION['user_id'];
 
@@ -88,7 +89,24 @@ if ($count == 1) {
 
         <script type="text/javascript">
 
+            function setCountryGender() {
 
+
+                $("#country").val("<?php echo $user_country ?>");
+
+
+
+                if (<?php echo $user_gender ?> === 1) {
+                    document.getElementById("femaleRadio").checked = true;
+                    document.getElementById("maleRadio").checked = false;
+                } else {
+                    document.getElementById("maleRadio").checked = true;
+                    document.getElementById("femaleRadio").checked = false;
+
+                }
+
+
+            }
 
 //Funktion zur Prüfung der Registrierungsdaten
             function mySubmitUserData()
@@ -132,7 +150,7 @@ if ($count == 1) {
 
     </head>
 
-    <body onload = "loadstuff();">
+    <body onload="setCountryGender()">
 
         <div id="wrapper">
 
@@ -224,7 +242,7 @@ if ($count == 1) {
                                 <div class="form-group">
                                     <label>Country</label>
 
-                                    <select id="country" class="form-control" >
+                                    <select id="country" class="form-control"  >
                                         <option value="AF">Afghanistan</option>
                                         <option value="AX">Åland Islands</option>
                                         <option value="AL">Albania</option>

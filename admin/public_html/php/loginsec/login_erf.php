@@ -24,19 +24,19 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
             mysqli_query($link, "SET NAMES 'utf8'");
 
             // falls vom Formular anpassen 
-            /*if ($vonwo == "anpassen") {
-                $anpassung = "UPDATE tbl_user SET `user_password`='$pass', `user_name`='$benutzername' WHERE `user_email`='$email'";
-                $angepasst = mysqli_query($link, $anpassung);
-                if ($angepasst == TRUE) {
-                    echo "Die Daten wurden angepasst<br/>";
-                    echo "Ihre Session_id ist:" . session_id();
-                    echo "<br/> <a href=\"login_c.php\">Zu den geheimen Daten</a>";
-                    echo "<br/> <a href=\"index.php\">Logout</a>";
-                    $_SESSION['name'] = $email;
+            /* if ($vonwo == "anpassen") {
+              $anpassung = "UPDATE tbl_user SET `user_password`='$pass', `user_name`='$benutzername' WHERE `user_email`='$email'";
+              $angepasst = mysqli_query($link, $anpassung);
+              if ($angepasst == TRUE) {
+              echo "Die Daten wurden angepasst<br/>";
+              echo "Ihre Session_id ist:" . session_id();
+              echo "<br/> <a href=\"login_c.php\">Zu den geheimen Daten</a>";
+              echo "<br/> <a href=\"index.php\">Logout</a>";
+              $_SESSION['name'] = $email;
 
-                    $_SESSION['eingeloggt'] = true;
-                }
-            }*/
+              $_SESSION['eingeloggt'] = true;
+              }
+              } */
 
             // falls vom Formular "Neues Login" 
             if ($vonwo == "erfassung") {
@@ -64,12 +64,13 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen'])) {
                     if ($count == 1) {
                         $zeile = mysqli_fetch_assoc($ergebnis);
                         $_SESSION['user_id'] = $zeile["user_ID"];
+                        $_SESSION['benutzer'] = $email;
 
                         //Benutzer in der Adress Tabelle erfassen
                         $insertUserAddress = "INSERT INTO tbl_user_address (`fk_user_ID`) VALUE(" . $_SESSION['user_id'] . ")";
                         mysqli_query($link, $insertUserAddress) or die("DB-Eintrag hat nicht geklappt!");
                     }
-
+                    $_SESSION['eingeloggt'] = true;
                     header("Location: ../../../index.php");
                     exit();
                 }
