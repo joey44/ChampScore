@@ -72,6 +72,8 @@ body {
     background: -ms-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
     background: radial-gradient(ellipse at center, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c01313', endColorstr='#b30202', GradientType=1 );
+
+
 }
 
 .top-nav>ul {
@@ -258,7 +260,7 @@ ul.alert-dropdown {
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
 
-    background-color: #c01313;
+    background-color: black;
     color: #fff;
 }
 .btn-custom-red:hover{

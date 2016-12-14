@@ -49,4 +49,3 @@ if (isset($_POST['email']) AND isset($_POST['passwort'])) {
         exit;
     }
 }
-
