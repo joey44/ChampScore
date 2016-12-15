@@ -32,7 +32,7 @@ if (!isset($_SESSION['visited'])) {
 
         <!-- Custom CSS -->
         <link href="css/sb-admin.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -63,14 +63,7 @@ if (!isset($_SESSION['visited'])) {
                                 Athlete
 
                             </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="index.php">Home</a>
-                                </li>
-                                <li class="active">
-                                    <i class="fa fa-file"></i> Athlete
-                                </li>
-                            </ol>
+                            
                         </div>
                     </div>
                     <!-- /.row -->
@@ -171,6 +164,8 @@ if (!isset($_SESSION['visited'])) {
                                 Register for a Competition
 
                             </h3>
+                            <p>Look for Competitions and sign up with the Registration Code provided
+                            by the Host. You can also request a participation in the Competition</p>
                             
                                 
                                     <p><a href="enterRegCode.php" class="btn btn-custom-red btn-lg" role="button">Enter Code <i class="fa fa-arrow-circle-right"></i></a>
@@ -182,6 +177,7 @@ if (!isset($_SESSION['visited'])) {
                                 Registered Competitions
 
                             </h3>
+                            <p>Your upcoming Competitions are listed here</p>
                            
                                 
                                 

@@ -67,6 +67,7 @@ if ($count == 1) {
         <meta name="description" content="">
         <meta name="author" content="">
 
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <title>ChampScore</title>
 
         <!-- Bootstrap Core CSS -->
@@ -165,17 +166,19 @@ if ($count == 1) {
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                My Profile
-                                <small><?php echo $_SESSION['username']; ?></small>
+                                Profile
                             </h1>
-                            <ol class="breadcrumb">
+                            
+                            <p>Update your Information to ensure the Hosts have your correct data</p>
+                            <br>
+                            <!--<ol class="breadcrumb">
                                 <li>
                                     <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
                                 </li>
                                 <li class="active">
                                     <i class="fa fa-file"></i> My Profile
                                 </li>
-                            </ol>
+                            </ol>-->
                         </div>
                     </div>
                     <div>

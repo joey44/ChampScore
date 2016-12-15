@@ -28,7 +28,7 @@ if (!isset($_SESSION['visited'])) {
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="css/sb-admin.css" rel="stylesheet">
 
@@ -62,17 +62,7 @@ if (!isset($_SESSION['visited'])) {
                                 Customize Competition
                                
                             </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="index.php">Home</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-fire"></i>  <a href="organizer.php">Organizer</a>
-                                </li>
-                                <li class="active">
-                                    <i class="fa fa-file"></i> Customize Competition
-                                </li>
-                            </ol>
+                            
                         </div>
                     </div>
                     <!-- /.row -->

@@ -31,7 +31,7 @@ if (!isset($_SESSION['visited'])) {
 
         <!-- Custom CSS -->
         <link href="css/sb-admin.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -67,17 +67,7 @@ if (!isset($_SESSION['visited'])) {
                                 Customize Scoreboard
 
                             </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="index.php">Home</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-fire"></i>  <a href="organizer.php">Organizer</a>
-                                </li>
-                                <li class="active">
-                                    <i class="fa fa-th-list"></i> Customize Scoreboard
-                                </li>
-                            </ol>
+                            
                         </div>
                     </div>
                     <!-- /.row -->

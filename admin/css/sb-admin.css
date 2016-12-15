@@ -10,7 +10,8 @@
 
 body {
     margin-top: 100px;
-    background-color: #fff;
+    background-color: #EEF0F2;
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -41,7 +42,7 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #fff;
+    background-color: #EEF0F2;
 }
 
 .huge {
@@ -64,14 +65,7 @@ body {
 .top-nav {
     padding: 0 15px;
 
-    background: rgba(192,19,19,1);
-    background: -moz-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(192,19,19,1)), color-stop(2%, rgba(192,19,19,1)), color-stop(100%, rgba(179,2,2,1)));
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
-    background: -o-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
-    background: -ms-radial-gradient(center, ellipse cover, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
-    background: radial-gradient(ellipse at center, rgba(192,19,19,1) 0%, rgba(192,19,19,1) 2%, rgba(179,2,2,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c01313', endColorstr='#b30202', GradientType=1 );
+    background: #8B0000;
 
 
 }
@@ -165,21 +159,12 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        -webkit-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
-        -moz-box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
-        box-shadow: 8px 7px 18px -5px rgba(0,0,0,0.75);
+        
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
 
-        background: rgba(26,26,26,1);
-        background: -moz-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(26,26,26,1)), color-stop(100%, rgba(0,0,0,1)));
-        background: -webkit-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-        background: -o-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-        background: -ms-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-        background: linear-gradient(135deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a1a1a', endColorstr='#000000', GradientType=1 );}
+        background: #0C0C0C ;}
 
     .side-nav>li>a {
         width: 225px;
@@ -233,17 +218,17 @@ ul.alert-dropdown {
     font-size: 40px;
 }
 .panel-custom-red {
-    border-color: #c01313;
+    border-color: #8B0000;
 }
 
 .panel-custom-red > .panel-heading {
-    border-color: #c01313;
+    border-color: #8B0000;
     color: #fff;
-    background-color: #c01313;
+    background-color: #8B0000;
 }
 
 .panel-custom-red > a {
-    color: #c01313;
+    color: #8B0000;
 }
 
 .panel-custom-red > a:hover {
@@ -254,7 +239,7 @@ ul.alert-dropdown {
 .btn-custom-red{
     width: 150px;
 
-   
+
 
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
@@ -270,30 +255,22 @@ ul.alert-dropdown {
 
 
 .panel-custom-black {
-    border-color: black;
+    border-color: #0C0C0C;
 }
 
 .panel-custom-black > .panel-heading {
-    border-color: black;
+    border-color: #0C0C0C;
     color: #fff;
-    background: rgba(26,26,26,1);
-    background: -moz-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(26,26,26,1)), color-stop(100%, rgba(0,0,0,1)));
-    background: -webkit-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-    background: -o-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-    background: -ms-linear-gradient(-45deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-    background: linear-gradient(135deg, rgba(26,26,26,1) 0%, rgba(0,0,0,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a1a1a', endColorstr='#000000', GradientType=1 );
+    background: #0C0C0C;
 }
-
 
 
 .panel-custom-black > a {
-    color: black;
+    color: #0C0C0C;
 }
 
 .panel-custom-black > a:hover {
-    color: grey;
+    color: silver;
 }
 
 
@@ -304,11 +281,11 @@ ul.alert-dropdown {
     border-radius: 0 !important;
 
 
-    background-color: black;
+    background-color: #0C0C0C;
     color: #fff;
 }
 .btn-custom-black:hover{
-    background-color: grey;
+    background-color: silver;
     color: #fff;
 }
 
@@ -399,3 +376,14 @@ ul.alert-dropdown {
     color: #df8a13;
 }
 */
+
+.profile-userpic img {
+  float: none;
+  margin: 12px auto 0;
+  padding:6px;
+  width: 50%;
+  height: 18%;
+  
+  border-radius: 50% !important;
+
+}

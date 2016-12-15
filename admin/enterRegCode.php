@@ -37,7 +37,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="author" content="">
 
         <title>ChampScore</title>
-
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -108,16 +108,8 @@ if (!isset($_SESSION['visited'])) {
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Enter Registration Code
-                                <small>Athlete</small>
                             </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="index.php">Home</a>
-                                </li>
-                                <li class="active">
-                                    <i class="fa fa-file"></i> Enter Registration Code
-                                </li>
-                            </ol>
+                            
                         </div>
                     </div>
                     <!-- /.row -->
