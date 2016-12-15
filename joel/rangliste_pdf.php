@@ -27,7 +27,8 @@ $pdf->AddPage();
 
 if ($selected_wod == "overall123"){
     
- $pdf->Table( "SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM tbl_user u inner \n"
+ $pdf->Table( "SELECT @curRank := @curRank + 1 AS Rank, u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Punkte FROM"
+         . "(SELECT @curRank := 0) q, tbl_user u inner \n"
     . " join tbl_user_division d\n"
     . " on u.user_ID = d.fk_user_ID inner \n"
     . " join tbl_result r on d.user_div_ID = r.fk_user_div_ID \n"

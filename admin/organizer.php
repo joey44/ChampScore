@@ -25,7 +25,7 @@ if (!isset($_SESSION['visited'])) {
         <meta name="author" content="">
 
         <title>ChampScore</title>
-
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -93,14 +93,8 @@ if (!isset($_SESSION['visited'])) {
                                 Competition Host
 
                             </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="index.php">Home</a>
-                                </li>
-                                <li class="active">
-                                    <i class="fa fa-file"></i> Competition Host
-                                </li>
-                            </ol>
+                            
+                            
                         </div>
                     </div>
                     <!-- /.row -->
@@ -202,6 +196,7 @@ if (!isset($_SESSION['visited'])) {
                                 My Competitions  
 
                             </h3>
+                            <p>Customize your Competitions. You can add new Competitions, edit and delete existing ones</p>
                                 
                                     <a href = "competitionCustomize.php" >New <i class="fa fa-plus"></i></a>
                                     <br>

@@ -26,7 +26,7 @@ if (!isset($_SESSION['visited'])) {
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="css/sb-admin.css" rel="stylesheet">
 
@@ -77,7 +77,7 @@ if (!isset($_SESSION['visited'])) {
                 var wod_ID = 'wod_ID=' + i_wod_ID;
                 var div_ID = '&div_ID=' + i_div_ID;
                 var all = wod_ID + div_ID;
-                
+
 
                 $.ajax({
                     type: "POST",
