@@ -18,6 +18,17 @@ if (!isset($_SESSION['visited'])) {
 
     <head>
 
+        <!-- Wizard -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="CompWizard/css/Wizard.css" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="CompWizard/js/Wizard.js"></script>
+        <link href="CompWizard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="CompWizard/prettify.css" rel="stylesheet">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"></script>
+        <link rel="stylesheet" href="CompWizard/css/wizard.css" type="text/css">
+        <!--/wizard-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,6 +57,7 @@ if (!isset($_SESSION['visited'])) {
 
     <body>
 
+        
         <div id="wrapper">
 
             <!-- Navigation -->
@@ -69,6 +81,20 @@ if (!isset($_SESSION['visited'])) {
                     <div class="row">
                     <div class="col-lg-12">
                         
+                   
+    
+
+
+        <div class="container">
+            <div class="row">
+                
+                <?php include './CompWizard/compWizard.php'; ?>
+                
+            </div>
+        </div>
+       
+   
+                        
                     </div>
                     
                     
@@ -83,6 +109,7 @@ if (!isset($_SESSION['visited'])) {
         </div>
         <!-- /#wrapper -->
 
+        
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
 
