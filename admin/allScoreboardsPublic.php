@@ -91,7 +91,7 @@ if (!isset($_SESSION['visited'])) {
             echo "<div id=\"products\" class=\"row list-group\">";
             while ($zeile = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
                 $ranglisteID = $zeile['comp_ID'];
-                echo "<div name\"$ranglisteID\" class=\"item  col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0\">";
+                echo "<div name\"$ranglisteID\" class=\"item  col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0\">";
                 echo "<div class=\"thumbnail\">";
                 echo "<a href=\"ScoreboardView.php?comp_ID=$ranglisteID\"><img class=\"group list-group-image\" src=\"http://placehold.it/400x250/000/fff\" alt=\"\" />";
                 echo "<div class=\"row\">";

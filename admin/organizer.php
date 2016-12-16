@@ -52,6 +52,7 @@ if (!isset($_SESSION['visited'])) {
 
                 var del_comp_id = comp_ID;
                 var info = 'comp_ID=' + del_comp_id;
+                alert (info);
                 if (confirm("Sure you want to delete this Competition? This cannot be undone later.")) {
                     $.ajax({
                         type: "POST",

@@ -10,7 +10,6 @@ require ("./public_html/php/loginsec/db.inc.php");
 
 $link = mysqli_connect("localhost", $benutzer, $passwort);
 mysqli_select_db($link, $dbname);
-
 $abfrage = "DELETE FROM tbl_competition WHERE comp_ID = ".$comp_ID;
 $ergebnis = mysqli_query($link, $abfrage) or die(mysql_error());
 
