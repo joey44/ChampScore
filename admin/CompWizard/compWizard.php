@@ -8,7 +8,7 @@
                             <ul class="nav nav-tabs" role="tablist">
 
                                 <li role="presentation" class="active">
-                                    <a href="#persInfo" data-toggle="tab" aria-controls="persInfo" role="tab" title="Person">
+                                    <a href="#persInfo" data-toggle="tab" aria-controls="compInfo" role="tab" title="Competition">
                                         <span class="round-tab">
                                             <i class="glyphicon glyphicon-home"></i>
                                         </span>
@@ -16,14 +16,14 @@
                                 </li>
 
                                 <li role="presentation" class="disabled">
-                                    <a href="#boxInfo" data-toggle="tab" aria-controls="boxInfo" role="tab" title="Box">
+                                    <a href="#boxInfo" data-toggle="tab" aria-controls="wodInfo" role="tab" title="WOD">
                                         <span class="round-tab">
                                             <i class="glyphicon glyphicon-pencil"></i>
                                         </span>
                                     </a>
                                 </li>
                                 <li role="presentation" class="disabled">
-                                    <a href="#compInfo" data-toggle="tab" aria-controls="compInfo" role="tab" title="Competition" id="tabWod">
+                                    <a href="#compInfo" data-toggle="tab" aria-controls="summary" role="tab" title="Summary" id="tabWod">
                                         <span class="round-tab">
                                             <i class="glyphicon glyphicon-search"></i>
                                         </span>

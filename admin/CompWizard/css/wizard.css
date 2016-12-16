@@ -1,6 +1,6 @@
 .wizard {
     margin: 20px auto;
-    background: #fff;
+    background: #EEF0F2;
 }
 
     .wizard .nav-tabs {
@@ -52,12 +52,12 @@ span.round-tab i{
     color:#555555;
 }
 .wizard li.active span.round-tab {
-    background: #fff;
-    border: 2px solid #5bc0de;
+    background: #EEF0F2;
+    border: 2px solid #0C0C0C;
     
 }
 .wizard li.active span.round-tab i{
-    color: #5bc0de;
+    color: #8B0000;
 }
 
 span.round-tab:hover {
@@ -89,7 +89,7 @@ span.round-tab:hover {
     margin: 0 auto;
     bottom: 0px;
     border: 10px solid transparent;
-    border-bottom-color: #5bc0de;
+    border-bottom-color: #0C0C0C;
 }
 
 .wizard .nav-tabs > li a {
