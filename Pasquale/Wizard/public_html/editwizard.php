@@ -44,12 +44,14 @@
 
           $anzDiv = array();
         $div_name = array();
+        $div_id=array();
 
 
 
         foreach ($pdo->query($sqlseldiv) as $row) {
               array_push($anzDiv, $row['anzdiv']);
             array_push($div_name, $row['div_name']);
+            array_push($div_id, $row['div_ID']);
 
 
             // echo $div_name;
@@ -59,36 +61,48 @@
        
         $anzdiv = count($anzDiv);
         
+        
+        //anzevents ermitteln
         
         
         
         
         
         //EVENT LADEN
+        
+        
+        for ($i = 0; $i < $anzdiv; $i++) {
+       $divID= $div_id[$i];     
+            
+       
 
-       $sql = "SELECT * , count(fk_div_ID) as anzevt FROM `tbl_event` as a\n"
+       $sqlselevt = "SELECT * , count(fk_div_ID) as anzevt FROM `tbl_event` as a\n"
      . " INNER JOIN `tbl_division` as b\n"
      . " on a.fk_div_ID=b.div_ID\n"
      . " INNER JOIN `tbl_competition` as c\n"
      . " on b.fk_comp_ID=c.comp_ID\n"
-     . " group by DIV_ID, evt_ID";
+     . " where b.div_ID=".$divID." \n"
+     . " group by evt_ID";
+               
 
-          $anzDiv = array();
-        $div_name = array();
-
-
-
-        foreach ($pdo->query($sqlseldiv) as $row) {
-              array_push($anzDiv, $row['anzdiv']);
-            array_push($div_name, $row['div_name']);
+          $anzevt = "anzevent";
+        ${$anzevt.$i} = array();
 
 
-            // echo $div_name;
-            //$anzDiv++;
+
+        foreach ($pdo->query($sqlselevt) as $row) {
+              array_push(${$anzevt.$i}, $row['anzevt']);
+           
+
+
         }
-        //  echo end($anzDiv);
-       
-        $anzdiv = count($anzDiv);
+         //echo ${$anzevt.$i}[0];   
+        // echo $anzevent1[0]; 
+        // echo $anzdiv;
+         //echo $divID;
+        //$anzdiv = count($anzDiv);
+                 }
+              
         ?>
 
 
@@ -543,6 +557,8 @@
 
 
                                                                     );
+                                                            
+                                                           
 
                                                            
                                                         })(d);

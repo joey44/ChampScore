@@ -25,7 +25,7 @@
                             <ul class="nav nav-tabs" role="tablist">
 
                                 <li role="presentation" class="active">
-                                    <a href="#persInfo" data-toggle="tab" aria-controls="persInfo" role="tab" title="Person">
+                                    <a href="#persInfo" data-toggle="tab" aria-controls="persInfo" role="tab" title="Person" id="comp">
                                         <span class="round-tab">
                                             <i class="glyphicon glyphicon-home"></i>
                                         </span>
@@ -85,7 +85,7 @@
                                         </div>
                                     </div>
                                     <ul class="list-inline pull-right">
-                                        <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+                                        <li><button type="button" id="compname" class="btn btn-primary next-step">Next</button></li>
                                     </ul>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="boxInfo">
@@ -98,7 +98,12 @@
 
                                         <script>
                                             $(document).ready(function () {
-
+                                                   $("#compname").click(function () {
+                                                     
+                                                       
+                                                       
+                                                       
+                                                   });
                                                 $("#nextWod").click(function () {
 
                                                     var sel_valueDiv = $('#selectDiv option:selected').val();
