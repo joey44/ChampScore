@@ -21,7 +21,7 @@
         $pdo = Database::connect();
 
         $sqlsel = "SELECT * FROM `tbl_competition`\n"
-                . "where comp_ID=22";
+                . "where comp_ID=2";
 
         // $compID = 22;
         $comp_name;
@@ -42,20 +42,52 @@
                 . " on a.fk_comp_ID=b.comp_ID\n"
                 . " group by div_ID";
 
-        $anzDiv = array();
+          $anzDiv = array();
         $div_name = array();
 
 
 
         foreach ($pdo->query($sqlseldiv) as $row) {
-            array_push($anzDiv, $row['anzdiv']);
+              array_push($anzDiv, $row['anzdiv']);
             array_push($div_name, $row['div_name']);
+
 
             // echo $div_name;
             //$anzDiv++;
         }
         //  echo end($anzDiv);
-        // echo end($div_name);
+       
+        $anzdiv = count($anzDiv);
+        
+        
+        
+        
+        
+        
+        //EVENT LADEN
+
+       $sql = "SELECT * , count(fk_div_ID) as anzevt FROM `tbl_event` as a\n"
+     . " INNER JOIN `tbl_division` as b\n"
+     . " on a.fk_div_ID=b.div_ID\n"
+     . " INNER JOIN `tbl_competition` as c\n"
+     . " on b.fk_comp_ID=c.comp_ID\n"
+     . " group by DIV_ID, evt_ID";
+
+          $anzDiv = array();
+        $div_name = array();
+
+
+
+        foreach ($pdo->query($sqlseldiv) as $row) {
+              array_push($anzDiv, $row['anzdiv']);
+            array_push($div_name, $row['div_name']);
+
+
+            // echo $div_name;
+            //$anzDiv++;
+        }
+        //  echo end($anzDiv);
+       
         $anzdiv = count($anzDiv);
         ?>
 
@@ -213,15 +245,13 @@
 
 
 
-                                                    //$("#Div1").text(sel_value);
-
-
+                                           
                                                 });
 
                                                 $("#tabWod").click(function (e) {
                                                     var sel_valueDiv = $('#selectDiv option:selected').val();
 
-                                                    //$("#Div1").text(sel_valueDiv);
+                                                  
 
 
                                                 });
@@ -241,15 +271,7 @@
                                                         $("#divDivison2").removeAttr("style");
                                                         $("#divDivison3").removeAttr("style");
                                                         $("#divDivison4").removeAttr("style");
-                                                        /* $("#Div1").empty(); // Resetting Form
-                                                         $("#Div2").empty(); // Resetting Form
-                                                         $("#Div3").empty(); // Resetting Form
-                                                         $("#Div4").empty(); // Resetting Form
-                                                         $("#Div1").removeAttr("style");
-                                                         $("#Div2").removeAttr("style");
-                                                         $("#Div3").removeAttr("style");
-                                                         $("#Div4").removeAttr("style");
-                                                         */
+                                                    
                                                     } else {
 
                                                         $("#divDivison1").empty(); // Resetting Form
@@ -261,15 +283,7 @@
                                                         $("#divDivison3").removeAttr("style");
                                                         $("#divDivison4").removeAttr("style");
 
-                                                        /*$("#Div1").empty(); // Resetting Form
-                                                         $("#Div2").empty(); // Resetting Form
-                                                         $("#Div3").empty(); // Resetting Form
-                                                         $("#Div4").empty(); // Resetting Form
-                                                         $("#Div1").removeAttr("style");
-                                                         $("#Div2").removeAttr("style");
-                                                         $("#Div3").removeAttr("style");
-                                                         $("#Div4").removeAttr("style");
-                                                         */
+                                                       
                                                         create(sel_value);
                                                     }
                                                 });
@@ -299,22 +313,7 @@
                                                                     $("<br/>"), $("<br/>")
                                                                     );
 
-                                                            /*     $("#nameDiv_" + i).focusin(function () {
-                                                             var $this = $("#nameDiv_" + i);
-                                                             window.setTimeout(function () {
-                                                             $("#Div" + i).empty();
-                                                             }, 0);
-                                                             });
-                                                             */
-
-                                                            /*    $("#nameDiv_" + i).focusout(function () {
-                                                             var $this = $("#nameDiv_" + i);
-                                                             window.setTimeout(function () {
-                                                             $("#Div" + i).append($("<h2/>").text($this.val() + i + " (Division " + i + ")"));
-                                                             }, 0);
-                                                             });
-                                                             */
-
+                                                    
                                                             $("#selectEvent" + i).append($("<option/>", {
                                                                 text: '0',
                                                                 value: '0'
@@ -360,20 +359,11 @@
                                                                 var sel_value1 = $('#selectEvent' + i + ' option:selected').val();
                                                                 if (sel_value1 == 0) {
                                                                     $("#divEvent" + i).empty(); // Resetting Form
-                                                                    /*  $('#DivE1' + i).empty();
-                                                                     $('#DivE2' + i).empty();
-                                                                     $('#DivE3' + i).empty();
-                                                                     $('#DivE4' + i).empty();
-                                                                     */
+                                                                  
                                                                 } else {
 
                                                                     $("#divEvent" + i).empty(); //Resetting Form
-                                                                    // $("#Div" + i).empty();
-                                                                    /*  $('#DivE1' + i).empty();
-                                                                     $('#DivE2' + i).empty();
-                                                                     $('#DivE3' + i).empty();
-                                                                     $('#DivE4' + i).empty();
-                                                                     */
+                                                                   
                                                                     create1(sel_value1);
                                                                 }
 
@@ -390,56 +380,7 @@
                                                                                         id: "event_" + a + i,
                                                                                         name: 'NumbEvent_' + a + i
                                                                                     }));
-                                                                            /*       $("#event_" + a + i).focusin(function () {
-                                                                             var $this = $("#event_" + a + i);
-                                                                             window.setTimeout(function () {
-                                                                             $("#DivE" + a + i).empty();
-                                                                             }, 0);
-                                                                             });
-                                                                             */
-                                                                            /*   $("#event_" + a + i).focusout(function () {
-                                                                             var $this = $("#event_" + a + i);
-                                                                             window.setTimeout(function () {
-                                                                             $("#Div" + i).append($("<div/>", {
-                                                                             id: 'DivE' + a + i
-                                                                             }));
-                                                                             $("#DivE" + a + i).append(($this.val() + " (Event " + a + ")"),
-                                                                             $("<br/>"),
-                                                                             $("<label/>").text("Number of Wods"),
-                                                                             $("<select/>", {
-                                                                             class: 'form-control',
-                                                                             id: 'selectWod' + a + i,
-                                                                             name: 'selWod' + a + i
-                                                                             
-                                                                             
-                                                                             
-                                                                             }), $("<br/>"));
-                                                                             $("#selectWod" + a + i).append($("<option/>", {
-                                                                             text: '0',
-                                                                             value: '0'
-                                                                             }),
-                                                                             $("<option/>", {
-                                                                             text: '1',
-                                                                             value: '1'
-                                                                             }),
-                                                                             $("<option/>", {
-                                                                             text: '2',
-                                                                             value: '2'
-                                                                             }),
-                                                                             $("<option/>", {
-                                                                             text: '3',
-                                                                             value: '3'
-                                                                             }),
-                                                                             $("<option/>", {
-                                                                             text: '4',
-                                                                             value: '4'
-                                                                             })
-                                                                             
-                                                                             
-                                                                             );
-                                                                             }, 0);
-                                                                             });
-                                                                             */
+                                                                        
                                                                         })(a);
                                                                     }
                                                                 }
@@ -468,23 +409,12 @@
 
 
                                                                             var sel_value2 = $('#selectWod' + a + i + ' option:selected').val();
-                                                                            //var sel_value2 =2;
+                                                                          
                                                                             if (sel_value2 == 0) {
-                                                                                /* $("#divEvent" + i).empty(); // Resetting Form
-                                                                                 $('#DivE1' + i).empty();
-                                                                                 $('#DivE2' + i).empty();
-                                                                                 $('#DivE3' + i).empty();
-                                                                                 $('#DivE4' + i).empty();
-                                                                                 */
+                                                                               
 
                                                                             } else {
-                                                                                /*  $("#divEvent" + i).empty(); //Resetting Form
-                                                                                 // $("#Div" + i).empty();
-                                                                                 $('#DivE1' + i).empty();
-                                                                                 $('#DivE2' + i).empty();
-                                                                                 $('#DivE3' + i).empty();
-                                                                                 $('#DivE4' + i).empty();
-                                                                                 */
+                                                                               
 
                                                                                 create2(sel_value2);
 
@@ -540,7 +470,7 @@
 
                                         <div class="col-md-12">
                                             <label for="exampleSelect1">Number of Divisions</label>
-                                            <select class="form-control" id="selectDiv" name="select" >
+                                            <select class="form-control" id="selectDiv" name="select" disabled >
                                                 <option value="0">0</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -554,12 +484,16 @@
                                         <script>
                                              $(document).ready(function () {
                                             var anzDiv = <?php echo $anzdiv ?>;
+                                            
                                              $('#selectDiv').val(anzDiv);
                                            
-                                           
+                                             var divname = '<?php echo json_encode($div_name) ?>';
+                                             var div_name = JSON.parse(divname);
                                             
                                             for (var d = 1; d <= anzDiv; d++) {
+                                              
                                                         (function (d) {
+                                                            
                                                             document.getElementById('divDivison' + d).setAttribute('style', 'border:0.5px solid grey; ');
                                                             document.getElementById('Div' + d).setAttribute('style', 'border:0.5px solid grey; ');
                                                             $("#divDivison" + d).append(
@@ -567,7 +501,9 @@
                                                                 class: 'form-control',
                                                                 type: 'text',
                                                                 id: "nameDiv_" + d,
-                                                                name: 'NumbDiv_' + d
+                                                                name: 'NumbDiv_' + d,
+                                                                value: div_name[d-1]                 
+                                                               
                                                             }),
                                                                     $('<br/>'),
                                                                     $("<label/>").text("Number of Events"),
@@ -581,6 +517,31 @@
 
                                                                         id: 'divEvent' + d}),
                                                                     $("<br/>"), $("<br/>")
+                                                                    );
+                                                            
+                                                            
+                                                             $("#selectEvent" + d).append($("<option/>", {
+                                                                text: '0',
+                                                                value: '0'
+                                                            }),
+                                                                    $("<option/>", {
+                                                                        text: '1',
+                                                                        value: '1'
+                                                                    }),
+                                                                    $("<option/>", {
+                                                                        text: '2',
+                                                                        value: '2'
+                                                                    }),
+                                                                    $("<option/>", {
+                                                                        text: '3',
+                                                                        value: '3'
+                                                                    }),
+                                                                    $("<option/>", {
+                                                                        text: '4',
+                                                                        value: '4'
+                                                                    })
+
+
                                                                     );
 
                                                            
