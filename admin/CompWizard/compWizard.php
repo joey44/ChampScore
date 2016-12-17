@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                     <ul class="list-inline pull-right">
-                                        <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+                                        <li><button type="button" class="btn btn-custom-red btn-lg next-step">Next</button></li>
                                     </ul>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="boxInfo">
@@ -533,8 +533,8 @@
                                     <br/>
                                     <ul class="list-inline pull-right">
 
-                                        <li><button type="button" class="btn btn-default prev-step">Back</button></li>
-                                        <li><button type="button" class="btn btn-primary next-step" id="nextWod">Next</button></li>
+                                        <li><button type="button" class="btn btn-custom-red btn-lg prev-step">Back</button></li>
+                                        <li><button type="button" class="btn btn-custom-red btn-lg next-step" id="nextWod">Next</button></li>
                                     </ul>
                                 </div>
 
@@ -570,9 +570,9 @@
 
                                     </div>
                                     <ul class="list-inline pull-right">
-                                        <li><button type="button" class="btn btn-default prev-step">Back</button></li>
+                                        <li><button type="button" class="btn btn-custom-red btn-lg prev-step">Back</button></li>
                                         <!--<li><button type="button" class="btn btn-default next-step">Skip</button></li>-->
-                                        <li><button type="button" class="btn btn-primary btn-info-full next-step">Next</button></li>
+                                        <li><button type="button" class="btn btn-custom-red btn-lg btn-info-full next-step">Next</button></li>
                                     </ul>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="complete">
@@ -580,10 +580,10 @@
                                         <h5>Completed</h5>
 
                                         <ul class="list-inline pull-right">
-                                            <li><button type="button" class="btn btn-default prev-step">Back</button></li>
+                                            <li><button type="button" class="btn btn-custom-red btn-lg prev-step">Back</button></li>
                                             <!--<li><button type="button" class="btn btn-default next-step">Skip</button></li>-->
 
-                                            <li> <button type="submit" class="btn btn-primary btn-info-full next-step">Save</button></li>
+                                            <li> <button type="submit" class="btn btn-custom-red btn-lg btn-info-full next-step">Save</button></li>
                                         </ul>
                                     </div>
                                 </div>

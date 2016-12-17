@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-if ($_SESSION['eingeloggt'] == false){
-    
+if ($_SESSION['eingeloggt'] == false) {
+
     header("Location: public_html/ChampScoreIndex.php");
     exit();
 }
-
-
 ?>
 <html lang="en">
 
@@ -32,7 +30,7 @@ if ($_SESSION['eingeloggt'] == false){
         <meta name="author" content="">
 
         <title>ChampScore</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -54,14 +52,14 @@ if ($_SESSION['eingeloggt'] == false){
 //Funktion zur Prüfung der Registrierungsdaten
             function mySubmitRegCode()
             {
-                
-                 var comp = '&comp_ID=' + comp_ID;
-                var code = document.getElementById('regcode'+comp_ID).value;
+
+                var comp = '&comp_ID=' + comp_ID;
+                var code = document.getElementById('regcode' + comp_ID).value;
                 var regcode = 'regcode=' + code;
-                
-                var division = '&div_ID=' + document.querySelector('input[name = "Division'+comp_ID + '" ]:checked').value;
+
+                var division = '&div_ID=' + document.querySelector('input[name = "Division' + comp_ID + '" ]:checked').value;
                 var all = regcode + comp + division;
-                
+
                 $.ajax({
                     type: "POST",
                     url: "checkRegCode.php",
@@ -69,7 +67,7 @@ if ($_SESSION['eingeloggt'] == false){
                     data: all,
                     success: function (html)
                     {
-                        $( '#msg' + comp_ID).html(html);
+                        $('#msg' + comp_ID).html(html);
                     },
                     error: function (html)
                     {
@@ -92,7 +90,7 @@ if ($_SESSION['eingeloggt'] == false){
         <div id="wrapper">
 
             <!-- Navigation -->
-            <?php include './navigation.php'; ?>
+<?php include './navigation.php'; ?>
 
             <div id="page-wrapper">
 
@@ -102,70 +100,73 @@ if ($_SESSION['eingeloggt'] == false){
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Enter Registration Code
+                                Competition Registration
                             </h1>
-                            
+
                         </div>
                     </div>
                     <!-- /.row -->
 
                     <div>
                         <!-- /.row -->
-                        <?php
-                        require ("./public_html/php/loginsec/db.inc.php");
+<?php
+require ("./public_html/php/loginsec/db.inc.php");
 
-                        $link = mysqli_connect("localhost", $benutzer, $passwort);
-                        mysqli_select_db($link, $dbname);
-                        $compAbfrage = "select comp_ID, comp_name from tbl_competition";
-                        $compErgebnis = mysqli_query($link, $compAbfrage) or die(mysqli_error());
-
-
-                        while ($compZeile = mysqli_fetch_array($compErgebnis, MYSQLI_ASSOC)) {
-                            $comp_ID = $compZeile['comp_ID'];
+$link = mysqli_connect("localhost", $benutzer, $passwort);
+mysqli_select_db($link, $dbname);
+$compAbfrage = "select comp_ID, comp_name, comp_date from tbl_competition";
+$compErgebnis = mysqli_query($link, $compAbfrage) or die(mysqli_error());
 
 
-                            echo "<div class=\"col-lg-6 col-md-6 col-sm-6\">";
-                            echo"<div class=\"panel panel-default\">";
-                            echo"<div class=\"panel-body\">";
+while ($compZeile = mysqli_fetch_array($compErgebnis, MYSQLI_ASSOC)) {
+    $comp_ID = $compZeile['comp_ID'];
+    $comp_name = $compZeile['comp_name'];
+    $comp_date = date('d.m.Y', strtotime($compZeile['comp_date']));
 
 
-                
-                            echo "<h4 class=\"group inner list-group-item-heading\"><b>" .
-                            $compZeile['comp_name'] . "</b></h4>";
-                            echo "<img class=\"group list-group-image\"  alt=\"\"  />";
+
+    echo "<div class=\"col-lg-6 col-md-6 col-sm-6\">";
+    echo"<div class=\"panel panel-default\">";
+    echo"<div class=\"panel-body\">";
 
 
-                            echo "<p class=\"group inner list-group-item-text\">Beschreibung</p>";
-                            echo "</br>";
 
-                            echo "<form name =\"formRegCodeEnter\" role=\"form\" onsubmit=\"return mySubmitRegCode()\">
+    echo "<h4 class=\"group inner list-group-item-heading\"><b>" .
+    $comp_name . "</b></h4>";
+    echo "<img class=\"group list-group-image\"  alt=\"\"  />";
+
+
+    echo "<p class=\"group inner list-group-item-text\">" . $comp_date . "</p>";
+    echo "</br>";
+
+    echo "<form name =\"formRegCodeEnter\" role=\"form\" onsubmit=\"return mySubmitRegCode()\">
                                                             <div class=\"form-group\">
-                                                            <label>Code</label>
-                                                            <input <type=\"password\" id=\"regcode".$comp_ID."\"  class=\"form-control input-lg\">
+                                                            <label>Registration Code</label>
+                                                            <input <type=\"password\" id=\"regcode" . $comp_ID . "\"  class=\"form-control input-lg\">
                                                             </div>";
 
-                            $link = mysqli_connect("localhost", $benutzer, $passwort);
-                            mysqli_select_db($link, $dbname);
-                            $DivAbfrage = "select div_ID, div_name from tbl_division where fk_comp_ID = " . $comp_ID;
-                            $DivErgebnis = mysqli_query($link, $DivAbfrage) or die(mysqli_error());
+    $link = mysqli_connect("localhost", $benutzer, $passwort);
+    mysqli_select_db($link, $dbname);
+    $DivAbfrage = "select div_ID, div_name from tbl_division where fk_comp_ID = " . $comp_ID;
+    $DivErgebnis = mysqli_query($link, $DivAbfrage) or die(mysqli_error());
 
 
-                            echo "<div class=\"form-group\">
+    echo "<div class=\"form-group\">
                                  <label>Select Division</label><br>";
-                            while ($DivZeile = mysqli_fetch_array($DivErgebnis, MYSQLI_ASSOC)) {
+    while ($DivZeile = mysqli_fetch_array($DivErgebnis, MYSQLI_ASSOC)) {
 
-                                $div_id = $DivZeile['div_ID'];
-                                $div_name = $DivZeile['div_name'];
+        $div_id = $DivZeile['div_ID'];
+        $div_name = $DivZeile['div_name'];
 
 
 
-                                echo "<label class=\"radio-inline\">
-                                            <input type=\"radio\" name=\"Division".$comp_ID."\"  value=\"$div_id\" checked> $div_name
+        echo "<label class=\"radio-inline\">
+                                            <input type=\"radio\" name=\"Division" . $comp_ID . "\"  value=\"$div_id\" checked> $div_name
                                         </label>";
-                            }
+    }
 
-                            echo "</div>";
-                        echo "<div id=\"msg" .$comp_ID. "\">
+    echo "</div>";
+    echo "<div id=\"msg" . $comp_ID . "\">
 
                                                                  </div>
                                                             <button type=\"submit\" onclick= \"comp_ID=$comp_ID\" class=\"btn btn-custom-red btn-lg\" >Submit</button>
@@ -174,15 +175,15 @@ if ($_SESSION['eingeloggt'] == false){
 
 
 
-                            echo"</div>";
-                            echo"</div>";
-                            echo "</div>";
-                        }
+    echo"</div>";
+    echo"</div>";
+    echo "</div>";
+}
 
 
 
-                        mysqli_close($link);
-                        ?>                    
+mysqli_close($link);
+?>                    
 
 
 

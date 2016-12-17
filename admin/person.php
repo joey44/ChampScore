@@ -6,7 +6,6 @@ if ($_SESSION['eingeloggt'] == false) {
     header("Location: public_html/ChampScoreIndex.php");
     exit();
 }
-
 ?>
 
 <?PHP
@@ -83,6 +82,33 @@ if ($count == 1) {
 
         <script type="text/javascript">
 
+
+
+            var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
+                    'onclick="alert(\'Call your custom code here.\')">' +
+                    '<i class="glyphicon glyphicon-tag"></i>' +
+                    '</button>';
+            
+
+            $("#avatar-2").fileinput({
+                overwriteInitial: true,
+                maxFileSize: 1500,
+                showClose: false,
+                showCaption: false,
+                showBrowse: false,
+                browseOnZoneClick: true,
+                removeLabel: '',
+                removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+                removeTitle: 'Cancel or reset changes',
+                elErrorContainer: '#kv-avatar-errors-2',
+                msgErrorClass: 'alert alert-block alert-danger',
+                defaultPreviewContent: '<img src="Images/uploads/default_avatar_male.jpg" alt="Your Avatar" style="width:160px"><h6 class="text-muted">Click to select</h6>',
+                layoutTemplates: {main2: '{preview} ' + btnCust + ' {remove} {browse}'},
+                allowedFileExtensions: ["jpg", "png", "gif"]
+                       
+            });
+
+
             function setCountryGender() {
 
 
@@ -102,7 +128,7 @@ if ($count == 1) {
 
             }
 
-//Funktion zur Prüfung der Registrierungsdaten
+            //Funktion zur Prüfung der Registrierungsdaten
             function mySubmitUserData()
             {
 
@@ -142,6 +168,20 @@ if ($count == 1) {
 
         </script>
 
+        <style>
+            .kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+                text-align: center;
+            }
+            .kv-avatar .file-input {
+                display: table-cell;
+                max-width: 220px;
+            }
+        </style>
+
     </head>
 
     <body onload="setCountryGender()">
@@ -161,7 +201,7 @@ if ($count == 1) {
                             <h1 class="page-header">
                                 Profile
                             </h1>
-                            
+
                             <p>Update your Information to ensure the Hosts have your correct data</p>
                             <br>
                             <!--<ol class="breadcrumb">
@@ -178,8 +218,15 @@ if ($count == 1) {
                         <!-- /.row -->
 
 
+                        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+                        <form class="text-center" action="/avatar_upload.php" method="post" enctype="multipart/form-data">
+                            <div class="kv-avatar center-block" style="width:200px">
+                                <input id="avatar-2" name="avatar-2" type="file" class="file-loading">
+                            </div>
+                        </form>
 
                         <form name ="formUserData" role="form" onsubmit="return mySubmitUserData()">
+
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Email</label>
@@ -535,14 +582,12 @@ if ($count == 1) {
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
 
-    </body>
+
+
 
 </html>
 
 
-
-
-<!-- /#sidebar-wrapper -->
 
 
 
