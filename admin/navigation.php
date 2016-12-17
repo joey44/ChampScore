@@ -15,7 +15,7 @@
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li >
-            <a href="allScoreboardsPublic.php"> ALL SCOREBOARDS
+            <a href="allScoreboardsPublic.php" target="_blank"> ALL SCOREBOARDS
 
             </a>
         </li>
@@ -124,15 +124,15 @@
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div  class="collapse navbar-collapse navbar-ex1-collapse">
-        
+
         <ul  class="nav navbar-nav side-nav">
             <li><figure class="profile-userpic">
-            <img src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" class="img-responsive" alt="Profile Picture">
-          </figure>
-                
+                    <img src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" class="img-responsive" alt="Profile Picture">
+                </figure>
+
                 <br></li>
-          
-            
+
+
             <li>
                 <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
             </li>
