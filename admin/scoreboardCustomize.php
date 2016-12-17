@@ -7,12 +7,6 @@ if ($_SESSION['eingeloggt'] == false){
     exit();
 }
 
-if (!isset($_SESSION['visited'])) {
-    echo "Du hast diese Seite noch nicht besucht";
-    $_SESSION['visited'] = true;
-} else {
-    /* echo "Du hast diese Seite zuvor schon aufgerufen"; */
-}
 ?>
 <html lang="en">
 
