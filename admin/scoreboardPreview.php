@@ -40,63 +40,7 @@ session_start();
 
 
 
-            function onSelectDivision()
-            {
 
-                var div_ID = 'div_ID=' + document.getElementById("selDiv").options[document.getElementById("selDiv").selectedIndex].value;
-
-
-                $.ajax({
-                    type: "POST",
-                    url: "ScoreboardViewSelWods.php",
-                    cache: false,
-                    data: div_ID,
-                    success: function (html)
-                    {
-                        $('#wods').html(html);
-                    },
-                    error: function (html)
-                    {
-
-                        alert('error');
-                    }
-
-                }
-                );
-
-                return false;
-
-            }
-
-            function onSelectWod(i_wod_ID, i_div_ID)
-            {
-
-                var wod_ID = 'wod_ID=' + i_wod_ID;
-                var div_ID = '&div_ID=' + i_div_ID;
-                var all = wod_ID + div_ID;
-
-
-                $.ajax({
-                    type: "POST",
-                    url: "ScoreboardViewSelResults.php",
-                    cache: false,
-                    data: all,
-                    success: function (html)
-                    {
-                        $('#result').html(html);
-                    },
-                    error: function (html)
-                    {
-
-                        alert('error');
-                    }
-
-                }
-                );
-
-                return false;
-
-            }
 
         </script>
     </head>
@@ -124,34 +68,58 @@ session_start();
 
                 <ul  class="nav navbar-nav side-nav">
                     <li>
-                        <a> Background Color</a>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <p>Score Color:   <button style="width: 25px ;height: 25px" class="jscolor {valueElement:'chosen-value-score', onFineChange:'setTextColorScore(this)'} btn btn-default btn-md">
+                        <a> Background Color <button style="width: 25px ;height: 25px" class="jscolor {valueElement:'chosen-value-score', onFineChange:'setBGColorScore(this)'} btn btn-default btn-md">
 
-                                </button></p>
+                            </button></a>
 
-                            <p>HEX value: <input  class="form-control" name="colorScore" id="chosen-value-score" value="000000">
-                            </p>
-                            <script>
-                                function setTextColorScore(picker) {
-                                   
-                                    
-                                    $("#bodycont").css('background-color', '#' + picker.toString());
-                                    document.getElementsByID('bodycont')[0].style.color = '#' + picker.toString();
-                                     $("#bodycont2").css('background-color', '#' + picker.toString());
-                                    document.getElementsByID('bodycont2')[0].style.color = '#' + picker.toString();
+                        <script>
+                            function setBGColorScore(picker) {
 
-                                }
-                            </script>
-                        </div>
+
+                                $("#bodycont").css('background-color', '#' + picker.toString());
+                                document.getElementsByID('bodycont')[0].style.color = '#' + picker.toString();
+                                $("#bodycont2").css('background-color', '#' + picker.toString());
+                                document.getElementsByID('bodycont2')[0].style.color = '#' + picker.toString();
+
+                            }
+                        </script>
+
                     </li>
+
 
 
                     <li>
+                        <a> Title Color <button style="width: 25px ;height: 25px" class="jscolor {valueElement:'chosen-value-score', onFineChange:'setTextColorTitle(this)'} btn btn-default btn-md">
+
+                            </button></a>
+
+                        <script>
+                            function setTextColorTitle(picker) {
+
+
+                                $("#title").css('color', '#' + picker.toString());
+                                document.getElementsByID('title')[0].style.color = '#' + picker.toString();
+
+
+                            }
+                        </script>
 
                     </li>
                     <li>
+                        <a> Score Boxes <button style="width: 25px ;height: 25px" class="jscolor {valueElement:'chosen-value-score', onFineChange:'setBGColorScoreBox(this)'} btn btn-default btn-md">
 
+                            </button></a>
+
+                        <script>
+                            function setBGColorScoreBox(picker) {
+
+
+                                $("scoreBox").css('background-color', '#' + picker.toString());
+                                document.getElementsByName('scoreBox')[0].style.color = '#' + picker.toString();
+
+
+                            }
+                        </script>
                     </li>
 
                     <li>
@@ -185,7 +153,7 @@ session_start();
 
 
                             foreach ($pdo->query($sql) as $row) {
-                                echo "<h2>" . $row['comp_name'] . "</h2>";
+                                echo "<h1 id=\"title\">" . $row['comp_name'] . "</h1>";
                             }
                             ?>
                             <br>
@@ -229,16 +197,59 @@ session_start();
 
                             <div style=" overflow: auto;
                                  word-wrap: normal;
-                                 white-space: pre;"  id ="wods"></div>
+                                 white-space: pre;"  id ="wods">
+
+                                <?php
+                                for ($x = 0; $x <= 5; $x++) {
+                                    echo "<button class= \"btn btn-custom-red btn-lg\">Event " . $x . " </br> WOD " . $x .
+                                    "</button>";
+                                }
+                                ?>
+                            </div>
 
 
                             <!--<table class="table table-hover col-lg-12 col-md-12" id ="result" ></table>
                             -->
                         </div>
                     </div>
+                    <br>
+                    <br>
                     <div class="row">
+
                         <div  class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0 " >
-                            <div id ="result"></div>
+                            <div id ="result">
+                                <?php
+                                $testscore = 234;
+                                for ($x = 1; $x <= 10; $x++) {
+
+
+                                    echo "<div id=\"panel\" class=\"panel panel-primary \"  name =\"scoreBox\">
+
+
+                                                <div class=\"panel-body\">
+
+                                                    <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2\" style=\"text-align: left\">
+
+                                                        <h2 id=\"FCPlace\">" . number_format($x) . "</h2>
+                                                    </div>
+
+                                                    <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-7\" style=\"text-align: left\" >
+
+                                                        <h2 id=\"FCName\">Athlete " . $x . "</h2>
+                                                    </div>
+
+                                                    <div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-3\" style=\"text-align: right\">
+
+                                                        <h2 id=\"FCScore\">" . number_format($testscore) . "</h2>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>";
+                                    $testscore = $testscore * 0.9;
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
 
