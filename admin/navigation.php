@@ -182,5 +182,8 @@
             
          </ul>
      </div>
+            
             <!-- /.navbar-collapse -->
-            </nav>
+        </ul>
+    </div>
+</nav>
