@@ -26,7 +26,7 @@ if ($wod_ID == "overall123") {
 
 
         while ($row = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
-            $msg = "<p>" . $row['Description'] . "</p>";
+            $msg = "<center><h3>" . $row['Description'] . "</h3></center> <br> <br> <br>";
 
             echo $msg;
         }
@@ -90,16 +90,41 @@ if ($wod_ID == "overall123") {
     $count = mysqli_num_rows($ergebnis);
 
     if ($count >= 1) {
-
+        $index = 1;
         while ($row = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
+
             $msg = "
-      <tr>
-        <td>" . $row['Name'] . "</td>
-        <td> " . $row['Box'] . " </td>
-        <td> " . $row['Punkte'] . " </td>
-      </tr>";
+               <div id=\"panel\" class=\"panel panel-primary \">
+
+
+                                                <div class=\"panel-body\" id=\"FCBack\">
+
+                                                    <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2\" style=\"text-align: left\">
+
+                                                        <h2 id=\"FCPlace\">" . $index . "</h2>
+                                                    </div>
+
+                                                    <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-7\" style=\"text-align: left\" >
+
+                                                        <h2 id=\"FCName\">" . $row['Name'] . "</h2>
+                                                    </div>
+
+                                                    <div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-3\" style=\"text-align: right\">
+
+                                                        <h2 id=\"FCScore\">" . $row['Punkte'] . "</h2>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>";
+            /* <tr>
+              <td>" . $row['Name'] . "</td>
+              <td> " . $row['Box'] . " </td>
+              <td> " . $row['Punkte'] . " </td>
+              </tr>"; */
 
             echo $msg;
+            $index++;
         }
     }
 

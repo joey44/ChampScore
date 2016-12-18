@@ -18,7 +18,7 @@ $count = mysqli_num_rows($ergebnis);
 if ($count >= 1) {
 
     while ($row = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
-        $msg = "<button onclick='onSelectWod(" . $row['wod_ID'] . ',' . $div_ID . ") '  value='" . $div_ID . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' ' class='btn btn-primary btn-lg'>
+        $msg = "<button class= \"btn btn-custom-red btn-lg\" onclick='onSelectWod(" . $row['wod_ID'] . ',' . $div_ID . ") '  value='" . $div_ID . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' ' class='btn btn-primary btn-lg'>
          " . $row['evt_name'] . " <br/> " . $row['wod_name'] . " </button>  </th> ";
 
         echo $msg;

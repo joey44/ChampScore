@@ -112,14 +112,15 @@ session_start();
 
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper"><center>
 
-            <div class="container-fluid">
+                <div class="container-fluid">
 
+                    <!-- Page Heading -->
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12"><div class="container">
+                    <div class="row" > 
+                        <div  class=" col-lg-2 col-lg-offset-5 col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 ">
+
 
                             <?php
                             include 'Database.php';
@@ -132,14 +133,15 @@ session_start();
 
 
                             foreach ($pdo->query($sql) as $row) {
-                                echo "<h2>Results: " . $row['comp_name'] . "</h2>";
+                                echo "<h2>" . $row['comp_name'] . "</h2>";
                             }
                             ?>
+                            <br>
 
                             <!--Renato  -->
                             <form class="form-horizontal"  method="post"> 
 
-                                <div class = "form-group col-lg-6 col-md-6" >
+                                <div class = "form-group " >
 
                                     <select class = "form-control" id = "selDiv" onChange="onSelectDivision();">
                                         <option value="0">Select Division</option>
@@ -149,38 +151,53 @@ session_start();
 
                                         foreach ($pdo->query($sql) as $row) {
 
-
                                             echo "<option value=" . $row['div_ID'] . ">" . $row['div_name'] . "</option>";
                                         }
                                         ?>
 
 
                                     </select>
+
                                 </div>
 
 
+
+
                             </form>
-                            <br>
-                            <div id ="wods" class="col-lg-12 col-md-12"></div>
-                            <br>
-                            <table class="table table-hover col-lg-12 col-md-12" id ="result" ></table>
 
-
-
-                        </div>       
-
-
+                        </div>
 
                     </div>
+                    <br> 
+
+
+
+                    <div  class="row">
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                            <div style=" overflow: auto;
+                                 word-wrap: normal;
+                                 white-space: pre;"  id ="wods"></div>
+
+
+                            <!--<table class="table table-hover col-lg-12 col-md-12" id ="result" ></table>
+                            -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div  class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0 " >
+                            <div id ="result"></div>
+                        </div>
+                    </div>
+
+
+                    <!-- /.row -->
+
                 </div>
 
+                <!-- /.container-fluid -->
 
-                <!-- /.row -->
-
-            </div>
-            <!-- /.container-fluid -->
-
-        </div>
+            </center></div>
         <!-- /#page-wrapper -->
 
 
