@@ -21,7 +21,7 @@
         $pdo = Database::connect();
 
         $sqlsel = "SELECT * FROM `tbl_competition`\n"
-                . "where comp_ID=2";
+                . "where comp_ID=22";
 
         // $compID = 22;
         $comp_name;
@@ -34,7 +34,7 @@
             $comp_regcode = $row['comp_regcode'];
         }
 
-
+        echo $comp_name;
         //DIVISION LADEN
 
         $sqlseldiv = "SELECT * , count(fk_comp_ID) as anzdiv FROM `tbl_division` as a\n"
@@ -71,37 +71,9 @@
         //EVENT LADEN
         
         
-        for ($i = 0; $i < $anzdiv; $i++) {
-       $divID= $div_id[$i];     
-            
        
-
-       $sqlselevt = "SELECT * , count(fk_div_ID) as anzevt FROM `tbl_event` as a\n"
-     . " INNER JOIN `tbl_division` as b\n"
-     . " on a.fk_div_ID=b.div_ID\n"
-     . " INNER JOIN `tbl_competition` as c\n"
-     . " on b.fk_comp_ID=c.comp_ID\n"
-     . " where b.div_ID=".$divID." \n"
-     . " group by evt_ID";
-               
-
-          $anzevt = "anzevent";
-        ${$anzevt.$i} = array();
-
-
-
-        foreach ($pdo->query($sqlselevt) as $row) {
-              array_push(${$anzevt.$i}, $row['anzevt']);
-           
-
-
-        }
-         //echo ${$anzevt.$i}[0];   
-        // echo $anzevent1[0]; 
-        // echo $anzdiv;
-         //echo $divID;
-        //$anzdiv = count($anzDiv);
-                 }
+       
+                 
               
         ?>
 
@@ -155,7 +127,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Competition Name</label>
-                                                <input type="text" class="form-control" id="compName" placeholder="Competition Name" value=<?php echo $comp_name ?>>
+                                                <input type="text" class="form-control" id="compName" placeholder="Competition Name" value=<?php echo $comp_name; ?>>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Registration Code for athletes</label>

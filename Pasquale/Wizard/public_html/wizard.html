@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="Wizard.css" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="Wizard.js"></script>
+        <script type="text/javascript" src="js/wizard.js"></script>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../prettify.css" rel="stylesheet">
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"></script>
@@ -33,7 +33,7 @@
                                 </li>
 
                                 <li role="presentation" class="disabled">
-                                    <a href="#boxInfo" data-toggle="tab" aria-controls="boxInfo" role="tab" title="Box">
+                                    <a href="#boxInfo" data-toggle="tab" aria-controls="boxInfo" role="tab" title="Box" id="box">
                                         <span class="round-tab">
                                             <i class="glyphicon glyphicon-pencil"></i>
                                         </span>
@@ -64,11 +64,11 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Competition Name</label>
-                                                <input type="text" class="form-control" id="compName" name="compName" placeholder="Competition Name">
+                                                <input type="text" class="form-control" id="compName" name="comp_name" placeholder="Competition Name">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Registration Code for athletes</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" name="compregCode" placeholder="Registration Code for athletes">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" name="compreg_code" placeholder="Registration Code for athletes">
                                             </div>
                                         </div>
 
@@ -77,7 +77,7 @@
 
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Competition Date</label>
-                                                <input type="date" class="form-control" name="compDate">
+                                                <input type="date" class="form-control" name="comp_date">
 
                                                 
                                                
@@ -85,7 +85,7 @@
                                         </div>
                                     </div>
                                     <ul class="list-inline pull-right">
-                                        <li><button type="button" id="compname" class="btn btn-primary next-step">Next</button></li>
+                                        <li><button type="button" id="compinfos" class="btn btn-primary next-step">Next</button></li>
                                     </ul>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="boxInfo">
@@ -98,12 +98,7 @@
 
                                         <script>
                                             $(document).ready(function () {
-                                                   $("#compname").click(function () {
-                                                     
-                                                       
-                                                       
-                                                       
-                                                   });
+                                                   
                                                 $("#nextWod").click(function () {
 
                                                     var sel_valueDiv = $('#selectDiv option:selected').val();
