@@ -3,6 +3,7 @@
  list ($selected_wod, $divison) = explode('X', $_POST['btn_pdf']);
 
 
+
 require('mysql_table.php');
 
 class PDF extends PDF_MySQL_Table
@@ -11,7 +12,7 @@ function Header()
 {
 	//Title
 	$this->SetFont('Arial','',18);
-	$this->Cell(0,6,'Champscore Crossfit',0,1,'C');
+	$this->Cell(0,6,'ChampScore.Net',0,1,'C');
 	$this->Ln(10);
 	//Ensure table header is output
 	parent::Header();
@@ -25,8 +26,33 @@ mysql_select_db('champscore_net');
 $pdf=new PDF();
 $pdf->AddPage();
 
-if ($selected_wod == "overall123"){
+$timestamp = date("d.m.Y",time());
+
+$pdf->Cell(7,5,"".$timestamp."", FALSE); // Ausgabe als Zelle für eine Tabelle ohne Rahmen änderst Du FALSE in TRUE hast du einen Rahmen
+
+
+
+ $pdf->Ln();
+  $pdf->Ln();
+  
+$sql = "SELECT `comp_name` as Competition , div_name as Division FROM `tbl_competition` join tbl_division on comp_ID = fk_comp_ID where div_id = ".$divison;
+
+ $pdf->Table( $sql);
+ $pdf->Ln();
+ 
+
+
+if ($selected_wod == 'overall123'){
+
+    $head = "Overall Ranking";
     
+    $pdf->Cell(7,5,"".$head."", FALSE); // Ausgabe als Zelle für eine Tabelle ohne Rahmen änderst Du FALSE in TRUE hast du einen Rahmen
+
+
+
+ $pdf->Ln();
+ 
+ 
     $sql = "Select @rownum := @rownum + 1 as Rank, t1.Name, t1.Box, t1.Points From (SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Points FROM\n"
     . "tbl_user u inner\n"
     . "join tbl_user_division d\n"
@@ -39,8 +65,11 @@ if ($selected_wod == "overall123"){
  $pdf->Table( $sql);
         
 
- 
+
     
+
+} else{
+
 
 }
 else{
@@ -61,7 +90,7 @@ $pdf->Table("Select @rownum := @rownum + 1 as Rank, t1.Name, t1.Box, t1.Points F
 }
 
 
+ $pdf->Output();
 
 
-$pdf->Output();
 ?>
