@@ -28,7 +28,7 @@ $pdf->AddPage();
 
 $timestamp = date("d.m.Y",time());
 
-$pdf->Cell(7,5,"".$timestamp." Judge Sheet"."", FALSE); // Ausgabe als Zelle für eine Tabelle ohne Rahmen änderst Du FALSE in TRUE hast du einen Rahmen
+$pdf->Cell(7,5,"".$timestamp." Judge Sheet - Athlete: "."", FALSE); // Ausgabe als Zelle für eine Tabelle ohne Rahmen änderst Du FALSE in TRUE hast du einen Rahmen
 
 
 
