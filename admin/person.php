@@ -220,15 +220,18 @@ if ($count == 1) {
                         <!-- /.row -->
 
 
-                        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
-                        <form class="text-center" action="avatar_upload.php" method="post" enctype="multipart/form-data">
-                            <div class="kv-avatar center-block" style="width:200px">
-                                <input id="avatar-2" name="avatar-2" type="file" class="file-loading">
-                            </div>
-                        </form>
+
 
                         <form name ="formUserData" role="form" onsubmit="return mySubmitUserData()">
 
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Profile picture</label>
+                                    <div class="kv-avatar " style="width:200px">
+                                        <input id="avatar-2" name="avatar-2" type="file" class="file-loading">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Email</label>
