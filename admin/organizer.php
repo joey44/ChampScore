@@ -241,7 +241,7 @@ if ($_SESSION['eingeloggt'] == false) {
                                                 <td><a href = \"ScoreboardView.php?comp_ID=" . $zeile['comp_ID'] . "\" target=\"_blank\" >" . $zeile['comp_name'] . "</a></td>
                                                 <td>" . $zeile['comp_date'] . "</td>
                                                 <td>" . $valActive . "</td>
-                                                <td><a href = \"scoreboardPreview.php?comp_ID=" . $zeile['comp_ID'] . "\" ><i class=\"fa fa-th-list\"></i> Scoreboard</a></td>
+                                                <td><a href = \"scoreboardPreview.php?comp_ID=" . $zeile['comp_ID'] . "\" target=\"_blank\" ><i class=\"fa fa-th-list\"></i> Scoreboard</a></td>
                                                 <td>" . $AddResultsField . "</td>
                                                 <td><a href = \"javascript:;\" onclick=\"deleteComp(" . $zeile['comp_ID'] . ");\" ><i class=\"fa fa-trash\"></i> Delete</a></td>
                                                 </tr>";
