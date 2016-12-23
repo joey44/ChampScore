@@ -65,7 +65,7 @@ if ($_SESSION['eingeloggt'] == false) {
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Customize Competition
+                                Judging Sheets
 
                             </h1>
 
@@ -79,8 +79,10 @@ if ($_SESSION['eingeloggt'] == false) {
 
 
                             <?php
+                            
                             $comp_ID =$_GET['comp_ID'];
-                            include 'CompWizard/editwizard.php';
+                            
+                            include 'judges_sheet.php';
                             ?>
 
 
