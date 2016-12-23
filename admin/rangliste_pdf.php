@@ -1,6 +1,6 @@
 <?php
 
-$selected_wod = $_POST['btn_pdf'];
+ list ($selected_wod, $divison) = explode('X', $_POST['btn_pdf']);
 
 
 require('mysql_table.php');
@@ -25,17 +25,41 @@ mysql_select_db('champscore_net');
 $pdf=new PDF();
 $pdf->AddPage();
 
-if ($selected_wod != "overall123"){
+if ($selected_wod == "overall123"){
+    
+    $sql = "Select @rownum := @rownum + 1 as Rank, t1.Name, t1.Box, t1.Points From (SELECT u.user_name as Name, u.user_box as Box, SUM(r.res_score) as Points FROM\n"
+    . "tbl_user u inner\n"
+    . "join tbl_user_division d\n"
+    . "on u.user_ID = d.fk_user_ID inner \n"
+    . "join tbl_result r on d.user_div_ID = r.fk_user_div_ID \n"
+    . "WHERE d.fk_div_ID = ".$divison." GROUP by Name\n"
+    . "Order by Points) as t1\n"
+    . "cross join (select @rownum := 0) r ";
+    
+ $pdf->Table( $sql);
+        
+
+ 
     
 
+}
+else{
+    
 $pdf->Table("SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =".$selected_wod);
 
+$pdf->Ln();
 
-$pdf->Table("SELECT u.user_name as Name, u.user_box as Box, r.res_score as Points FROM tbl_user u inner join tbl_user_division d \n"
-    . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID where r.fk_wod_ID =".$selected_wod." ORDER BY Points ASC");
+$pdf->Table("Select @rownum := @rownum + 1 as Rank, t1.Name, t1.Box, t1.Points From ("
+        . "SELECT u.user_name as Name, u.user_box as Box, r.res_score as Points "
+        . "FROM tbl_user u inner join tbl_user_division d \n"
+    . "on u.user_ID = d.fk_user_ID inner join tbl_result r on d.user_div_ID = r.fk_user_div_ID "
+        . "where r.fk_wod_ID =".$selected_wod." ORDER BY Points ASC) as t1\n"
+    . "cross join (select @rownum := 0) r ");
 
 
+    
 }
+
 
 
 

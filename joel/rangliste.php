@@ -76,7 +76,7 @@
         if (isset($_POST['wod_button']))
              {
                       $dataString = $_POST['wod_button'];
-                      list ($divison, $selected_wod) = split('[X]', $dataString);
+                       list ($divison, $selected_wod) = explode('X', $dataString);
                      
              }
              else{
