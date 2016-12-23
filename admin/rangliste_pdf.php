@@ -42,7 +42,7 @@ $sql = "SELECT `comp_name` as Competition , div_name as Division FROM `tbl_compe
  
 
 
-if ($selected_wod == 'overall123'){
+if ($selected_wod == 0){
 
     $head = "Overall Ranking";
     
