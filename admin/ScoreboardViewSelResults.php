@@ -146,14 +146,7 @@ $msg = "<form  action=\"rangliste_pdf.php\" method=\"post\">
 
                                 <button type=\"submit\" value=".$stringDivWod." id=\"btn_pdf\" name=\"btn_pdf\" class=\"btn btn-custom-red btn-lg\">PDF Export</button>
 
-            </form > 
-
-            <form  action=\"judges_pdf.php\" method=\"post\">  
-
-                <button type=\"submit\" value=".$stringDivWod." id=\"judges_pdf\" name=\"judges_pdf\" class=\"btn btn-custom-red btn-lg\">PDF Judges</button>
-
-
-</form >";
+            </form > ";
 //echo $stringDivWod;
 echo $msg;
 
