@@ -54,10 +54,10 @@ if ($_SESSION['eingeloggt'] == false) {
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Add Score <small>name</small>
+                                Add Score
 
                             </h1>
-                            <ol class="breadcrumb">
+                            <!--<ol class="breadcrumb">
                                 <li>
                                     <i class="fa fa-dashboard"></i>  <a href="index.php">Home</a>
                                 </li>
@@ -67,7 +67,7 @@ if ($_SESSION['eingeloggt'] == false) {
                                 <li class="active">
                                     <i class="fa fa-pencil"></i> Add Score
                                 </li>
-                            </ol>
+                            </ol>-->
                         </div>
                     </div>
                     <!-- /.row -->

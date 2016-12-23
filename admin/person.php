@@ -65,8 +65,11 @@ if ($count == 1) {
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
+
         <!-- Custom CSS -->
         <link href="css/sb-admin.css" rel="stylesheet">
+
+        <script src="js/jquery.js"></script>
 
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -78,7 +81,19 @@ if ($count == 1) {
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-
+        <style>
+            .kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+                text-align: center;
+            }
+            .kv-avatar .file-input {
+                display: table-cell;
+                max-width: 220px;
+            }
+        </style>
 
         <script type="text/javascript">
 
@@ -88,7 +103,6 @@ if ($count == 1) {
                     'onclick="alert(\'Call your custom code here.\')">' +
                     '<i class="glyphicon glyphicon-tag"></i>' +
                     '</button>';
-            
 
             $("#avatar-2").fileinput({
                 overwriteInitial: true,
@@ -105,8 +119,8 @@ if ($count == 1) {
                 defaultPreviewContent: '<img src="Images/uploads/default_avatar_male.jpg" alt="Your Avatar" style="width:160px"><h6 class="text-muted">Click to select</h6>',
                 layoutTemplates: {main2: '{preview} ' + btnCust + ' {remove} {browse}'},
                 allowedFileExtensions: ["jpg", "png", "gif"]
-                       
             });
+
 
 
             function setCountryGender() {
@@ -168,19 +182,7 @@ if ($count == 1) {
 
         </script>
 
-        <style>
-            .kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
-                margin: 0;
-                padding: 0;
-                border: none;
-                box-shadow: none;
-                text-align: center;
-            }
-            .kv-avatar .file-input {
-                display: table-cell;
-                max-width: 220px;
-            }
-        </style>
+
 
     </head>
 
@@ -219,7 +221,7 @@ if ($count == 1) {
 
 
                         <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
-                        <form class="text-center" action="/avatar_upload.php" method="post" enctype="multipart/form-data">
+                        <form class="text-center" action="avatar_upload.php" method="post" enctype="multipart/form-data">
                             <div class="kv-avatar center-block" style="width:200px">
                                 <input id="avatar-2" name="avatar-2" type="file" class="file-loading">
                             </div>
@@ -583,6 +585,7 @@ if ($count == 1) {
         <script src="js/bootstrap.min.js"></script>
 
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
 
 </html>
