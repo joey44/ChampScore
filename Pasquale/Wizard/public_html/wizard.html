@@ -57,7 +57,7 @@
                             </ul>
                         </div>
 
-                        <form role="form" action="inputDB.php" method="post">
+                        <form role="form" action="updateDB.php" method="post">
                             <div class="tab-content">
                                 <div class="tab-pane active" role="tabpanel" id="persInfo">
                                     <div class="persInfo">
@@ -99,138 +99,7 @@
                                         <script>
                                             $(document).ready(function () {
                                                    
-                                                $("#nextWod").click(function () {
-
-                                                    var sel_valueDiv = $('#selectDiv option:selected').val();
-
-                                                    for (var i = 1; i <= sel_valueDiv; i++) {
-
-                                                        $("#Div" + i).empty();
-                                                        var sel_valueEv = $('#selectEvent' + i + ' option:selected').val();
-                                                        (function (i) {
-
-                                                            var $this1 = $("#nameDiv_" + i);
-                                                            $("#Div" + i).append($("<h1/>"
-
-                                                                    ).text($this1.val() + " (Division " + i + ")"));
-
-
-                                                            for (var a = 1; a <= sel_valueEv; a++) {
-                                                                //$("#eventa" +a+ i).remove();
-                                                                (function (a) {
-                                                                    var $this = $("#event_" + a + i).val();
-
-                                                                    $("#Div" + i).append($("<div/>", {
-                                                                        id: 'DivEv' + a + i
-                                                                    }));
-                                                                    $("#DivEv" + a + i).append($("<h2/>"
-
-                                                                            ).text($this + " (Event " + a + ")")
-
-
-
-
-                                                                            );
-
-                                                                    var sel_valueWod = $('#selectWod' + a + i + ' option:selected').val();
-
-                                                                    for (var c = 1; c <= sel_valueWod; c++) {
-                                                                        //$("#eventa" +a+ i).remove();
-                                                                        (function (c) {
-                                                                            var $this = $("#inputWod" + a + i + c).val();
-                                                                            var $this1 = $("#textWod" + a + i + c).val();
-
-                                                                            $("#DivEv" + a + i).append($("<div/>", {
-                                                                                id: 'DivWod' + a + i + c
-                                                                            }));
-                                                                            $("#DivWod" + a + i + c).append($("<h3/>"
-
-                                                                                    ).text($this + " (WOD Name " + c + ")"),
-                                                                                    $("<p/>").text($this1 + " (WOD Description " + c + ")")
-
-                                                                                    );
-
-
-                                                                        })(c);
-                                                                    }
-
-
-                                                                })(a);
-                                                            }
-
-                                                        })(i);
-
-                                                    }
-
-
-
-                                                });
-
-                                                $("#tabWod").click(function () {
-                                                     var sel_valueDiv = $('#selectDiv option:selected').val();
-
-                                                    for (var i = 1; i <= sel_valueDiv; i++) {
-
-                                                        $("#Div" + i).empty();
-                                                        var sel_valueEv = $('#selectEvent' + i + ' option:selected').val();
-                                                        (function (i) {
-
-                                                            var $this1 = $("#nameDiv_" + i);
-                                                            $("#Div" + i).append($("<h1/>"
-
-                                                                    ).text($this1.val() + " (Division " + i + ")"));
-
-
-                                                            for (var a = 1; a <= sel_valueEv; a++) {
-                                                                //$("#eventa" +a+ i).remove();
-                                                                (function (a) {
-                                                                    var $this = $("#event_" + a + i).val();
-
-                                                                    $("#Div" + i).append($("<div/>", {
-                                                                        id: 'DivEv' + a + i
-                                                                    }));
-                                                                    $("#DivEv" + a + i).append($("<h2/>"
-
-                                                                            ).text($this + " (Event " + a + ")")
-
-
-
-
-                                                                            );
-
-                                                                    var sel_valueWod = $('#selectWod' + a + i + ' option:selected').val();
-
-                                                                    for (var c = 1; c <= sel_valueWod; c++) {
-                                                                        //$("#eventa" +a+ i).remove();
-                                                                        (function (c) {
-                                                                            var $this = $("#inputWod" + a + i + c).val();
-                                                                            var $this1 = $("#textWod" + a + i + c).val();
-
-                                                                            $("#DivEv" + a + i).append($("<div/>", {
-                                                                                id: 'DivWod' + a + i + c
-                                                                            }));
-                                                                            $("#DivWod" + a + i + c).append($("<h3/>"
-
-                                                                                    ).text($this + " (WOD Name " + c + ")"),
-                                                                                    $("<p/>").text($this1 + " (WOD Description " + c + ")")
-
-                                                                                    );
-
-
-                                                                        })(c);
-                                                                    }
-
-
-                                                                })(a);
-                                                            }
-
-                                                        })(i);
-
-                                                    }
-
-
-
-                                                });
+                                              
 
 
                                                 //DIFINE DIVISION
@@ -599,14 +468,12 @@
                                         <ul class="list-inline pull-right">
                                             <li><button type="button" class="btn btn-default prev-step">Back</button></li>
                                             <!--<li><button type="button" class="btn btn-default next-step">Skip</button></li>-->
-
-                                            <li> <button type="submit" class="btn btn-primary btn-info-full next-step">Save</button></li>
+                                            <li> <button type="submit" class="btn btn-custom-red btn-lg btn-info-full next-step">Save</button></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-
                         </form>
                     </div>
                 </section>
