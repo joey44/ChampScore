@@ -186,7 +186,12 @@ session_start();
                     </div>
                     <div class="row">
                         <div  class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0 " >
-                            <div id ="result"></div>
+                            <div id ="result">
+
+
+                            </div>
+
+
                         </div>
                     </div>
 
@@ -197,7 +202,10 @@ session_start();
 
                 <!-- /.container-fluid -->
 
-            </center></div>
+            </center>
+
+
+        </div>
         <!-- /#page-wrapper -->
 
 

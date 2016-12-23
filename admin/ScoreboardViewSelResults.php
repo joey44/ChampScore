@@ -116,7 +116,8 @@ if ($wod_ID == "overall123") {
 
 
                                                 </div>
-                                            </div>";
+                                            </div>
+                                            ";
             /* <tr>
               <td>" . $row['Name'] . "</td>
               <td> " . $row['Box'] . " </td>
@@ -139,6 +140,19 @@ if ($wod_ID == "overall123") {
 }
 $msg = "</tbody>
 </table>";
+
+$msg = "<form  action=\"rangliste_pdf.php\" method=\"post\">  
+
+                                <button type=\"submit\" value=\"1 \"X\" 1 \" id=\"btn_pdf\" name=\"btn_pdf\" class=\"btn btn-custom-red btn-lg\">PDF Export</button>
+
+            </form > 
+
+            <form  action=\"judges_pdf.php\" method=\"post\">  
+
+                <button type=\"submit\" value=\" 1 \"X\" 1 \" id=\"judges_pdf\" name=\"judges_pdf\" class=\"btn btn-custom-red btn-lg\">PDF Judges</button>
+
+
+</form >";
 echo $msg;
 
 /* Database::disconnect();
