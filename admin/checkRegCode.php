@@ -25,9 +25,9 @@ if ($count >= 1) {
     $msg = "<div class=\"alert alert-danger\"><p id =\"msg\"> <strong>Shit!</strong> Schon angemeldet<p></div> ";
 } else {
 
-    echo $regcode;
-    echo $comp_ID;
-    echo $div_ID;
+    //echo $regcode;
+    //echo $comp_ID;
+    //echo $div_ID;
     /* check code exists */
     $link = mysqli_connect("localhost", $benutzer, $passwort);
     mysqli_select_db($link, $dbname);
