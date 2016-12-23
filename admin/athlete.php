@@ -206,7 +206,7 @@ if ($_SESSION['eingeloggt'] == false){
                                         
 
                                         echo "<tr id=\"row" . $zeile['comp_ID'] . "\">
-                                                <td><a href = \"ScoreboardView.php?comp_ID=$ranglisteID\" >" . $zeile['comp_name'] . "</a></td>
+                                                <td><a href = \"ScoreboardView.php?comp_ID=$ranglisteID\" target=\"_blank\" >" . $zeile['comp_name'] . "</a></td>
                                                 <td>" . $zeile['comp_date'] . "</td>
                                                 </tr>";
                                     }
