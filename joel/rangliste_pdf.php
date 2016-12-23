@@ -70,9 +70,6 @@ if ($selected_wod == 'overall123'){
 
 } else{
 
-
-}
-else{
     
 $pdf->Table("SELECT wod_name AS WOD, wod_desc AS Description from tbl_wod where wod_ID =".$selected_wod);
 

@@ -203,15 +203,13 @@ Database::disconnect();
   <form  action="rangliste_pdf.php" method="post">  
 
       <button type="submit" value="<?php echo $selected_wod."X".$divison ?>" id="btn_pdf" name="btn_pdf" class="btn btn-primary">PDF Export</button>
-<<<<<<< HEAD
 
 </form > 
 
  <form  action="judges_pdf.php" method="post">  
 
       <button type="submit" value="<?php echo $selected_wod."X".$divison ?>" id="judges_pdf" name="judges_pdf" class="btn btn-primary">PDF Judges</button>
-=======
->>>>>>> origin/master
+
 
 </form > 
 
