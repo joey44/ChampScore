@@ -37,7 +37,7 @@ $sql = "SELECT div_name, div_ID FROM `tbl_division` where fk_comp_id = $comp_ID"
 foreach ($pdo->query($sql) as $row) {
     echo
 
-    "<th><button type='submit' value='" . $row['div_ID'] . "' id='" . $row['div_ID'] . "' name='divselectbasic' class='btn btn-primary'>" . $row['div_name'] . "  </button>  </th> ";
+    "<th><button type='submit' value='" . $row['div_ID'] . "' id='" . $row['div_ID'] . "' name='divselectbasic' class='btn btn-custom-red btn-lg'>" . $row['div_name'] . "  </button>  </th> ";
 
 
     $divcounter++;
@@ -69,7 +69,7 @@ if (isset($_POST['divselectbasic'])) {
 
         echo "<td> <form action='judges_pdf.php' method='post'>"
         . "<button type='submit' value=" . $row['wod_ID'] . "X" . $divison . " id='judges_pdf' "
-        . "name='judges_pdf' class='btn btn-primary'>PDF Judges</button></form ></td>";
+        . "name='judges_pdf' class='btn btn-custom-red btn-lg'>PDF Generator</button></form ></td>";
 
 
         echo "</tr> ";
