@@ -56,7 +56,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="public_html/ChampScoreIndex.php">CHAMPSCORE®</a>
+                <a class="navbar-brand" href="index.php">CHAMPSCORE®</a>
             </div>
             <!-- Top Menu Items -->
 
