@@ -66,7 +66,23 @@ for ($i = 1; $i <= $numbDiv; $i++) {
 
 
 //INSERT EVENTS IN DB
-    $numbEvent = $_POST['selEvent' . $i];
+     $anzevt = array();
+        
+
+        $sqlselanzevt = "SELECT * , count(fk_div_ID) as anzevt FROM `tbl_event` as a\n"
+                . " INNER JOIN `tbl_division` as b\n"
+                . " on a.fk_div_ID=b.div_ID\n"
+                . " INNER JOIN `tbl_competition` as c\n"
+                . " on b.fk_comp_ID=c.comp_ID\n"
+                . " group by div_ID";
+
+        foreach ($pdo->query($sqlselanzevt) as $row) {
+            array_push($anzevt, $row['anzevt']);
+        }
+   
+    
+    
+    $numbEvent=$_POST['selEvent'.$i];
 
     for ($a = 1; $a <= $numbEvent; $a++) {
 
@@ -95,7 +111,28 @@ for ($i = 1; $i <= $numbDiv; $i++) {
 
 
        
- $numbWod = $_POST['selWod' . $a . $i];
+
+ 
+ $anzwod = array();
+        
+
+        $sqlselanzwod = "SELECT * , count(fk_evt_ID) as anzwod FROM `tbl_wod` as a\n"
+                . " INNER JOIN `tbl_event` as d\n"
+                . " on a.fk_evt_ID=d.evt_ID\n"
+                . " INNER JOIN `tbl_division` as b\n"
+                . " on d.fk_div_ID=b.div_ID\n"
+                . " INNER JOIN `tbl_competition` as c\n"
+                . " on b.fk_comp_ID=c.comp_ID \n"
+                . " group by evt_ID\n"
+                . " order by div_ID,evt_ID, wod_ID";
+
+        foreach ($pdo->query($sqlselanzwod) as $row) {
+            array_push($anzwod, $row['anzwod']);
+        }
+        echo var_dump($anzwod);
+ 
+  $numbWod=$_POST['selWod'.$a.$i];
+ 
         for ($c = 1; $c <= $numbWod; $c++) {
  $wodName=$_POST['inputWod'.$a.$i.$c];
         $wodDesc=$_POST['textWod'.$a.$i.$c];
@@ -122,11 +159,14 @@ for ($i = 1; $i <= $numbDiv; $i++) {
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $q = $pdo->prepare($sql);
                 $q->execute(array($wodName, $wodDesc, $wod_ID[$c-1]));
+                array_splice($anzevt,0,$numbDiv);
         }
+          
     }
     array_splice($evt_ID,0,$numbEvent);
     array_splice($wod_ID,0,$numbWod);
-    
+    //array_splice($anzwod,0,$numbEvent);
+  
     
 }
 
