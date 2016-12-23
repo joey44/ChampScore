@@ -76,7 +76,7 @@
         if (isset($_POST['wod_button']))
              {
                       $dataString = $_POST['wod_button'];
-                       list ($divison, $selected_wod) = explode('X', $dataString);
+                      list ($divison, $selected_wod) = explode('X', $dataString);
                      
              }
              else{
@@ -203,6 +203,13 @@ Database::disconnect();
   <form  action="rangliste_pdf.php" method="post">  
 
       <button type="submit" value="<?php echo $selected_wod."X".$divison ?>" id="btn_pdf" name="btn_pdf" class="btn btn-primary">PDF Export</button>
+
+</form > 
+
+ <form  action="judges_pdf.php" method="post">  
+
+      <button type="submit" value="<?php echo $selected_wod."X".$divison ?>" id="judges_pdf" name="judges_pdf" class="btn btn-primary">PDF Judges</button>
+
 
 </form > 
 

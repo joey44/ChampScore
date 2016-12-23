@@ -14,11 +14,11 @@
         $regCode=$_POST['compregCode'];
         
         
-        $sql = "INSERT INTO `tbl_competition` ( `comp_name`, `comp_regcode`, `comp_date`, `fk_user_ID`) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO `tbl_competition` ( `comp_name`, `comp_regcode`, `comp_date`, `comp_active`, `fk_user_ID`) VALUES (?,?,?,?,?)";
         
          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	 $q = $pdo->prepare($sql);
-	 $q->execute(array($compName,$regCode,$compDate,$userID)); 
+	 $q->execute(array($compName,$regCode,$compDate,1,$userID)); 
         
          
         
