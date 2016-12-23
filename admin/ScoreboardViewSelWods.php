@@ -17,6 +17,13 @@ $count = mysqli_num_rows($ergebnis);
 
 if ($count >= 1) {
 
+    $wod_overall = 0;
+
+    $msg = "<button class= \"btn btn-custom-red btn-lg\" onclick='onSelectWod(" . $wod_overall . ',' . $div_ID . ") '  value='" . $div_ID . "X" . $wod_overall . "' id='" . $wod_overall . "' ' class='btn btn-primary btn-lg'>
+          <br/> Overall Ranking </button>  </th> ";
+
+    echo $msg;
+    
     while ($row = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
         $msg = "<button class= \"btn btn-custom-red btn-lg\" onclick='onSelectWod(" . $row['wod_ID'] . ',' . $div_ID . ") '  value='" . $div_ID . "X" . $row['wod_ID'] . "' id='" . $row['wod_ID'] . "' ' class='btn btn-primary btn-lg'>
          " . $row['evt_name'] . " <br/> " . $row['wod_name'] . " </button>  </th> ";
