@@ -20,8 +20,11 @@ function Header()
 }
 
 //Connect to database
-mysql_connect('localhost','root','');
-mysql_select_db('champscore_net');
+  $iniFile = "config.ini";
+  $databaseConfig = parse_ini_file($iniFile, true)["database"];
+
+mysql_connect($databaseConfig ["dbHost"],$databaseConfig ["dbUser"],$databaseConfig ["dbPassword"]);
+mysql_select_db($databaseConfig ["dbName"]);
 
 $pdf=new PDF();
 $pdf->AddPage();
