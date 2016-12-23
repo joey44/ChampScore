@@ -3,7 +3,7 @@
 
 session_start();
 
-include 'Database.php';
+include '../Database.php';
 $pdo = Database::connect();
 
 var_dump($_POST);
