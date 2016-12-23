@@ -608,13 +608,8 @@
 
                                         <div class="col-md-12">
                                             <label for="exampleSelect1">Number of Divisions</label>
-                                            <select class="form-control" id="selectDiv" name="selectDiv"  >
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
+                                            <input class="form-control" id="selectDiv" name="selectDiv" readonly />
+                                               
 
                                             <br/>
                                         </div>
@@ -624,6 +619,7 @@
                                             var anzDiv = <?php echo $anzdiv ?>;
                                             
                                              $('#selectDiv').val(anzDiv);
+                                             
                                            
                                              var divname = '<?php echo json_encode($div_name) ?>';
                                              var div_name = JSON.parse(divname);
@@ -661,10 +657,11 @@
                                                             }),
                                                                     $('<br/>'),
                                                                     $("<label/>").text("Number of Events"),
-                                                                    $("<select/>", {
+                                                                    $("<input/>", {
                                                                         class: 'form-control',
                                                                         id: 'selectEvent' + d,
-                                                                        name: 'selEvent' + d
+                                                                        name: 'selEvent' + d,
+                                                                        readonly: 'readonly'
 
                                                                     }),
                                                                     $("<div/>", {
@@ -674,29 +671,7 @@
                                                                     );
                                                             
                                                             
-                                                             $("#selectEvent" + d).append($("<option/>", {
-                                                                text: '0',
-                                                                value: '0'
-                                                            }),
-                                                                    $("<option/>", {
-                                                                        text: '1',
-                                                                        value: '1'
-                                                                    }),
-                                                                    $("<option/>", {
-                                                                        text: '2',
-                                                                        value: '2'
-                                                                    }),
-                                                                    $("<option/>", {
-                                                                        text: '3',
-                                                                        value: '3'
-                                                                    }),
-                                                                    $("<option/>", {
-                                                                        text: '4',
-                                                                        value: '4'
-                                                                    })
-
-
-                                                                    );
+                                                             
                                                             
                                                             anzEvt=anz_event[d-1];
                                                             
@@ -717,42 +692,25 @@
                                                                             }));
                                                                             $("#DivE" + a + d).append(
                                                                                     $("<label/>").text("Number of Wods"),
-                                                                                    $("<select/>", {
+                                                                                    $("<input/>", {
                                                                                         class: 'form-control',
                                                                                         id: 'selectWod' + a + d,
-                                                                                        name: 'selWod' + a + d
+                                                                                        name: 'selWod' + a + d,
+                                                                                        readonly: 'readonly'
 
 
 
                                                                                     }), $('<br/>'));
-                                                                            $("#selectWod" + a + d).append($("<option/>", {
-                                                                                text: '0',
-                                                                                value: '0'
-                                                                            }),
-                                                                                    $("<option/>", {
-                                                                                        text: '1',
-                                                                                        value: '1'
-                                                                                    }),
-                                                                                    $("<option/>", {
-                                                                                        text: '2',
-                                                                                        value: '2'
-                                                                                    }),
-                                                                                    $("<option/>", {
-                                                                                        text: '3',
-                                                                                        value: '3'
-                                                                                    }),
-                                                                                    $("<option/>", {
-                                                                                        text: '4',
-                                                                                        value: '4'
-                                                                                    })
-
-
-                                                                                    );
+                                                                           
                                                                             
                                                                              anzWod=anz_wod[a-1];
                                                             
                                                             for (var c = 1; c <= anzWod; c++) {
                                                $("#selectWod" +a+ d).val(anzWod);
+                                               
+                                               if($("#selectWod" +a+ d).val()==" "){
+                                                   $("#selectWod" +a+ d).val("0");
+                                               }
                                                         (function (c) {
                                                             
                                                             $("#DivE" + a + d).append($("<div/>", {
